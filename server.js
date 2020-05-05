@@ -13,5 +13,9 @@ app.use(bodyParser.json());
 const api_route = require("./routes/api_route");
 app.use("/api", api_route);
 
+app.get("/", function(req, res){
+    res.json({message: "Hola"}).end();
+})
+
 server.listen(process.env.PORT || 3000);
 console.log("Server running...")
