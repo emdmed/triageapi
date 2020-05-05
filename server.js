@@ -9,6 +9,8 @@ const server = require("http").createServer(app);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname + "/client"));
+
 //ROUTES
 const api_route = require("./routes/api_route");
 app.use("/api", api_route);
