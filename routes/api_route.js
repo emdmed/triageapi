@@ -3,6 +3,17 @@ const router = express.Router();
 const api_handler = require("../handlers/api_handler");
 const api_key = "lauti"
 
+
+
+router.use((req, res, next)=>{
+    res.header("Access-Control_allow_origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    )
+    next();
+})
+
 router.post("/score", authorize,  async function(req, res){
     console.log("Authorized, scoring...");
     let scoredPatient;
