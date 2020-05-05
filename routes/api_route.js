@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const api_handler = require("../handlers/api_handler");
-const api_key = "lauti"
+const api_key = "lauti";
+const patient_model = require("../patient_model");
 
 
 
@@ -31,6 +32,10 @@ router.post("/score", authorize,  async function(req, res){
     }
 
 })
+
+router.get("/patient_model", authorize, async function(req, res){
+    res.send(patient_model).status(200).end();
+});
 
 async function authorize(req, res, next){
     let auth = req.headers.authorization;
