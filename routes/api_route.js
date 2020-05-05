@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const api_handler = require("../handlers/api_handler");
-const api_key = "neviazah1"
+const api_key = "lauti"
 
 router.post("/score", authorize,  async function(req, res){
     console.log("Authorized, scoring...");
