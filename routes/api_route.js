@@ -19,8 +19,6 @@ router.post("/score", authorize,  async function(req, res){
     console.log("Authorized, scoring...");
     let scoredPatient;
     let patient = req.body;
-    console.log("patient ", patient);
-
     let validatedPatient = await validatePatient(res, patient)
 
     if (validatedPatient === true){

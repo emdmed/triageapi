@@ -2,17 +2,6 @@ const scorePatient = (patient)=>{
 
     console.log("Scoring...");
 
-    //rule out
-    for(key in patient.ruleOut){
-        //console.log(patient.ruleOut[key])
-        if(patient.ruleOut[key] === true){
-            console.log("patient ruled out! because: ", key, " is true");
-                patient.score = 100;
-                return patient;
-        }
-    }
-
-    //not ruled out
     //check age priority
     if(patient.info.age >= 40 && patient.info.age < 70){
         patient.score = 30;
@@ -34,7 +23,6 @@ function diagnose(patient){
     let score = patient.score;
 
     //Abdominal 
-
 
     //Abdomen agudo medico/quirurgico (esto tiene que estar antes que los otros cuadros abdominales)
     if(patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.fever.isPresent === true){
