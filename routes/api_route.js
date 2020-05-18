@@ -34,10 +34,10 @@ router.get("/patientModel", authorizeHeader, async function(req, res){
 
 async function authorizeHeader(req, res, next){
     let auth = req.headers.authorization;
-    console.log(req.headers)
     console.log(auth)
     if(auth === api_key){
-        await db_handler.createAccessRecord();
+
+        //await db_handler.createAccessRecord();
         next()
     } else {
         res.json({message: "Sin autorización"}).end();
