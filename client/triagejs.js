@@ -6,6 +6,9 @@ let triageapi = {
 
 //append a card to an element
 function render(DOMelement, type){
+
+    console.log("run")
+
     let elementToAppend;
     if(type === "patient"){
         elementToAppend = `
@@ -22,6 +25,6 @@ function render(DOMelement, type){
         
         `
     }
-
-    return elementToAppend;
+    console.log(DOMelement, type);
+    $(DOMelement).append(elementToAppend);
 }

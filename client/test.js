@@ -1,0 +1,1 @@
+triageapi.render(".container", "patient")
