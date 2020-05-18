@@ -6,7 +6,7 @@ const api_key = "linkedin";
 const patient_model = require("../patient_model");
 
 router.use((req, res, next)=>{
-    res.header("Access-Control_allow_origin", "*");
+    res.header("Access-Control-allow-origin", "*");
     next();
 })
 
