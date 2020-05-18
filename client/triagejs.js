@@ -32,9 +32,9 @@ function render(DOMelement, type){
 
 function getPatientModel(){
     $.ajax({
-        url: "http://triageapi.herokuapp.com/patientModel",
+        url: "http://triageapi.herokuapp.com/api/patientModel",
         method: "GET",
-        headers: {Authorization: "linkedin"},
+        headers: {authorization: "linkedin"},
         success: function(res){
             console.log(res);
         }
