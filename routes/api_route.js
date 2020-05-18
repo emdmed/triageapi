@@ -33,7 +33,7 @@ router.get("/patientModel", authorizeHeader, async function(req, res){
 
 
 async function authorizeHeader(req, res, next){
-    let auth = req.headers.authorization;
+    let auth = req.header.authorization;
     if(auth === api_key){
         await db_handler.createAccessRecord();
         next()
