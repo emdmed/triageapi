@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const config = require("./config")
 const db_handler =  require("./handlers/db_handler");
 
-config.connectToDB();
+//config.connectToDB();
 
 const server = require("http").createServer(app);
 
@@ -18,7 +18,11 @@ const api_route = require("./routes/api_route");
 app.use("/api", api_route);
 
 app.get("/", function(req, res){
-    res.sendFile("TODO.md")
+    res.sendFile("index.html")
+})
+
+app.get("/triagejs", function(req, res){
+    res.sendfile("./triagejs.js")
 })
 
 server.listen(process.env.PORT || 3000);
