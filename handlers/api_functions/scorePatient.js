@@ -118,7 +118,6 @@ function diagnose(patient){
     }
 
     return patient;
-
 }
 
 module.exports = scorePatient;
