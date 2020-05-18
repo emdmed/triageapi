@@ -13,8 +13,6 @@ const scorePatient = (patient)=>{
 
     diagnose(patient);
 
-    console.log("Patient score: ", patient.score);
-
     return patient;
 }
 
@@ -51,7 +49,6 @@ function diagnose(patient){
     //Infecciones respiratorias
     //faringitis-laringitis
     if(patient.symptoms.throatPain.isPresent === true){
-   
         if(patient.symptoms.fever.isPresent === true){
             patient.score = score + 2
             console.log("Fever + ")
@@ -79,7 +76,7 @@ function diagnose(patient){
         patient.info.covidAlert = true
     }
 
-    //infeccion urinaria baja
+    //infeccion urinaria baja/alta
     if(patient.symptoms.urinatingPain.isPresent == true && patient.symptoms.fever.isPresent === false){
         console.log("infeccion urinaria baja")
         patient.score = score + 3;

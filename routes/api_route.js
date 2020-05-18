@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const api_handler = require("../handlers/api_handler");
-const api_key = "lauti";
+const db_handler = require("../handlers/db_handler");
+const api_key = "linkedin";
 const patient_model = require("../patient_model");
-
-
 
 router.use((req, res, next)=>{
     res.header("Access-Control_allow_origin", "*");
@@ -15,7 +14,7 @@ router.use((req, res, next)=>{
     next();
 })
 
-router.post("/score", authorize,  async function(req, res){
+router.post("/score", authorizeHeader,  async function(req, res){
     console.log("Authorized, scoring...");
     let scoredPatient;
     let patient = req.body;
@@ -31,13 +30,25 @@ router.post("/score", authorize,  async function(req, res){
 
 })
 
-router.get("/patient_model", authorize, async function(req, res){
+router.get("/patientModel", authorizeHeader, async function(req, res){
     res.send(patient_model).status(200).end();
 });
 
-async function authorize(req, res, next){
+
+async function authorizeHeader(req, res, next){
     let auth = req.headers.authorization;
     if(auth === api_key){
+        await db_handler.createAccessRecord();
+        next()
+    } else {
+        res.json({message: "nope"}).end();
+    }
+}
+
+async function authorizeBody(req, res, next){
+    let auth = req.body.authorization;
+    if(auth === api_key){
+        await db_handler.createAccessRecord();
         next()
     } else {
         res.json({message: "nope"}).end();
@@ -67,6 +78,5 @@ function cleanPatientToSend(patient){
 
     return newPatient;
 }
-
 
 module.exports = router;

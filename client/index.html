@@ -1,1 +1,91 @@
-<h1>Hola</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <title>TriageApi</title>
+</head>
+<body style="background-color: rgb(212, 212, 212);">
+    <div class="container shadow-sm mt-3 p-4" style="background-color: white;">
+        <div class="row mx-auto">
+            <h1 class="mx-auto">TriageApi <span class="h5">beta</span></h1>
+        </div>
+        <div class="row mx-auto">
+            <p class="mx-auto text-secondary">enrique.darderes@gmail.com</p>
+        </div>
+        <hr>
+        <div class="row mt-5">
+            <div class="col">
+                <h4 class="mb-3">Autorización</h4>
+                <p>Por favor utilizar el password en el header en todas las request</p>
+            </div>
+            <div class="col">
+                <h4 class="mb-3">Headers</h4>
+                <p>"Authorization": "<span class="text-danger">password</span>"</p>
+            </div>
+        </div>
+        <hr class="w-50 my-3">
+        <div class="row mt-5">
+            <div class="col">
+                <h4 class="mb-3">Obtener modelo de paciente</h4>
+                <p>Response: JSON</p>
+            </div>
+            <div class="col">
+                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
+                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                        <h5 class="mr-2 my-auto">GET</h5></div>
+                    <div class="card-body text-white" style="border-radius: 15px;">      
+                        <p class="mx-1 ">/api/patientModel</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="w-50 my-3">
+        <div class="row mt-5">
+            <div class="col">
+                <h4 class="mb-3">Scoring</h4>
+                <p>Una vez recibido el modelo de paciente, este puede ser modificado y reenviado a la API para que sea priorizado</p>
+            </div>
+            <div class="col">
+                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
+                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                        <h5 class="mr-2 my-auto">POST</h5></div>
+                    <div class="card-body text-white" style="border-radius: 15px;">      
+                        <p class="mx-1 ">/api/score</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                <h4 class="mb-3">Scoring: respuesta</h4>
+                <p class="mb-0"><span class="text-danger">date</span> en ms</p>
+                <p><span class="text-danger mb-0">patientID</span> aún no implementado</p>
+       
+                <p class="mb-0">El score de prioridad va de 0 a 100</p>
+                <p>0: prioridad mas baja</p>
+            </div>
+            <div class="col">
+                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
+                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                        <h5 class="mr-2 my-auto">/api/score <span class="text-warning">response</span></h5></div>
+                    <div class="card-body text-white" style="border-radius: 15px;">      
+                        <p class="mb-0">{</p>
+                        <p class="mb-0 ml-4">"score": <span class="text-warning">85</span></p>
+                        <p class="mb-0 ml-4">"age": <span class="text-warning">52</span></p>
+                        <p class="mb-0 ml-4">"covidAlert": <span class="text-warning">false</span></p>
+                        <p class="mb-0 ml-4">"date": <span class="text-warning">1589811614301</span></p>
+                        <p class="mb-0 ml-4">"patientID": <span class="text-warning">null</span></p>  
+                        <p class="mb-0">}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
