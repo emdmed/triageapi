@@ -33,8 +33,9 @@ function render(DOMelement, type){
 function getPatientModel(){
     $.ajax({
         url: "http://triageapi.herokuapp.com/api/patientModel",
+        headers: {"authorization": "linkedin"},
         method: "GET",
-        header: {"authorization": "linkedin"},
+        dataType: "application/json",
         success: function(res){
             console.log(res);
         }
