@@ -3,7 +3,7 @@ const router = express.Router();
 const api_handler = require("../handlers/api_handler");
 const db_handler = require("../handlers/db_handler");
 const api_key = "linkedin";
-const patient_model = require("../patient_model");
+const patient_model = require("../patient_model.json");
 
 router.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
