@@ -30,17 +30,19 @@ function render(DOMelement, type){
     $(DOMelement).append(elementToAppend);
 }
 
-function getPatientModel(){
-    $.ajax({
+async function getPatientModel(){
+    let newdata = await $.ajax({
         url: "http://triageapi.herokuapp.com/api/patientModel",
-        headers: {"Authorization": "linkedin"},
         method: "GET",
+        headers: {"Authorization": "linkedin"},
         dataType: "application/json",
         success: function(res){
-            console.log(res);
+            let data = res;
+            return data;
         }
-
     })
+
+    return newdata;
 }
 
 

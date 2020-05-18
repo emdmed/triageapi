@@ -1,3 +1,5 @@
 triageapi.render(".container", "patient")
 
-triageapi.getPatientModel()
+let hola = triageapi.getPatientModel()
+
+console.log(hola);

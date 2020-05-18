@@ -28,7 +28,7 @@ router.post("/score", authorizeHeader,  async function(req, res){
 })
 
 router.get("/patientModel", authorizeHeader, async function(req, res){
-    res.send(patient_model).status(200).end();
+    res.send(JSON.stringify(patient_model)).status(200).end();
 });
 
 
