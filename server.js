@@ -22,7 +22,7 @@ app.get("/", function(req, res){
 })
 
 app.get("/triagejs", function(req, res){
-    res.sendfile("./triagejs.js")
+    res.sendfile("/client/triagejs.js")
 })
 
 server.listen(process.env.PORT || 3000);
