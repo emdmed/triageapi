@@ -41,7 +41,7 @@ async function authorizeHeader(req, res, next){
         await db_handler.createAccessRecord();
         next()
     } else {
-        res.json({message: "nope"}).end();
+        res.json({message: "Sin autorización"}).end();
     }
 }
 

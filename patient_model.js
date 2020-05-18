@@ -95,8 +95,7 @@ var Patient = {
         vomiting: {
             isPresent: false
         }
-    },
-    authorization: "password"
+    }
 }
 
 module.exports = Patient;
