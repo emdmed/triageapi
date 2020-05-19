@@ -17,7 +17,7 @@ async function createApiKey(email){
     } else {
         let date = new Date();
         await bcrypt.hash(email+date, saltRounds, async function(err, hash) {
-            await ApiKeyGen.create({creation_date: date, email, apiKey: hash.substr(0, 15)})
+            await ApiKeyGen.create({creation_date: date.getTime(), email, apiKey: hash.substr(0, 15)})
         });
     }
 }

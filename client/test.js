@@ -4,7 +4,7 @@ console.log(patientModel)
 
 
 $.ajax({
-    url: "http://triageapi.herokuapp.com/api/patientModel",
+    url: "https://triageapi.herokuapp.com/api/patientModel",
     method: "GET",
     headers: {"Authorization": "linkedin"},
     success: function(res){
