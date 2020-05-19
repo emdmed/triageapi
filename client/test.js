@@ -1,5 +1,13 @@
 triageapi.render(".container", "patient")
 
-let hola = triageapi.getPatientModel()
+console.log(patientModel)
 
-console.log(hola);
+
+$.ajax({
+    url: "http://triageapi.herokuapp.com/api/patientModel",
+    method: "GET",
+    headers: {"Authorization": "linkedin"},
+    success: function(res){
+        console.log(res);
+    }
+})
