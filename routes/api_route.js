@@ -37,7 +37,7 @@ async function authorizeHeader(req, res, next){
     console.log(auth)
     if(auth === api_key){
 
-        //await db_handler.createAccessRecord();
+        await db_handler.createAccessRecord();
         next()
     } else {
         res.json({message: "Sin autorización"}).end();
