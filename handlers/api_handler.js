@@ -1,4 +1,4 @@
-const scorePatient = require("./api_functions/scorePatient");
+const scorePatient = require("./api_functions/scorePatient2");
 
 const api_handler = {
     scorePatient

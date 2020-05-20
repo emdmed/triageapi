@@ -92,6 +92,51 @@
             </div>
         </div>
         <hr class="mt-5">
+
+        <div class="row">
+           
+            <div class="col">
+                <h3>Rule Out</h3>
+                <p>Da una prioridad alta a los pacientes que cumplan con los criterios:</p>
+                <p class="mb-0"><span class="text-danger">intensiveCareInLastMonth</span> <span class="text-primary">true</span> si el paciente estuvo internado en Unidad de Terapia Intensiva en los últimos 2 meses</p>
+                <br>
+                <p class="mb-0"><span class="text-danger">cancer</span> <span class="text-primary">true</span>  si el paciente tiene diagnóstico de cancer</p>
+                <br>
+                <p class="mb-0"><span class="text-danger">immuneDefficiency</span> <span class="text-primary">true</span>  si el paciente tiene algún tipo de inmunodeficiencia</p>
+                <br>
+                <p class="mb-0"><span class="text-danger">dyspnea</span> <span class="text-primary">true</span>  si el paciente refiere tener falta de aire</p>
+                <br>
+                <p class="mb-0"><span class="text-danger">acuteMotorImpairment</span> <span class="text-primary">true</span>  si el paciente tiene dificultad para movilizar algúno de los 4 miembros o para hablar</p>
+                <br>
+                <p class="mb-0"><span class="text-danger">chestPain</span> <span class="text-primary">true</span>  si el paciente tiene dolor de pecho</p>
+                <br>
+                <p class="mb-0"><span class="text-danger">hematemesis</span> <span class="text-primary">true</span>  si el paciente refiere vómitos con sangre</p>
+            </div>
+
+            <div class="col">
+                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
+                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                        <h5 class="mr-2 my-auto">Rule out</h5></div>
+                    <div class="card-body text-white" style="border-radius: 15px;"> 
+                        <p class="mb-0">"RuleOut":{</p>     
+                        <p class="mb-0 ml-4">"intensiveCareInLastMonth": <span class="text-warning">false</span></p>
+                        <p class="mb-0 ml-4">"cancer": <span class="text-warning">false</span></p>
+                        <p class="mb-0 ml-4">"immuneDefficiency": <span class="text-warning">false</span></p>
+                        <p class="mb-0 ml-4">"chemoInLast2Months": <span class="text-warning">false</span></p>
+                        <p class="mb-0 ml-4">"dyspnea": <span class="text-warning">false</span></p>  
+                        <p class="mb-0 ml-4">"acuteMotorImpairment": <span class="text-warning">false</span></p>  
+                        <p class="mb-0 ml-4">"chestPain": <span class="text-warning">false</span></p>  
+                        <p class="mb-0 ml-4">"hematemesis": <span class="text-warning">false</span></p>  
+                        <p class="mb-0">}</p>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+
+
+
         <div class="row mt-5">
             <div class="col">
                 <h4>Trabajando en:</h4>
@@ -101,6 +146,7 @@
                 </ul>
             </div>
         </div>
+
         <div class="row mx-auto">
             <div class="col-sm mx-auto text-center">
             
@@ -110,9 +156,10 @@
                 <a href="https://www.linkedin.com/in/edarderes/">
                     <img src="./images/linkedin.png" height="25px" class="mx-auto my-auto">
                 </a>
-          
             </div>
         </div>
+
+   
     </div>
 </body>
 </html>

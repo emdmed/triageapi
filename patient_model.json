@@ -1,10 +1,10 @@
 {
     "info":{
       "gender":false,
-      "age":52,
-      "phone":12348678,
+      "age": false,
+      "phone":false,
       "date":false,
-      "number":null,
+      "number":false,
       "nomobile":false,
       "covidAlert":false
     },
@@ -42,7 +42,7 @@
         "isPresent":false,
         "durationInDays":null,
         "location":{
-          "one":true,
+          "one":false,
           "two":false,
           "three":false,
           "four":false,
