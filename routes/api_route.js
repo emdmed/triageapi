@@ -4,6 +4,9 @@ const api_handler = require("../handlers/api_handler");
 const db_handler = require("../handlers/db_handler");
 const api_key = "linkedin";
 const patient_model = require("../patient_model.json");
+const config = require("../config");
+
+
 
 router.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
@@ -37,7 +40,10 @@ async function authorizeHeader(req, res, next){
     console.log(auth)
     if(auth === api_key){
 
-        await db_handler.createAccessRecord();
+        if(config.environment.production === true){
+            await db_handler.createAccessRecord();
+        } else {}
+
         next()
     } else {
         res.json({message: "Sin autorización"}).end();
