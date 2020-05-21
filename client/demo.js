@@ -138,7 +138,7 @@ $("body").on("click", "#patient1", function(){
     console.log(newPatient);
 
     $.ajax({
-        url: "http://localhost:3000/api/score",
+        url: "https://triageapi.herokuapp.com/api/score",
         headers: {"Authorization" : "linkedin"},
         method: "POST",
         contentType: "application/json",
@@ -195,7 +195,7 @@ $("body").on("click", "#patient2", function(){
     console.log(newPatient);
 
     $.ajax({
-        url: "http://localhost:3000/api/score",
+        url: "https://triageapi.herokuapp.com/api/score",
         headers: {"Authorization" : "linkedin"},
         method: "POST",
         contentType: "application/json",
@@ -250,7 +250,7 @@ $("body").on("click", "#patient3", function(){
     console.log(newPatient);
 
     $.ajax({
-        url: "http://localhost:3000/api/score",
+        url: "https://triageapi.herokuapp.com/api/score",
         headers: {"Authorization" : "linkedin"},
         method: "POST",
         contentType: "application/json",
@@ -303,5 +303,5 @@ function getLocation() {
 function showPosition(position) {
   latitude =  position.coords.latitude;
   longitude = position.coords.longitude;
-  console.log(latitude, longitude)
+  $("#geolocation").text("Geolocalizado!");
 }
