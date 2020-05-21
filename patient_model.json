@@ -8,8 +8,8 @@
       "nomobile":false,
       "covidAlert":false,
       "geolocation": {
-        "lat": -34.606119,
-        "lng": -58.426516
+        "lat": false,
+        "lng": false
       }
     },
     "ruleOut":{
