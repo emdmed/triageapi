@@ -136,6 +136,32 @@
     
         </div>
 
+        <hr>
+
+        <div class="row">
+           
+            <div class="col">
+                <h3>Hospital mas cercano</h3>
+                <p>Si en el paciente enviado a la API tiene un key <span class="text-danger">"geolocation"</span> en patient.info, la API responderá con un key <span class="text-primary">"nearestHospital": "Nombre del Hospital"</span>
+                </p>
+                <p class="text-secondary font-italic">Actualmente me encuentro ampliando la lista de hospitales</p>
+            </div>
+
+            <div class="col">
+                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
+                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                        <h5 class="mr-2 my-auto">patient.info</h5></div>
+                    <div class="card-body text-white" style="border-radius: 15px;"> 
+                        <p class="mb-0">"geolocation":{</p>     
+                        <p class="mb-0 ml-4">"lat": <span class="text-warning">false</span></p>
+                        <p class="mb-0 ml-4">"lng": <span class="text-warning">false</span></p>
+                        <p class="mb-0">}</p>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
 
 
 

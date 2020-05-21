@@ -9,8 +9,7 @@
       "covidAlert":false,
       "geolocation": {
         "lat": -34.606119,
-        "lng": -58.426516,
-        "radius:": 50
+        "lng": -58.426516
       }
     },
     "ruleOut":{
