@@ -20,7 +20,7 @@ let config = {
         }
     },
     environment: {
-        production: false,
+        production: true,
         set(){
             if(this.production === false){
                 config.connectToDB = ()=>{
