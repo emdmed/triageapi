@@ -128,7 +128,7 @@ $("body").on("click", "#patient1", function(){
 
     let age =  $("#age").val();
 
-    let newPatient = patientModel;
+    let newPatient = Object.create(patientModel);
 
     newPatient.info.age = age;
     newPatient.ruleOut.chestPain = true;
@@ -183,7 +183,7 @@ $("body").on("click", "#patient2", function(){
 
     let age =  $("#age").val();
 
-    let newPatient = patientModel;
+    let newPatient = Object.create(patientModel);
 
     newPatient.info.age = age;
     newPatient.symptoms.fever.isPresent = true;
@@ -240,7 +240,7 @@ $("body").on("click", "#patient3", function(){
 
     let age =  $("#age").val();
 
-    let newPatient = patientModel;
+    let newPatient = Object.create(patientModel);
 
     newPatient.info.age = age;
     newPatient.symptoms.cough.isPresent = true;
