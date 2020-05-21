@@ -43,5 +43,65 @@
         "hospital": "Hospital Italiano",
         "lat": -34.606119,
         "lng": -58.426516
+    },
+    {
+        "hospital": "Hospital Británico",
+        "lat": -34.634127,
+        "lng": -58.388474
+    },
+    {
+        "hospital": "Hospital Udaondo",
+        "lat": -34.634330,
+        "lng": -58.392390
+    },
+    {
+        "hospital": "Hospital Muñiz",
+        "lat": -34.637839,
+        "lng": -58.393195
+    },
+    {
+        "hospital": "Hospital Argerich",
+        "lat": -34.627852,
+        "lng": -58.365464
+    },
+    {
+        "hospital": "Hospital Penna",
+        "lat": -34.643281,
+        "lng": -58.410919
+    },
+    {
+        "hospital": "Hospital Churruca",
+        "lat": -34.641118,
+        "lng": -58.409868
+    },
+    {
+        "hospital": "Hospital Ramos Mejía",
+        "lat": -34.617898,
+        "lng": -58.410124
+    },
+    {
+        "hospital": "Hospital César Milstein",
+        "lat": -34.621398,
+        "lng": -58.408261
+    },
+    {
+        "hospital": "Sanatorio Méndez",
+        "lat": -34.614403,
+        "lng": -58.439460
+    },
+    {
+        "hospital": "Hospital Durand",
+        "lat": -34.610553,
+        "lng": -58.437250
+    },
+    {
+        "hospital": "Hospital María Curie",
+        "lat": -34.607071,
+        "lng": -58.433645
+    },
+    {
+        "hospital": "Hospital Álvarez",
+        "lat": -34.624216,
+        "lng": -58.470029
     }
 ]

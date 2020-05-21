@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const config = require("./config")
 const db_handler =  require("./handlers/db_handler");
 
-config.connectToDB();
+//config.connectToDB();
 
 const server = require("http").createServer(app);
 
