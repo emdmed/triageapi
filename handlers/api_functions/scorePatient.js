@@ -4,10 +4,23 @@ const scorePatient = (patient)=>{
 
     console.log("Scoring...");
 
+    
+    //check for geolocation
+    console.log("geolocation", patient.info.geolocation.lat, patient.info.geolocation.lng)
+
+
+    if(patient.info.geolocation.lat === false && patient.info.geolocation.lng === false){
+
+    } else {
+        let hospital = geo.locateNearestHospital(patient.info.geolocation);
+        console.log("hospital", hospital)
+        patient.nearestHospital = hospital.hospital;
+    }
+
     //rule out
     for(key in patient.ruleOut){
-        //console.log(patient.ruleOut[key])
-        if(patient.ruleOut[key] === true){
+        console.log(patient.ruleOut[key])
+        if(patient.ruleOut[key] === true || patient.ruleOut[key] === "true"){
             console.log("patient ruled out! because: ", key, " is true");
                 patient.score = 100;
                 return patient;
@@ -23,15 +36,6 @@ const scorePatient = (patient)=>{
         patient.score = 60;
     }
 
-    //check for geolocation
-
-    if(patient.info.geolocation.lat === false && patient.info.geolocation.lng === false){
-
-    } else {
-        let hospital = geo.locateNearestHospital(patient.info.geolocation);
-        console.log("hospital", hospital)
-        patient.nearestHospital = hospital.hospital;
-    }
 
     diagnose(patient);
 
