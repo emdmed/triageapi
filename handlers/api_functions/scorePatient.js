@@ -1,3 +1,5 @@
+let geo = require("./findGeolocation");
+
 const scorePatient = (patient)=>{
 
     console.log("Scoring...");
@@ -19,6 +21,16 @@ const scorePatient = (patient)=>{
         patient.score = 0;
     } else if (patient.info.age > 70){
         patient.score = 60;
+    }
+
+    //check for geolocation
+
+    if(patient.info.geolocation.lat === false && patient.info.geolocation.lng === false){
+
+    } else {
+        let hospital = geo.locateNearestHospital(patient.info.geolocation);
+        console.log("hospital", hospital)
+        patient.nearestHospital = hospital.hospital;
     }
 
     diagnose(patient);
@@ -129,6 +141,9 @@ function diagnose(patient){
 
     return patient;
 }
+
+
+
 
 module.exports = scorePatient;
 

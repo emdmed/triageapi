@@ -55,7 +55,7 @@ async function authorizeBody(req, res, next){
 }
 
 function validatePatient(res, patient){
-    
+
     if(patient.info.age === undefined || patient.info.age === false || patient.info.age.toString().length < 2){
         res.json({message: "Missing patient age"}).end();
     } else if (patient === undefined){
@@ -71,7 +71,8 @@ function cleanPatientToSend(patient){
         age: patient.info.age,
         covidAlert: patient.info.covidAlert,
         date: new Date().getTime(),
-        patientID: patient.info.number
+        patientID: patient.info.number,
+        nearestHospital: patient.nearestHospital
     }
 
     return newPatient;

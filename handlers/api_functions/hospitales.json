@@ -1,0 +1,47 @@
+[
+    {
+        "hospital": "Hospital Britanico Suipacha",
+        "lat": -34.599590,
+        "lng": -58.379753
+    },
+    {
+        "hospital": "Sanatorio de la Providencia",
+        "lat": -34.601871,
+        "lng": -58.393561
+    },
+    {
+        "hospital": "Hospital de Clinicas José de San Martín",
+        "lat": -34.598644,
+        "lng": -58.399976
+    },
+    {
+        "hospital": "Sanatorio Otamendi",
+        "lat": -34.598322,
+        "lng": -58.401006
+    },
+    {
+        "hospital": "Hospital Aleman",
+        "lat": -34.591645,
+        "lng": -58.401966
+    },
+    {
+        "hospital": "Hospital Rivadavia",
+        "lat": -34.584985,
+        "lng": -58.401671
+    },
+    {
+        "hospital": "Sanatorio San José",
+        "lat": -34.591596,
+        "lng": -58.410243
+    },
+    {
+        "hospital": "Sanatorio Güemes",
+        "lat": -34.597014,
+        "lng": -58.421844
+    },
+    {
+        "hospital": "Hospital Italiano",
+        "lat": -34.606119,
+        "lng": -58.426516
+    }
+]

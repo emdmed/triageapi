@@ -6,7 +6,12 @@
       "date":false,
       "number":false,
       "nomobile":false,
-      "covidAlert":false
+      "covidAlert":false,
+      "geolocation": {
+        "lat": -34.606119,
+        "lng": -58.426516,
+        "radius:": 50
+      }
     },
     "ruleOut":{
       "intensiveCareInLastMonth":false,
