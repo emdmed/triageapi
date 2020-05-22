@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const config = require("./config")
-const db_handler =  require("./handlers/db_handler");
 
+//config
 config.environment.set();
 config.connectToDB();
 

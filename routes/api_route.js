@@ -5,6 +5,7 @@ const db_handler = require("../handlers/db_handler");
 const api_key = "linkedin";
 const patient_model = require("../patient_model.json");
 const config = require("../config");
+const crypto = require("crypto");
 
 
 
@@ -72,12 +73,13 @@ function validatePatient(res, patient){
 }
 
 function cleanPatientToSend(patient){
+    console.log(crypto.randomBytes(10).toString("hex"))
     let newPatient = {
         score: patient.score,
         age: patient.info.age,
         covidAlert: patient.info.covidAlert,
         date: new Date().getTime(),
-        patientID: patient.info.number,
+        patientID: crypto.randomBytes(10).toString("hex"),
         nearestHospital: patient.nearestHospital
     }
 

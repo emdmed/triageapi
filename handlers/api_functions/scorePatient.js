@@ -1,5 +1,6 @@
 let geo = require("./findGeolocation");
 
+
 const scorePatient = (patient)=>{
 
     console.log("Scoring...");
