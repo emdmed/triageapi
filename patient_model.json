@@ -1,12 +1,16 @@
 {
     "info":{
       "gender":false,
-      "age":52,
-      "phone":12348678,
+      "age": false,
+      "phone":false,
       "date":false,
-      "number":null,
+      "number":false,
       "nomobile":false,
-      "covidAlert":false
+      "covidAlert":false,
+      "geolocation": {
+        "lat": false,
+        "lng": false
+      }
     },
     "ruleOut":{
       "intensiveCareInLastMonth":false,
@@ -42,7 +46,7 @@
         "isPresent":false,
         "durationInDays":null,
         "location":{
-          "one":true,
+          "one":false,
           "two":false,
           "three":false,
           "four":false,
@@ -98,5 +102,5 @@
         "isPresent":false,
         "location":{"rightLeg":false,"leftLeg":false,"face":false}
       }
-    }
   }
+}

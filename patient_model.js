@@ -6,7 +6,11 @@ var Patient = {
         date: false,
         number: null,
         nomobile: false,
-        covidAlert: false
+        covidAlert: false,
+        geolocation: {
+            lat: false,
+            lng: false
+        }
     },
     ruleOut: {
         intensiveCareInLastMonth: false,

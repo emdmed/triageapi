@@ -4,6 +4,9 @@ const api_handler = require("../handlers/api_handler");
 const db_handler = require("../handlers/db_handler");
 const api_key = "linkedin";
 const patient_model = require("../patient_model.json");
+const config = require("../config");
+
+
 
 router.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
@@ -37,7 +40,10 @@ async function authorizeHeader(req, res, next){
     console.log(auth)
     if(auth === api_key){
 
-        await db_handler.createAccessRecord();
+        if(config.environment.production === true){
+            await db_handler.createAccessRecord();
+        } else {}
+
         next()
     } else {
         res.json({message: "Sin autorización"}).end();
@@ -55,9 +61,8 @@ async function authorizeBody(req, res, next){
 }
 
 function validatePatient(res, patient){
-    if(patient.info.phone === undefined || patient.info.phone === false || patient.info.phone.toString().length < 8){
-        res.json({message: "Missing patient phone"}).end();
-    } else if(patient.info.age === undefined || patient.info.age === false || patient.info.age.toString().length < 2){
+
+    if(patient.info.age === undefined || patient.info.age === false || patient.info.age.toString().length < 2){
         res.json({message: "Missing patient age"}).end();
     } else if (patient === undefined){
         res.json({message: "Undefined problem"}).end();
@@ -72,7 +77,8 @@ function cleanPatientToSend(patient){
         age: patient.info.age,
         covidAlert: patient.info.covidAlert,
         date: new Date().getTime(),
-        patientID: patient.info.number
+        patientID: patient.info.number,
+        nearestHospital: patient.nearestHospital
     }
 
     return newPatient;

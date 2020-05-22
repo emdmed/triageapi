@@ -12,23 +12,20 @@
 <body style="background-color: #d4d4d4;">
     <div class="container shadow-sm mt-3 p-4" style="background-color: rgb(228, 233, 241);">
         <div class="row mx-auto">
-            <h1 class="mx-auto">TriageApi <span class="h5">alfa</span></h1>
+            <h1 class="mx-auto">TriageApi <span class="h5">alpha</span></h1>
         </div>
         <div class="row mx-auto mb-4 mt-2">
             <a class="mx-auto font-weight-bold text-dark" href="https://triageapi.herokuapp.com/index-en.html" class="font-weight-bold"> <img src="./images/england.png" height="40px"> English </a>
             <a class="mx-auto font-weight-bold text-dark" href="https://triageapi.herokuapp.com/index.html" class="font-weight-bold"> <img src="./images/spain.png" height="40px"> Español </a>
         </div>
         <div class="row mx-auto">
-            <p class="mx-auto"><span class="h5">Ruta: </span>https://triageapi.herokuapp.com</p>
-        </div>
-        <div class="row mx-auto">
-            <a href="demo.html" class="btn btn-dark shadow btn-rounded mx-auto">Demo</a>
+            <p class="mx-auto"><span class="h5">Route: </span>https://triageapi.herokuapp.com</p>
         </div>
         <hr>
         <div class="row mt-5">
             <div class="col">
-                <h4 class="mb-3">Autorización</h4>
-                <p>Por favor utilizar el password en el header de todas las request</p>
+                <h4 class="mb-3">Authorization</h4>
+                <p>Please use the password in the request header of all requests</p>
             </div>
             <div class="col">
                 <div class="card" style="background-color: #3c4257; border-radius: 15px;">
@@ -43,7 +40,7 @@
         <hr class="w-50 my-3">
         <div class="row mt-5">
             <div class="col">
-                <h4 class="mb-3">Obtener modelo de paciente</h4>
+                <h4 class="mb-3">Receive the patient model</h4>
                 <p>Response: JSON</p>
             </div>
             <div class="col">
@@ -60,7 +57,7 @@
         <div class="row mt-5">
             <div class="col">
                 <h4 class="mb-3">Scoring</h4>
-                <p>Una vez recibido el modelo de paciente, este puede ser modificado y reenviado a la API para que sea priorizado</p>
+                <p>Once the patient model is received, it can be modified and sent to the API for priorization</p>
             </div>
             <div class="col">
                 <div class="card" style="background-color: #3c4257; border-radius: 15px;">
@@ -75,12 +72,12 @@
 
         <div class="row mt-5">
             <div class="col">
-                <h4 class="mb-3">Scoring: respuesta</h4>
-                <p class="mb-0"><span class="text-danger">date</span> en ms</p>
-                <p><span class="text-danger mb-0">patientID</span> aún no implementado</p>
+                <h4 class="mb-3">Scoring: response</h4>
+                <p class="mb-0"><span class="text-danger">date</span> in ms</p>
+                <p><span class="text-danger mb-0">patientID</span> not implemented yet</p>
        
-                <p class="mb-0">El score de prioridad va de 0 a 100</p>
-                <p>0: prioridad mas baja</p>
+                <p class="mb-0">Priority score goes from 0 to 100</p>
+                <p>0: lowest priority</p>
             </div>
             <div class="col">
                 <div class="card" style="background-color: #3c4257; border-radius: 15px;">
@@ -104,22 +101,22 @@
            
             <div class="col">
                 <h3>Rule Out</h3>
-                <p>Da una prioridad alta a los pacientes que cumplan con los criterios:</p>
-                <p class="mb-0"><span class="text-danger">intensiveCareInLastMonth</span> <span class="text-primary">true</span> si el paciente estuvo internado en Unidad de Terapia Intensiva en los últimos 2 meses</p>
+                <p>Assigns a high priority to patients with the following criteria:</p>
+                <p class="mb-0"><span class="text-danger">intensiveCareInLastMonth</span> <span class="text-primary">true</span> if the patient was admitted</p>
                 <br>
-                <p class="mb-0"><span class="text-danger">cancer</span> <span class="text-primary">true</span>  si el paciente tiene diagnóstico de cancer</p>
+                <p class="mb-0"><span class="text-danger">cancer</span> <span class="text-primary">true</span>  patient with cancer diagnosis</p>
                 <br>
-                <p class="mb-0"><span class="text-danger">immuneDefficiency</span> <span class="text-primary">true</span>  si el paciente tiene algún tipo de inmunodeficiencia</p>
+                <p class="mb-0"><span class="text-danger">immuneDefficiency</span> <span class="text-primary">true</span>  patient with immune defficiency diagnosis</p>
                 <br>
-                <p class="mb-0"><span class="text-danger">dyspnea</span> <span class="text-primary">true</span>  si el paciente refiere tener falta de aire</p>
+                <p class="mb-0"><span class="text-danger">dyspnea</span> <span class="text-primary">true</span>  if the patient has shortness of breath</p>
                 <br>
-                <p class="mb-0"><span class="text-danger">acuteMotorImpairment</span> <span class="text-primary">true</span>  si el paciente tiene dificultad para movilizar algúno de los 4 miembros o para hablar</p>
+                <p class="mb-0"><span class="text-danger">acuteMotorImpairment</span> <span class="text-primary">true</span>  if the patient has any motor impairment or difficulty talking</p>
                 <br>
-                <p class="mb-0"><span class="text-danger">chestPain</span> <span class="text-primary">true</span>  si el paciente tiene dolor de pecho</p>
+                <p class="mb-0"><span class="text-danger">chestPain</span> <span class="text-primary">true</span>  if the patient has chest pain</p>
                 <br>
-                <p class="mb-0"><span class="text-danger">hematemesis</span> <span class="text-primary">true</span>  si el paciente refiere vómitos con sangre</p>
+                <p class="mb-0"><span class="text-danger">hematemesis</span> <span class="text-primary">true</span>  if the patient is vomiting blood</p>
                 <br>
-                <p class="font-weight-bold">Si el paciente no cumple estos criterios, pasa a la próxima etapa de scoring teniendo en cuenta los síntomas.</>
+                <p class="font-weight-bold">If the patient does not apply to any of these criteria it goes to the next scoring step</p>
             </div>
 
             <div class="col">
@@ -148,10 +145,11 @@
         <div class="row">
            
             <div class="col">
-                <h3>Hospital mas cercano</h3>
-                <p>Si en el paciente enviado a la API tiene un key <span class="text-danger">"geolocation"</span> en patient.info, la API responderá con un key <span class="text-primary">"nearestHospital": "Nombre del Hospital"</span>
+                <h3>Nearest Hospital</h3>
+                <p></p>
+                <p>If the sent patient has a key <span class="text-danger">"geolocation"</span> in patient.info, the API will respond with a key <span class="text-primary">"nearestHospital": "Hospital Name"</span>
                 </p>
-                <p class="text-secondary font-italic">Actualmente me encuentro ampliando la lista de hospitales</p>
+                <p class="text-secondary font-italic">Only available in Buenos Aires, Argentina</p>
             </div>
 
             <div class="col">
@@ -174,10 +172,10 @@
 
         <div class="row mt-5">
             <div class="col">
-                <h4>Trabajando en:</h4>
+                <h4>Working in:</h4>
                 <ul>
-                    <li>patientID único</li>
-                    <li>librería triageapi.js</li>
+                    <li>Unique patientID</li>
+                    <li>Library triageapi.js</li>
                 </ul>
             </div>
         </div>

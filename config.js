@@ -18,6 +18,16 @@ let config = {
             }, 10000);
          
         }
+    },
+    environment: {
+        production: true,
+        set(){
+            if(this.production === false){
+                config.connectToDB = ()=>{
+                    console.log("no DB")
+                }
+            }
+        }
     }
 }
 
