@@ -40,11 +40,6 @@
         "lng": -58.421844
     },
     {
-        "hospital": "Hospital Italiano",
-        "lat": -34.606119,
-        "lng": -58.426516
-    },
-    {
         "hospital": "Hospital Británico",
         "lat": -34.634127,
         "lng": -58.388474
@@ -103,5 +98,126 @@
         "hospital": "Hospital Álvarez",
         "lat": -34.624216,
         "lng": -58.470029
+    },
+    {
+        "hospital": "CEMIC ",
+        "lat": -34.55644226074219,
+        "lng": -58.49533462524414
+    }, {
+        "hospital": "ClínicaSan Camilo ",
+        "lat": -34.606536865234375,
+        "lng": -58.4429817199707
+    }, {
+        "hospital": "Clínica Adventista Belgrano ",
+        "lat": -34.57440185546875,
+        "lng": -58.468231201171875
+    }, {
+        "hospital": "Clínica Bazterrica",
+        "lat": -34.587310791015625,
+        "lng": -58.40768051147461
+    }, {
+        "hospital": "Clínica de Cirugía Especializada(***)",
+        "lat": -34.597373962402344,
+        "lng": -58.402198791503906
+    }, {
+        "hospital": "Clínica de la Esperanza ",
+        "lat": -34.612205505371094,
+        "lng": -58.46632766723633
+    }, {
+        "hospital": "Clínica de Microcirugía ",
+        "lat": -34.606990814208984,
+        "lng": -58.39273452758789
+    }, {
+        "hospital": "Clínica del Sol ",
+        "lat": -34.58652114868164,
+        "lng": -58.40834426879883
+    }, {
+        "hospital": "Clínica La Sagrada Familia",
+        "lat": -34.56148147583008,
+        "lng": -58.44622039794922
+    }, {
+        "hospital": "Clínica San Jerónimo Cirugía Ambulatoria",
+        "lat": -34.6029052734375,
+        "lng": -58.413082122802734
+    }, {
+        "hospital": "Clínica Santa Isabel",
+        "lat": -34.631954193115234,
+        "lng": -58.45571517944336
+    }, {
+        "hospital": "FLENI ",
+        "lat": -34.55512619018555,
+        "lng": -58.45078659057617
+    }, {
+        "hospital": "Fundación Favaloro",
+        "lat": -34.613956451416016,
+        "lng": -58.39109802246094
+    }, {
+        "hospital": "Fundación Hospitalaria",
+        "lat": -34.54209899902344,
+        "lng": -58.47775650024414
+    }, {
+        "hospital": "Fundación Instituto Quirúrgico del Callao ",
+        "lat": -34.60323715209961,
+        "lng": -58.3924446105957
+    }, {
+        "hospital": "Hospital Italiano ",
+        "lat": -34.60665512084961,
+        "lng": -58.42472839355469
+    }, {
+        "hospital": "Hospital Sirio Libanés",
+        "lat": -34.58987808227539,
+        "lng": -58.5070686340332
+    }, {
+        "hospital": "I.A.D.T.Instituto Argentino de Diagnóstico y Tratamiento(***)",
+        "lat": -34.59668731689453,
+        "lng": -58.40106964111328
+    }, {
+        "hospital": "I.F.E.R.",
+        "lat": -34.59680938720703,
+        "lng": -58.399837493896484
+    }, {
+        "hospital": "Instituto Cardiovascular de BuenosAires ",
+        "lat": -34.553977966308594,
+        "lng": -58.45083236694336
+    }, {
+        "hospital": "Instituto Dupuytren ",
+        "lat": -34.615699768066406,
+        "lng": -58.41441345214844
+    }, {
+        "hospital": "Instituto Otorrinolaringológico Arauz S.A.",
+        "lat": -34.607357025146484,
+        "lng": -58.39727783203125
+    }, {
+        "hospital": "Instituto Superior de Otorrinolaringología",
+        "lat": -34.6005744934082,
+        "lng": -58.40009689331055
+    }, {
+        "hospital": "Sanatorio Anchorena (***)",
+        "lat": -34.58928298950195,
+        "lng": -58.40034866333008
+    }, {
+        "hospital": "Sanatorio Colegiales",
+        "lat": -34.577049255371094,
+        "lng": -58.4510383605957
+    }, {
+        "hospital": "Sanatorio de La Providencia ",
+        "lat": -34.60198974609375,
+        "lng": -58.39370346069336
+    }, {
+        "hospital": "Sanatorio Finochietto ",
+        "lat": -34.598167419433594,
+        "lng": -58.405338287353516
+    }, {
+        "hospital": "Sanatorio Mitre ",
+        "lat": -34.608619689941406,
+        "lng": -58.40279769897461
+    }, {
+        "hospital": "Sanatorio San José",
+        "lat": -34.591575622558594,
+        "lng": -58.410213470458984
+    }, {
+        "hospital": "UAI - Hospital Universitario",
+        "lat": -34.66096878051758,
+        "lng": -58.444618225097656
     }
 ]

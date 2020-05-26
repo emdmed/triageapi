@@ -36,6 +36,7 @@ router.get("/patientModel", authorizeHeader, async function(req, res){
 });
 
 
+
 async function authorizeHeader(req, res, next){
     let auth = req.headers.authorization;
     console.log(auth)

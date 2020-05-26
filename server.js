@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const config = require("./config")
+const fs = require("fs");
 
 //config
 config.environment.set();
@@ -28,3 +29,5 @@ app.get("/triagejs", function(req, res){
 
 server.listen(process.env.PORT || 3000);
 console.log("Server running...")
+
+
