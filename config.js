@@ -1,5 +1,5 @@
 let mongoose = require("mongoose")
-let prod = true;
+let prod = false;
 
 let config = {
     url: {
