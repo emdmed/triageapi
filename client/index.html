@@ -168,9 +168,28 @@
             </div>
     
         </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <h3>Ruta: Hospital mas cercano</h3>
+                <p>Ruta única que al enviarle un objeto con <span class="text-danger">{lat: "latitud", lng: "longitud"}</span> devuelve el hospital mas cercano y la distancia</p>
+            </div>
 
-
-
+            <div class="col">
+                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
+                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                        <h5 class="mr-2 my-auto">POST /api/nearestHospital</h5></div>
+                    <div class="card-body text-white" style="border-radius: 15px;"> 
+                        <p class="mb-0">{</p>     
+                        <p class="mb-0 ml-4">"hospital": <span class="text-warning">"Clínica del Sol"</span></p>
+                        <p class="mb-0 ml-4">"distance": <span class="text-warning">884.1858149550276</span></p>
+                        <p class="mb-0">}</p>
+                        <hr>
+                        <p class="text-warning">"distance" en metros</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="row mt-5">
             <div class="col">

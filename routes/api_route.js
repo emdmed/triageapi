@@ -35,7 +35,7 @@ router.get("/patientModel", authorizeHeader, async function(req, res){
     res.send(JSON.stringify(patient_model)).status(200).end();
 });
 
-router.get("/nearestHospital", authorizeHeader, async function(req, res){
+router.post("/nearestHospital", authorizeHeader, async function(req, res){
     let data = req.body;
     let nearestHospital = await api_handler.nearestHospital(data);
     res.send(nearestHospital);
