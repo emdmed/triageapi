@@ -42,6 +42,10 @@ router.post("/nearestHospital", authorizeHeader, async function(req, res){
 
 })
 
+router.post("/lab", async function(req, res){
+    //lab
+})
+
 
 async function authorizeHeader(req, res, next){
     let auth = req.headers.authorization;
