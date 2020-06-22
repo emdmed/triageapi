@@ -489,10 +489,13 @@ function diagnose(model){
                 console.log("Deficiencia de folatos");
                 diagnosis.anemia = {title: "Anemia, probablemente por deficit de folatos", suggestion: "Saque turno con su hematólogo"}
             }
-        } else if(model.anemia.vcm === "low"){
-            diagnosis.anemia = {title: "Posible alteración de la hemoglobina", suggestion: "Consulte con su médico clínico"}
         } else {
             diagnosis.anemia = {title: "Anemia", suggestion: "Consulte con su médico clínico"}
+        }
+
+    }else if (model.anemia.isPresent === false){
+        if(model.anemia.vcm === "low"){
+            diagnosis.anemia = {title: "Posible alteracion de los globulos rojos o hemoglobina", suggestion: "Consulte a su médico clínico o hematólogo"}
         }
     }
 

@@ -28,4 +28,4 @@ app.get("/triagejs", function(req, res){
 })
 
 server.listen(process.env.PORT || 3000);
-console.log("Done...")
+console.log("Running on port " + 3000)
