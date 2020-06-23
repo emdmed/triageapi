@@ -1,3 +1,5 @@
+const db_handler = require("../db_handler");
+
 //process ->  diagnosis
 const lab = {
     processh,
@@ -304,6 +306,16 @@ const values = {
                 unit: "u/l",
                 max: 280
             }
+        },
+        renal: {
+            urea: {
+                unit: "mg/dl",
+                max: 45
+            },
+            creatinina: {
+                unit: "mg/dl",
+                max: 1.4
+            }
         }
     
 }
@@ -312,6 +324,16 @@ const values = {
 
 function processh(model){
     console.log("processing")
+
+
+    //save request to db
+    try{
+        await db_handler.storeLabRequest(model);
+    }catch(error){
+        console.log(error);
+    }
+    
+
     let values = getValues();
 
     //add algorythm keys here
@@ -327,7 +349,12 @@ function processh(model){
         highLeucocytes: false,
         lowLeucocytes: false,
         highNeutrophils: false,
-        plqt: false
+        plqt: false,
+        renalInjury: {
+            isPresent: false,
+            hypoperfusion: false,
+            glomerularInjury: false
+        }
     }
 
     //HEMOGRAMA
@@ -423,10 +450,30 @@ function processh(model){
             }
         }
 
+        if(key === "renal"){
+
+            if(model.hemograma[key].creatinina >= values.renal.creatinina.max){
+                modelDetection.renalInjury.isPresent === true
+            }
+
+            if(model.hemograma[key].urea >= values.renal.urea.max){
+                //check creatinina
+                if(model.hemograma[key].creatinina > values.renal.creatina.max){
+                    //check creatinine urea relation
+                    let crUrRelation = model.hemograma[key].urea / model.hemograma[key].creatinina 
+                    if(crUrRelation > 35){
+                        //hypoperfusion
+                        modelDetection.renalInjury.hypoperfusion = true;
+                    } else if(crUrRelation < 20) {
+                        //glomerular Injury
+                        modelDetection.renalInjury.glomerularInjury = true;
+                    }
+
+                }
+            }
+        }
+
     }
-
-
-    console.log(modelDetection)
 
     //Diagnostic algorythm
     let diagnosis = diagnose(modelDetection);
@@ -496,6 +543,8 @@ function diagnose(model){
     }else if (model.anemia.isPresent === false){
         if(model.anemia.vcm === "low"){
             diagnosis.anemia = {title: "Posible alteracion de los globulos rojos o hemoglobina", suggestion: "Consulte a su médico clínico o hematólogo"}
+        } else if (model.anemia.vcm === "high"){
+            diagnosis.anemia = {title: "Posible alteracion de los globulos rojos", suggestion: "Consulte a su médico clínico o hematólogo"}
         }
     }
 
@@ -519,11 +568,8 @@ function diagnose(model){
         diagnosis.plaquetopenia = {title: "Plaquetas extremedamente bajas", suggestion: "Consulte urgente a la guardia"}
     }
 
-    console.log(diagnosis)
     //return diagnosis here
     return diagnosis
 }
-
-//processh(labModel, values)
 
 module.exports = lab

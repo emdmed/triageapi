@@ -1,12 +1,14 @@
-const ApiKeyGen = require("../models/apiKeyGen")
+const ApiKeyGen = require("../models/apiKeyGen");
 const accessRecord = require("../models/accessRecord");
+const labRequest = require("../models/labRequest");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 const db_handler = {
    createApiKey,
    findApiKey,
-   createAccessRecord
+   createAccessRecord,
+   storeLabRequest
 }
 
 async function createApiKey(email){
@@ -29,6 +31,11 @@ async function createAccessRecord(){
 async function findApiKey(email){
     let found = ApiKeyGen.find({email: email});
     return found;
+}
+
+async function storeLabRequest(data){
+    data.creationDate = new Date();
+    await labRequest.create(data);
 }
 
 module.exports = db_handler;
