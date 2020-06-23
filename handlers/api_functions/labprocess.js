@@ -316,6 +316,9 @@ const values = {
                 unit: "mg/dl",
                 max: 1.4
             }
+        },
+        ionograma: {
+            
         }
     
 }
