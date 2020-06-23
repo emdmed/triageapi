@@ -478,6 +478,9 @@ async function processh(model){
 
     }
 
+
+    console.log(modelDetection);
+
     //Diagnostic algorythm
     let diagnosis = diagnose(modelDetection);
     return diagnosis;
