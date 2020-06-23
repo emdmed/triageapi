@@ -318,7 +318,7 @@ const values = {
             }
         },
         ionograma: {
-            
+
         }
     
 }
@@ -569,6 +569,17 @@ function diagnose(model){
 
     if(model.plqt === "extremely low"){
         diagnosis.plaquetopenia = {title: "Plaquetas extremedamente bajas", suggestion: "Consulte urgente a la guardia"}
+    }
+
+    //renal
+    if(model.renalInjury.isPresent === true){
+        if(model.renalInjury.hypoperfusion === true){
+            diagnosis.injuriaRenal = {title: "Probable injuria renal prerrenal", suggestion: "Consulte de inmediato a su médico o a la guardia"}
+        }
+
+        if(model.renalInjury.glomerularInjury === true){
+            diagnosis.injuriaRenal = {title: "Probable injuria renal renal", suggestion: "Consulte de inmediato a su médico o a la guardia"}
+        }
     }
 
     //return diagnosis here
