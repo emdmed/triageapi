@@ -34,7 +34,7 @@ async function findApiKey(email){
 }
 
 async function storeLabRequest(data){
-    data.creationDate = new Date();
+    data.creation_date = new Date();
     await labRequest.create(data);
 }
 
