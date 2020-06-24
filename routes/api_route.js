@@ -44,6 +44,14 @@ router.post("/nearestHospital", authorizeHeader, async function(req, res){
 
 router.post("/labtest", async function(req, res){
     let data = req.body;
+  
+    
+    try{
+        await db_handler.storeLabRequest(data);
+    }catch(error){
+        console.log(error);
+    }
+    
     let dx = await api_handler.labprocess.processh(data);
     res.send(dx).end();
 })
