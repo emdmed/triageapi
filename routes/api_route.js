@@ -8,7 +8,6 @@ const config = require("../config");
 const crypto = require("crypto");
 
 
-
 router.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
@@ -47,7 +46,9 @@ router.post("/labtest", async function(req, res){
   
     
     try{
-        await db_handler.storeLabRequest(data);
+        if(config.environment.production === true){
+            await db_handler.storeLabRequest(data);
+        }
     }catch(error){
         console.log(error);
     }

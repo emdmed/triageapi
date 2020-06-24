@@ -201,7 +201,16 @@ function getValues(){
             }
         },
         ionograma: {
-
+            na: {
+                unit: false,
+                min: 135,
+                max: 145
+            },
+            k: {
+                unit: false,
+                min: 3.5,
+                max: 5
+            }
         }
     
     }
@@ -230,7 +239,11 @@ async function processh(model){
             isPresent: false,
             hypoperfusion: false,
             glomerularInjury: false
-        }
+        },
+        hyponatremia: false,
+        hypernatremia: false,
+        hypokalemia: false,
+        hyperkalemia: false
     }
 
     //HEMOGRAMA
@@ -325,11 +338,12 @@ async function processh(model){
                 }
             }
         }
+
+     
     }
 
     for(key in model){
         if(key === "renal"){
-            console.log(+model[key].creatinina, values.renal.creatinina.max);
 
             if(+model[key].creatinina >= +values.renal.creatinina.max){
                 console.log("renal injury true")
@@ -354,9 +368,36 @@ async function processh(model){
                 }
             }
         }
+
+        if(key === "ionograma"){
+            if(model[key].na < values.ionograma.na.min){
+                modelDetection.hyponatremia = "low"
+            } else if (model.hemograma[key] < 120){
+                modelDetection.hyponatremia = "very low"
+            }
+
+            if(model[key].na > values.ionograma.na.max){
+                modelDetection.hypernatremia = true;
+            }
+
+            if(model[key].k < values.ionograma.k.min){
+                modelDetection.hypokalemia = "low"
+            } else if(model[key].k < 3){
+                console.log(model[key].k)
+                modelDetection.hypokalemia = "very low"
+            } else if(model[key].k === false || model[key].k === NaN){
+                modelDetection.hypokalemia = false
+            }
+
+            if(model[key].k > values.ionograma.k.max){
+                modelDetection.hyperkalemia = "high"
+            } else if(model[key].k > 6){
+                modelDetection.hyperkalemia = "very high"
+            }
+        }
     }
 
-    console.log(modelDetection);
+    console.log("Model Detection: ", modelDetection);
 
     //Diagnostic algorythm
     let diagnosis = diagnose(modelDetection);
@@ -365,6 +406,8 @@ async function processh(model){
 }
 
 function diagnose(model){
+
+    console.log("MODEL ", model)
 
     let diagnosis = {}
 
@@ -461,6 +504,33 @@ function diagnose(model){
             diagnosis.injuriaRenal = {title: "Probable injuria renal renal", suggestion: "Consulte de inmediato a su médico o a la guardia"}
         }
     }
+
+    console.log("Second Model ",model)
+
+    //ionograma
+    if(model.hyponatremia === "low"){
+        diagnosis.hyponatremia = {title: "Sodio bajo", suggestion: "Consulte a su médico clínico"}
+    }else if (model.hyponatremia === "very low"){
+        diagnosis.hyponatremia = {title: "Sodio muy bajo", suggestion: "Consulte lo antes posible a su médico o concurra a la guardia"}
+    }
+
+    if(model.hypernatremia === true){
+        diagnosis.hypernatremia = {title: "Sodio alto", suggestion: "Consulte a su médico clínico"}
+    }
+
+    /* PROBLEM IN VERY LOW HYPOKALEMIA
+    if(model.hypokalemia === "low"){
+        diagnosis.hypokalemia = {title: "Potasio bajo", suggestion: "Consulte a su médico clínico"}
+    } else if(model.hypokalemia = "very low"){
+        console.log(model.hypokalemia)
+        diagnosis.hypokalemia = {title: "Potasio muy bajo", suggestion: "Consulte urgente a la guardia"}
+    }
+
+    if(model.hyperkalemia === "high"){
+        diagnosis.hyperkalemia = {title: "Potasio alto", suggestion: "Consulte a su médico clínico"};
+    } else if(model.hyperkalemia === "very high"){
+        diagnosis.hyperkalemia = {title: "Potasio muy alto", suggestion: "Consulte urgente a la guardia"}
+    }*/
 
     //return diagnosis here
     console.log(diagnosis)

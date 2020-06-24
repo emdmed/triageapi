@@ -35,7 +35,12 @@ async function findApiKey(email){
 
 async function storeLabRequest(data){
     data.creation_date = new Date();
-    await labRequest.create(data);
+    try{
+        await labRequest.create(data);
+    }catch(error){
+        console.log("Cound not write to DB");
+    }
+
 }
 
 module.exports = db_handler;
