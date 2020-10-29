@@ -1,5 +1,6 @@
 let mongoose = require("mongoose")
 let prod = false;
+let env_var = require("./env");
 
 let config = {
     url: {
@@ -7,7 +8,7 @@ let config = {
         dev: "",
         local: ""
     },
-    DB: "dburlhere",
+    DB: env_var.dburl,
     connectToDB: async function(){
         try{
             await mongoose.connect(this.DB, {useNewUrlParser: true, useUnifiedTopology: true });
