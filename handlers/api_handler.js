@@ -1,9 +1,9 @@
-const scorePatient = require("./api_functions/scorePatient");
+const score = require("./api_functions/scorePatient");
 const geolocate = require("./api_functions/findGeolocation");
 const labprocess = require("./api_functions/labprocess");
 
 const api_handler = {
-    scorePatient,
+    score,
     nearestHospital: geolocate.locateNearestHospital,
     labprocess
 }

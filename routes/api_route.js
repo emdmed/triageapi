@@ -21,7 +21,7 @@ router.post("/score", authorizeHeader,  async function(req, res){
     let validatedPatient = await validatePatient(res, patient)
 
     if (validatedPatient === true){
-        scoredPatient = await api_handler.scorePatient(patient);
+        scoredPatient = await api_handler.score.scorePatient(patient);
         let sendPatient = await cleanPatientToSend(scoredPatient);
         res.send(sendPatient).status(200).end();
     } else {
