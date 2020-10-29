@@ -1,5 +1,5 @@
 let mongoose = require("mongoose")
-let prod = false;
+let prod = true;
 let env_var = require("./env");
 
 let config = {
