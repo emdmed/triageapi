@@ -1,4 +1,6 @@
 let geo = require("./findGeolocation");
+//disable console log
+console.log = () => {}
 
 let score = {
     scorePatient,
