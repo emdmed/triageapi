@@ -3,15 +3,21 @@ const patientModelRuleOut = require("./patientModelRuleout");
 
 
 test("Check ruleout", ()=>{
+    //score must be always 100
+    let patient = patientModelRuleOut;
 
-    const patient = patientModelRuleOut;
+    expect(score.ruleOut(patient)).toMatchObject({
+        score: 100
+    })
 
-    expect(score.ruleOut(patient)).toBe({
-        score: 100,
-        age: Number,
-        covidAlert: false,
-        date: Number,
-        patientID: String
+})
+
+test("Check ruled out patient through full scorePatient", ()=>{
+
+    let patient = patientModelRuleOut;
+
+    expect(score.ruleOut(patient)).toMatchObject({
+        score: 100
     })
 
 })
