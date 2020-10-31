@@ -4,3 +4,8 @@ A triage API that receives symptoms and returns an urgency score. It also return
 Access readme at https://triageapi.herokuapp.com
 
 when cloning check that "prod" variable in config.js is set to false
+
+TODO
+
+[] - add more diagnostic options
+[] - debug laboratory interpretation
