@@ -5,7 +5,8 @@ console.log = () => {}
 let score = {
     scorePatient,
     ruleOut,
-    checkAgePriority
+    checkAgePriority,
+    diagnose
 }
 
 function scorePatient(patient){

@@ -13,14 +13,14 @@ var Patient = {
       }
     },
     ruleOut: {
-      intensiveCareInLastMonth: true,
-      cancer: true,
-      immuneDefficiency: true,
-      chemoInLast2Months: true,
-      dyspnea: true,
-      acuteMotorImpairment: true,
-      chestPain: true,
-      hematemesis: true
+      intensiveCareInLastMonth: false,
+      cancer: false,
+      immuneDefficiency: false,
+      chemoInLast2Months: false,
+      dyspnea: false,
+      acuteMotorImpairment: false,
+      chestPain: false,
+      hematemesis: false
     },
     symptoms: {
       fever: {
