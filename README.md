@@ -3,9 +3,9 @@ A triage API that receives symptoms and returns an urgency score. It also return
 
 Access readme at https://triageapi.herokuapp.com
 
-when cloning check that "prod" variable in config.js is set to false
+(When cloning check that "prod" variable in config.js is set to false)
 
-TODO
+# TODO
 
 - add more diagnostic options
 - debug laboratory interpretation
@@ -17,21 +17,21 @@ TODO
 
 2) Modify the patient object data as you see fit (age, symtpoms, geolocation, etc)
 
-3) send the modified obect back to the API for scoring at -> https://triageapi.herokuapp.com/api/score
+3) Send the modified obect back to the API for scoring at -> https://triageapi.herokuapp.com/api/score
 
 4) Scoring response example:
 
-    {
-        "score": 85
-        "age": 52
-        "covidAlert": false
-        "date": 1589811614301
-        "patientID": null
-    }
+    { <br/>
+        "score": 85 <br/>
+        "age": 52 <br/>
+        "covidAlert": false <br/>
+        "date": 1589811614301 <br/>
+        "patientID": null <br/>
+    } <br/>
 
 --------------------------------------------------------------------------
 
-Pathologies taken in account for priorization:
+# Pathologies taken in account for priorization:
 
 - Acute abdomen (medical, quirurgic)
 - Appendicitis
