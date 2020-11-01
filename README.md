@@ -9,3 +9,20 @@ TODO
 
 [] - add more diagnostic options
 [] - debug laboratory interpretation
+
+--------------------------------------------------------------------------
+
+Pathologies taken in account for priorization:
+
+- Acute abdomen (medical, quirurgic)
+- Appendicitis
+- Cholecystitis
+- Pharyngitis
+- Laryngitis
+- Acute upper respiratory infection
+- Lower urinary tract infection
+- Upper/ lower complicated urinary tract infection 
+- Deep venous thrombosis (incomplete)
+- Cardiac failure (incomplete)
+- Alergy (incomplete)
+- Gastroenteritis
