@@ -17,7 +17,7 @@ Access readme at https://triageapi.herokuapp.com
 
 2) Modify the patient object data as you see fit (age, symtpoms, geolocation, etc)
 
-3) Send the modified obect back to the API for scoring at -> https://triageapi.herokuapp.com/api/score
+3) Send the modified object back to the API for scoring at -> https://triageapi.herokuapp.com/api/score
 
 4) Scoring response example:
 
