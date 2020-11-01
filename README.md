@@ -7,8 +7,27 @@ when cloning check that "prod" variable in config.js is set to false
 
 TODO
 
-[] - add more diagnostic options
-[] - debug laboratory interpretation
+[] - add more diagnostic options /br
+[] - debug laboratory interpretation /br
+
+--------------------------------------------------------------------------
+# How to use it
+
+1) Request patient object with the following route -> https://triageapi.herokuapp.com/api/patientModel
+
+2) Modify the patient object data as you see fit (age, symtpoms, geolocation, etc)
+
+3) send the modified obect back to the API for scoring at -> https://triageapi.herokuapp.com/api/score
+
+4) Scoring response example:
+
+    {
+        "score": 85
+        "age": 52
+        "covidAlert": false
+        "date": 1589811614301
+        "patientID": null
+    }
 
 --------------------------------------------------------------------------
 
