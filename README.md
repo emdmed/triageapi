@@ -7,8 +7,8 @@ when cloning check that "prod" variable in config.js is set to false
 
 TODO
 
-[] - add more diagnostic options /br
-[] - debug laboratory interpretation /br
+- add more diagnostic options
+- debug laboratory interpretation
 
 --------------------------------------------------------------------------
 # How to use it
