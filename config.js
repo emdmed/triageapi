@@ -14,7 +14,7 @@ let config = {
             await mongoose.connect(this.DB, {useNewUrlParser: true, useUnifiedTopology: true });
             console.log("Connected to DB");
         }catch{
-            console.log("Error connecting to DB, retrying in 10");
+            console.log("Error connecting to DB, retrying in 10s");
             setTimeout(() => {
                 this.connectToDB();
             }, 10000);
