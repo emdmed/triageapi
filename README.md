@@ -21,6 +21,7 @@ Access readme at https://triageapi.herokuapp.com
 
 4) Scoring response example:
 
+<pre>
     { <br/>
         "score": 85 <br/>
         "age": 52 <br/>
@@ -28,6 +29,7 @@ Access readme at https://triageapi.herokuapp.com
         "date": 1589811614301 <br/>
         "patientID": null <br/>
     } <br/>
+</pre>
 
 --------------------------------------------------------------------------
 
