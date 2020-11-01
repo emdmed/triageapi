@@ -8,93 +8,114 @@ const config = require("../config");
 const crypto = require("crypto");
 
 
-router.use((req, res, next)=>{
+router.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
     next();
 })
 
-router.post("/score", authorizeHeader,  async function(req, res){
+router.post("/score", authorizeHeader, async function (req, res) {
     console.log("Authorized, scoring...");
     let scoredPatient;
     let patient = req.body;
-    let validatedPatient = await validatePatient(res, patient)
+    let validatedPatient;
 
-    if (validatedPatient === true){
-        scoredPatient = await api_handler.score.scorePatient(patient);
-        let sendPatient = await cleanPatientToSend(scoredPatient);
-        res.send(sendPatient).status(200).end();
+    try {
+        validatedPatient = await validatePatient(res, patient)
+    } catch (error) {
+        res.send({ message: "Authorization error" }).status(200).end();
+    }
+
+    if (validatedPatient === true) {
+
+        try {
+            scoredPatient = await api_handler.score.scorePatient(patient);
+        } catch (error) {
+            res.send({ message: "Scoring error" }).status(200).end();
+        }
+
+        let sendPatient;
+        try {
+            sendPatient = await cleanPatientToSend(scoredPatient);
+            res.send(sendPatient).status(200).end();
+        } catch (error) {
+            res.send({ message: "Patient cleaning error" }).status(200).end();
+        }
+
     } else {
-        res.status(400).end();
+        res.status(400).send({ message: "Not authorized" }).end();
     }
 
 })
 
-router.get("/patientModel", authorizeHeader, async function(req, res){
+//not checking if file exists
+router.get("/patientModel", authorizeHeader, async function (req, res) {
     res.send(JSON.stringify(patient_model)).status(200).end();
 });
 
-router.post("/nearestHospital", authorizeHeader, async function(req, res){
+router.post("/nearestHospital", authorizeHeader, async function (req, res) {
     let data = req.body;
-    let nearestHospital = await api_handler.nearestHospital(data);
-    res.send(nearestHospital);
+    let nearestHospital;
+    try {
+        nearestHospital = await api_handler.nearestHospital(data);
+        res.send(nearestHospital).status(200).end();
+    } catch (error) {
+        res.send({ message: "Finding nearest hospital error" })
+        console.log(error)
+    }
 
 })
 
-router.post("/labtest", async function(req, res){
+router.post("/labtest", async function (req, res) {
     let data = req.body;
-  
-    
-    try{
-        if(config.environment.production === true){
+
+    try {
+        if (config.environment.production === true) {
             await db_handler.storeLabRequest(data);
         }
-    }catch(error){
+    } catch (error) {
+        res.send({message: "Error storing labrequest"})
         console.log(error);
     }
-    
-    let dx = await api_handler.labprocess.processh(data);
-    res.send(dx).end();
+
+    let dx;
+    try{
+        dx = await api_handler.labprocess.processh(data);
+        res.send(dx).end();
+    }catch(error){
+        res.send({message: "Error processing laboratory"}).status(200).end();
+    }
+   
 })
 
 
-async function authorizeHeader(req, res, next){
+async function authorizeHeader(req, res, next) {
     let auth = req.headers.authorization;
     console.log(auth)
-    if(auth === api_key){
+    if (auth === api_key) {
 
-        if(config.environment.production === true){
+        if (config.environment.production === true) {
             await db_handler.createAccessRecord();
-        } else {}
+        } else { }
 
         next()
     } else {
-        res.json({message: "Sin autorización"}).end();
+        res.json({ message: "Sin autorización" }).end();
     }
 }
 
-async function authorizeBody(req, res, next){
-    let auth = req.body.authorization;
-    if(auth === api_key){
-        await db_handler.createAccessRecord();
-        next()
-    } else {
-        res.json({message: "nope"}).end();
-    }
-}
+function validatePatient(res, patient) {
 
-function validatePatient(res, patient){
-
-    if(patient.info.age === undefined || patient.info.age === false || patient.info.age.toString().length < 2){
-        res.json({message: "Missing patient age"}).end();
-    } else if (patient === undefined){
-        res.json({message: "Undefined problem"}).end();
+    if (patient.info.age === undefined || patient.info.age === false || patient.info.age.toString().length < 2) {
+        res.json({ message: "Missing patient age" }).end();
+    } else if (patient === undefined) {
+        res.json({ message: "Undefined problem" }).end();
     } else {
         return true;
     }
 }
 
-function cleanPatientToSend(patient){
+function cleanPatientToSend(patient) {
     console.log(crypto.randomBytes(10).toString("hex"))
     let newPatient = {
         score: patient.score,
