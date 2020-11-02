@@ -1,220 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <title>TriageApi</title>
-</head>
-<body style="background-color: #d4d4d4;">
-    <div class="container shadow-sm mt-3 p-4" style="background-color: rgb(228, 233, 241);">
-        <div class="row mx-auto mb-4 mt-2">
-            <a class="float-right font-weight-bold text-dark" href="https://triageapi.herokuapp.com/index-en.html" class="font-weight-bold"> <img src="./images/england.png" height="40px"> English </a>
-            <a class="float-right ml-3 font-weight-bold text-dark" href="https://triageapi.herokuapp.com/index.html" class="font-weight-bold"> <img src="./images/spain.png" height="40px"> Español </a>
-        </div>
-        <div class="row mx-auto">
-            <h1 class="mx-auto">TriageApi <span class="h5">alfa</span></h1>
-        </div>
-        <div class="row mx-auto">
-            <p class="mx-auto"><span class="h5">Ruta: </span>https://triageapi.herokuapp.com</p>
-        </div>
-        <div class="row mx-auto">
-            <a href="demo.html" class="btn btn-dark shadow btn-rounded mx-auto">Demo</a>
-        </div>
-        <hr>
-        <div class="row mt-5">
-            <div class="col">
-                <h4 class="mb-3">Autorización</h4>
-                <p>Por favor utilizar el password en el header de todas las request</p>
-            </div>
-            <div class="col">
-                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
-                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                        <h5 class="mr-2 my-auto">Headers</h5></div>
-                    <div class="card-body text-white" style="border-radius: 15px;">      
-                        <p>headers: {"Authorization": "password"}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class="w-50 my-3">
-        <div class="row mt-5">
-            <div class="col">
-                <h4 class="mb-3">Obtener modelo de paciente</h4>
-                <p>Response: JSON</p>
-            </div>
-            <div class="col">
-                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
-                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                        <h5 class="mr-2 my-auto">GET</h5></div>
-                    <div class="card-body text-white" style="border-radius: 15px;">      
-                        <p class="mx-1 ">/api/patientModel</p> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class="w-50 my-3">
-        <div class="row mt-5">
-            <div class="col">
-                <h4 class="mb-3">Scoring</h4>
-                <p>Una vez recibido el modelo de paciente, este puede ser modificado y reenviado a la API para que sea priorizado</p>
-            </div>
-            <div class="col">
-                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
-                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                        <h5 class="mr-2 my-auto">POST</h5></div>
-                    <div class="card-body text-white" style="border-radius: 15px;">      
-                        <p class="mx-1 ">/api/score</p> 
-                    </div>
-                </div>
-            </div>
-        </div>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="it" />
+    <meta
+      name="keywords"
+      content="Rapoo,creative, agency, startup,onepage, clean, modern,business, company,it"
+    />
 
-        <div class="row mt-5">
-            <div class="col">
-                <h4 class="mb-3">Scoring: respuesta</h4>
-                <p class="mb-0"><span class="text-danger">date</span> en ms</p>
-                <p><span class="text-danger mb-0">patientID</span> aún no implementado</p>
-       
-                <p class="mb-0">El score de prioridad va de 0 a 100</p>
-                <p>0: prioridad mas baja</p>
-            </div>
-            <div class="col">
-                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
-                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                        <h5 class="mr-2 my-auto">/api/score <span class="text-warning">response</span></h5></div>
-                    <div class="card-body text-white" style="border-radius: 15px;">      
-                        <p class="mb-0">{</p>
-                        <p class="mb-0 ml-4">"score": <span class="text-warning">85</span></p>
-                        <p class="mb-0 ml-4">"age": <span class="text-warning">52</span></p>
-                        <p class="mb-0 ml-4">"covidAlert": <span class="text-warning">false</span></p>
-                        <p class="mb-0 ml-4">"date": <span class="text-warning">1589811614301</span></p>
-                        <p class="mb-0 ml-4">"patientID": <span class="text-warning">null</span></p>  
-                        <p class="mb-0">}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class="mt-5">
+    <meta name="author" content="themefisher.com" />
 
-        <div class="row">
-           
-            <div class="col">
-                <h3>Rule Out</h3>
-                <p>Da una prioridad alta a los pacientes que cumplan con los criterios:</p>
-                <p class="mb-0"><span class="text-danger">intensiveCareInLastMonth</span> <span class="text-primary">true</span> si el paciente estuvo internado en Unidad de Terapia Intensiva en los últimos 2 meses</p>
-                <br>
-                <p class="mb-0"><span class="text-danger">cancer</span> <span class="text-primary">true</span>  si el paciente tiene diagnóstico de cancer</p>
-                <br>
-                <p class="mb-0"><span class="text-danger">immuneDefficiency</span> <span class="text-primary">true</span>  si el paciente tiene algún tipo de inmunodeficiencia</p>
-                <br>
-                <p class="mb-0"><span class="text-danger">dyspnea</span> <span class="text-primary">true</span>  si el paciente refiere tener falta de aire</p>
-                <br>
-                <p class="mb-0"><span class="text-danger">acuteMotorImpairment</span> <span class="text-primary">true</span>  si el paciente tiene dificultad para movilizar algúno de los 4 miembros o para hablar</p>
-                <br>
-                <p class="mb-0"><span class="text-danger">chestPain</span> <span class="text-primary">true</span>  si el paciente tiene dolor de pecho</p>
-                <br>
-                <p class="mb-0"><span class="text-danger">hematemesis</span> <span class="text-primary">true</span>  si el paciente refiere vómitos con sangre</p>
-                <br>
-                <p class="font-weight-bold">Si el paciente no cumple estos criterios, pasa a la próxima etapa de scoring teniendo en cuenta los síntomas.</>
-            </div>
+    <title>Open Source Clinical Triage Api</title>
 
-            <div class="col">
-                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
-                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                        <h5 class="mr-2 my-auto">Rule out</h5></div>
-                    <div class="card-body text-white" style="border-radius: 15px;"> 
-                        <p class="mb-0">"RuleOut":{</p>     
-                        <p class="mb-0 ml-4">"intensiveCareInLastMonth": <span class="text-warning">false</span></p>
-                        <p class="mb-0 ml-4">"cancer": <span class="text-warning">false</span></p>
-                        <p class="mb-0 ml-4">"immuneDefficiency": <span class="text-warning">false</span></p>
-                        <p class="mb-0 ml-4">"chemoInLast2Months": <span class="text-warning">false</span></p>
-                        <p class="mb-0 ml-4">"dyspnea": <span class="text-warning">false</span></p>  
-                        <p class="mb-0 ml-4">"acuteMotorImpairment": <span class="text-warning">false</span></p>  
-                        <p class="mb-0 ml-4">"chestPain": <span class="text-warning">false</span></p>  
-                        <p class="mb-0 ml-4">"hematemesis": <span class="text-warning">false</span></p>  
-                        <p class="mb-0">}</p>
-                    </div>
-                </div>
-            </div>
-    
-        </div>
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" />
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="plugins/animate-css/animate.css" />
+    <!-- Icon Font css -->
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="plugins/fonts/Pe-icon-7-stroke.css" />
+    <!-- Themify icon Css -->
+    <link rel="stylesheet" href="plugins/themify/css/themify-icons.css" />
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css" />
+    <link
+      rel="stylesheet"
+      href="plugins/slick-carousel/slick/slick-theme.css"
+    />
 
-        <hr>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-        <div class="row">
-           
-            <div class="col">
-                <h3>Hospital mas cercano</h3>
-                <p>Cantidad de hospitales: 50 (CABA)</p>
-                <p>Si en el paciente enviado a la API tiene un key <span class="text-danger">"geolocation"</span> en patient.info, la API responderá con un key <span class="text-primary">"nearestHospital": "Nombre del Hospital"</span>
-                </p>
-                <p class="text-secondary font-italic">Actualmente me encuentro ampliando la lista de hospitales</p>
-            </div>
-
-            <div class="col">
-                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
-                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                        <h5 class="mr-2 my-auto">patient.info</h5></div>
-                    <div class="card-body text-white" style="border-radius: 15px;"> 
-                        <p class="mb-0">"geolocation":{</p>     
-                        <p class="mb-0 ml-4">"lat": <span class="text-warning">false</span></p>
-                        <p class="mb-0 ml-4">"lng": <span class="text-warning">false</span></p>
-                        <p class="mb-0">}</p>
-                    </div>
-                </div>
-            </div>
-    
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col">
-                <h3>Ruta: Hospital mas cercano</h3>
-                <p>Ruta única que al enviarle un objeto con <span class="text-danger">{lat: "latitud", lng: "longitud"}</span> devuelve el hospital mas cercano y la distancia</p>
-            </div>
-
-            <div class="col">
-                <div class="card" style="background-color: #3c4257; border-radius: 15px;">
-                    <div class="card-header text-white" style="background-color: #4f566b; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                        <h5 class="mr-2 my-auto">POST /api/nearestHospital</h5></div>
-                    <div class="card-body text-white" style="border-radius: 15px;"> 
-                        <p class="mb-0">{</p>     
-                        <p class="mb-0 ml-4">"hospital": <span class="text-warning">"Clínica del Sol"</span></p>
-                        <p class="mb-0 ml-4">"distance": <span class="text-warning">884.1858149550276</span></p>
-                        <p class="mb-0">}</p>
-                        <hr>
-                        <p class="text-warning">"distance" en metros</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mt-5">
-            <div class="col">
-                <h4>Trabajando en:</h4>
-                <ul>
-                    <li>librería triageapi.js</li>
-                    <li>Expandiendo lista de hospitales de CABA</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row mx-auto">
-            <div class="col-sm mx-auto text-center">
-            
-            </div>
-            <div class="col-sm text-right">
-                <p class="mx-auto text-secondary my-auto">enrique.darderes@gmail.com</p>
-                <a href="https://www.linkedin.com/in/edarderes/">
-                    <img src="./images/linkedin.png" height="25px" class="mx-auto my-auto">
-                </a>
-            </div>
-        </div>
-
-   
+  <body id="top-header">
+    <!-- LOADER TEMPLATE -->
+    <div id="page-loader">
+      <div class="loader-icon fa fa-spin colored-border"></div>
     </div>
-</body>
+    <!-- /LOADER TEMPLATE -->
+
+    <div class="top-bar bg-dark" id="top-bar">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 ml-lg-auto col-md-6">
+            <ul class="d-flex list-unstyled header-socials float-lg-right">
+              <li>
+                <a href="https://www.linkedin.com/in/edarderes/"> <i class="fab fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVBAR
+    ================================================= -->
+    <div class="main-navigation" id="mainmenu-area">
+      <div class="container">
+        <nav
+          class="navbar navbar-expand-lg navbar-dark bg-primary main-nav navbar-togglable rounded-radius"
+        >
+          <a class="navbar-brand d-lg-none d-block" href="">
+            <h4>Clinical Triage API</h4>
+          </a>
+          <!-- Toggler -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="fa fa-bars"></span>
+          </button>
+
+            <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Links -->
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="navbarWelcome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                          <a href="documentation-en.html" class="nav-link js-scroll-trigger">
+                              Documentation
+                          </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="https://github.com/emdmed/triageapi" class="nav-link js-scroll-trigger">
+                                GitHub
+                            </a>
+                        </li>
+                        <!--
+                        <li class="nav-item ">
+                            <a href="service.html" class="nav-link js-scroll-trigger">
+                                Test
+                            </a>
+                        </li>-->
+                    </ul>
+                </div> 
+        </nav>
+      </div>
+      <!-- / .container -->
+    </div>
+
+    <!-- HERO
+    ================================================== -->
+    <section class="banner-area py-7">
+      <!-- Content -->
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-12 col-lg-7 text-center text-lg-left">
+            <div class="main-banner">
+              <!-- Heading -->
+              <h1 class="display-4 mb-4 font-weight-normal">
+                Open Source Clinical Triage API
+              </h1>
+
+              <!-- Subheading -->
+              <p class="lead mb-4">
+                For fast priorization of non emergency medical consultations.
+              </p>
+
+              <!-- Button -->
+              <p class="mb-0">
+                <!--
+                <a href="#" target="_blank" class="btn btn-primary btn-circled">
+                  Test
+                </a>-->
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-5 d-none d-lg-block">
+            <div class="banner-img-block">
+              <img
+                src="images/developer.png"
+                alt="banner-img"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- / .row -->
+      </div>
+      <!-- / .container -->
+    </section>
+
+    <section class="section bg-grey" id="feature">
+      <div class="container">
+        <div class="row justy-content-center">
+          <div class="col-lg-3 col-sm-6 col-md-6">
+            <div class="text-center feature-block"> 
+              <img class="mb-3" src="./images//open.png" height="80px">
+              <h4 class="mb-2">Open Source</h4>
+              <p>For easy localization, peer review and improvement</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 col-md-6">
+            <div class="text-center feature-block">
+              <img class="mb-3" src="./images//free.png" height="80px">
+              <h4 class="mb-2">Free of charge</h4>
+              <p>This project is non profit</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 col-md-6">
+            <div class="text-center feature-block">
+              <img class="mb-3" src="./images//circle.png" height="80px">
+              <h4 class="mb-2">Continuously updated</h4>
+              <p>
+                If you know how to improve it make a pull request at our GitHub!
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 col-md-6">
+            <div class="text-center feature-block">
+              <img class="mb-3" src="./images//stop.png" height="80px">
+              <h4 class="mb-2">Not available yet for production</h4>
+              <p>Currently on debugging and testing phase</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / .container -->
+    </section>
+
+    <!-- SERVICE-1
+    ================================================== -->
+
+    <section class="section bg-grey" id="process">
+      <div class="container">
+          <div class="row justify-content-center mb-4">
+              <div class="col-md-8 col-lg-6 text-center">
+                  <div class="section-heading">
+                      <!-- Heading -->
+                      <h2 class="section-title ">
+                          How it works
+                      </h2>
+
+                      <!-- Subheading -->
+                      <p>
+                          Our API can be integrated for your projects
+                      </p>
+                  </div>
+              </div>
+          </div> <!-- / .row -->
+
+          <div class="row justify-content-center">
+              <div class="col-lg-4 col-sm-6 col-md-6">
+                  <div class="process-block">
+                      <img src="images/api1.png" alt="" class="img-fluid">
+
+                      <h3>Request the Patient Model</h3>
+                      <p>You can then store it or modify it</p>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-sm-6 col-md-6">
+                  <div class="process-block">
+                      <img src="images/api2.png" alt="" class="img-fluid">
+
+                      <h3>Set the parameters</h3>
+                      <p>Set the symptoms and laboratory determinations to our Patient Model</p>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-sm-6 col-md-6">
+                  <div class="process-block">
+                      <img src="images/api3.png" alt="" class="img-fluid">
+
+                      <h3>Score your patient</h3>
+                      <p>Send back the modified patient model to our backend and it will respond with a priority score from 0 to 100</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+    <footer class="section" id="footer">
+      <div class="overlay footer-overlay"></div>
+      <!--Content -->
+      <div class="container">
+        <div class="row justify-content-start">
+          <div class="col-lg-4 col-sm-12">
+            <div class="footer-widget">
+              <!-- Brand -->
+              <a href="#" class="footer-brand text-white"> Triage API </a>
+              <p>
+                For fast priorization of non emergency medical consultations.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-sm-6">
+            <div class="footer-widget">
+              <h3>About</h3>
+              <!-- Links -->
+              <ul class="footer-links">
+                <li>
+                  <a href="mailto:enrique.darderes@gmail.com"> Contact </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-sm-6">
+            <div class="footer-widget">
+              <h3>Socials</h3>
+              <!-- Links -->
+              <ul class="list-unstyled footer-links">
+                <li>
+                  <a href="https://www.linkedin.com/in/edarderes/"><i class="fab fa-linkedin"></i>linkedin </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- / .row -->
+
+        <div class="row text-right pt-5">
+          <div class="col-lg-12">
+            <!-- Copyright -->
+            <p class="footer-copy">
+              &copy; Copyright <span class="current-year">Themefisher</span> All
+              rights reserved.
+            </p>
+          </div>
+        </div>
+        <!-- / .row -->
+      </div>
+      <!-- / .container -->
+    </footer>
+
+    <!--  Page Scroll to Top  -->
+
+    <a class="scroll-to-top js-scroll-trigger" href="#top-header">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    <!-- Main jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="plugins/bootstrap/js/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <!-- Map Js -->
+    <script src="plugins/google-map/gmap3.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwIQh7LGryQdDDi-A603lR8NqiF3R_ycA"></script>
+
+    <script src="js/form/contact.js"></script>
+    <script src="js/theme.js"></script>
+  </body>
 </html>
