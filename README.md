@@ -47,3 +47,6 @@ Access readme at https://triageapi.herokuapp.com
 - Cardiac failure (incomplete)
 - Alergy (incomplete)
 - Gastroenteritis
+
+
+3b7ba0
