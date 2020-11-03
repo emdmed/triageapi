@@ -11,18 +11,12 @@ let score = {
 
 function scorePatient(patient){
 
-    console.log("Scoring...");
-
-
     //check for geolocation
-    console.log("geolocation", patient.info.geolocation.lat, patient.info.geolocation.lng)
-
     if(patient.info.geolocation){
         if (patient.info.geolocation.lat === false && patient.info.geolocation.lng === false) {
 
         } else {
             let hospital = geo.locateNearestHospital(patient.info.geolocation);
-            console.log("hospital", hospital)
             patient.nearestHospital = hospital.hospital;
         }
     }
@@ -50,30 +44,30 @@ function diagnose(patient) {
 
     //Abdomen agudo medico/quirurgico (esto tiene que estar antes que los otros cuadros abdominales)
     if (patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.fever.isPresent === true) {
-        console.log("Abdomen agudo");
+        console.log("Acute abdomen");
         patient.score = 70;
     }
 
     //apendicitis
     if (patient.symptoms.fever.isPresent === true && patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.abdominalPain.location.seven == true) {
-        console.log("apendicitis");
+        console.log("Apendicitis");
         patient.score = 70;
     }
 
     //colecistitis
     if (patient.symptoms.fever.isPresent === true && patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.abdominalPain.location.one == true) {
-        console.log("colecistitis");
+        console.log("Cholecystitis");
         let score = patient.score;
         patient.score = score + 15;
 
     } else if (patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.abdominalPain.location.one == true) {
-        console.log("colecistitis, sin fiebre");
+        console.log("Cholecystitis, without fever");
         let score = patient.score;
         patient.score = score + 7;
     }
 
-    //Infecciones respiratorias
-    //faringitis-laringitis
+    //Respiratory tract infections
+    //Pharyngitis-laryngitis
     if (patient.symptoms.throatPain.isPresent === true) {
         if (patient.symptoms.fever.isPresent === true) {
             patient.score = score + 2
@@ -83,50 +77,50 @@ function diagnose(patient) {
         }
 
         if (patient.symptoms.throatPain.voiceChange === false) {
-            console.log("faringitis");
+            console.log("Pharyngitis");
         } else if (patient.symptoms.throatPain.voiceChange === true) {
-            console.log("laringitis");
+            console.log("Laryngitis");
         }
     }
 
-    //CVAS
+    //Upper respiratory tract infection
     if (patient.symptoms.throatPain.isPresent === true && patient.symptoms.fever.isPresent === true) {
         patient.score = score + 3
         patient.info.covidAlert = true
     }
 
-    //infeccion respiratoria baja
+    //Lower respiratory tract infection
     if (patient.symptoms.fever.isPresent === true && patient.symptoms.cough.isPresent === true) {
         console.log("respiratory infection")
         patient.score = score + 15;
         patient.info.covidAlert = true
     }
 
-    //infeccion urinaria baja/alta
+    //Urinary tract infection
     if (patient.symptoms.urinatingPain.isPresent == true && patient.symptoms.fever.isPresent === false) {
-        console.log("infeccion urinaria baja")
+        console.log("Lower urinary tract infection")
         patient.score = score + 3;
     } else if (patient.symptoms.urinatingPain.isPresent == true && patient.symptoms.fever.isPresent === true) {
-        console.log("infeccion urinaria alta o complicada");
+        console.log("Upper or complicated urinary tract infection");
         patient.score = score + 10;
     }
 
     //Generalidades urgentes (escapan ruleOut inicial, no son tan urgentes pero tienen que ser vistos lo antes posible)
     //TVP
     if (patient.symptoms.edema.isPresent === true && patient.symptoms.edema.location.rightLeg === true || patient.symptoms.edema.isPresent === true && patient.symptoms.edema.location.leftLeg === true) {
-        console.log("TVP");
+        console.log("DVT");
         patient.score = 85;
     }
 
     //ICC descompensada
     if (patient.symptoms.edema.isPresent === true && patient.symptoms.edema.location.rightLeg === true && patient.symptoms.edema.location.leftLeg === true && patient.symptoms.cough.isPresent === true) {
-        console.log("ICC descompensada?");
+        console.log("Heart failure");
         patient.score = score + 20;
     }
 
     //Alergia
     if (patient.symptoms.cough.isPresent === true && patient.symptoms.edema.isPresent === true && patient.symptoms.edema.location.face) {
-        console.log("Alergia");
+        console.log("Alergies");
         patient.score = 75;
     }
 
@@ -136,10 +130,10 @@ function diagnose(patient) {
         console.log("Enteritis/gastroenteritis")
         patient.score = score + 15;
     } else if (patient.symptoms.fever.isPresent === true && patient.symptoms.diarrhea.isPresent === true && patient.symptoms.vomiting.isPresent === true) {
-        console.log("Gastroenteritis, riesgo de deshidratación");
+        console.log("Gastroenteritis, dehydration risk");
         patient.score = score + 20;
     } else if (patient.symptoms.diarrhea.isPresent === true && patient.symptoms.vomiting.isPresent === true) {
-        console.log("Intoxicación, riesgo de deshidratación");
+        console.log("Intoxication, dehydration risk");
         patient.score = score + 19; //menos puntaje que fiebre aproposito para que el que está febril pase primero y le bajen la fiebre
     }
 
@@ -169,7 +163,6 @@ function checkAgePriority(patient){
 
     return patient
 }
-
 
 module.exports = score;
 
