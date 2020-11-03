@@ -1,6 +1,7 @@
 let geo = require("./findGeolocation");
+let labprocess = require("./labprocess");
 //disable console log
-console.log = () => {}
+//console.log = () => {}
 
 let score = {
     scorePatient,
@@ -20,6 +21,15 @@ function scorePatient(patient){
             patient.nearestHospital = hospital.hospital;
         }
     }
+    
+    //check for lab
+    let processedLab;
+    if(patient.lab.isPresent === true){
+
+        processedLab = labprocess.processh(patient.lab.values);
+        console.log("processed lab ", processedLab)
+        
+    }
 
     //rule out
     let isRuledOut = ruleOut(patient)
@@ -32,6 +42,11 @@ function scorePatient(patient){
     let checkedAgePriority = checkAgePriority(isRuledOut)
 
     let diagnosed = diagnose(checkedAgePriority);
+
+    //append processedLab
+    if(processedLab){
+        diagnosed.lab = processedLab;
+    }
 
     return diagnosed;
 }

@@ -14,14 +14,14 @@ router.use((req, res, next) => {
     next();
 })
 
-router.post("/score", authorizeHeader, async function (req, res) {
+router.post("/score", authorizeHeader, function (req, res) {
     console.log("Authorized, scoring...");
     let scoredPatient;
     let patient = req.body;
     let validatedPatient;
 
     try {
-        validatedPatient = await validatePatient(res, patient)
+        validatedPatient = validatePatient(res, patient)
     } catch (error) {
         res.send({ message: "Authorization error" }).status(200).end();
     }
@@ -29,14 +29,15 @@ router.post("/score", authorizeHeader, async function (req, res) {
     if (validatedPatient === true) {
 
         try {
-            scoredPatient = await api_handler.score.scorePatient(patient);
+            scoredPatient = api_handler.score.scorePatient(patient);
         } catch (error) {
             res.send({ message: "Scoring error" }).status(200).end();
         }
 
         let sendPatient;
         try {
-            sendPatient = await cleanPatientToSend(scoredPatient);
+            sendPatient = cleanPatientToSend(scoredPatient);
+            console.log("send patient ", sendPatient)
             res.send(sendPatient).status(200).end();
         } catch (error) {
             res.send({ message: "Patient cleaning error" }).status(200).end();
@@ -106,14 +107,15 @@ function validatePatient(res, patient) {
 }
 
 function cleanPatientToSend(patient) {
-    console.log(crypto.randomBytes(10).toString("hex"))
+    console.log("LAB ", patient)
     let newPatient = {
         score: patient.score,
         age: patient.info.age,
         covidAlert: patient.info.covidAlert,
         date: new Date().getTime(),
         patientID: crypto.randomBytes(10).toString("hex"),
-        nearestHospital: patient.nearestHospital
+        nearestHospital: patient.nearestHospital,
+        lab: patient.lab
     }
 
     return newPatient;

@@ -216,7 +216,7 @@ function getValues(){
     }
 }
 
-async function processh(model){
+function processh(model){
     console.log("processing")
     
     let values = getValues();
@@ -397,8 +397,6 @@ async function processh(model){
         }
     }
 
-    console.log("Model Detection: ", modelDetection);
-
     //Diagnostic algorythm
     let diagnosis = diagnose(modelDetection);
     return diagnosis;
@@ -406,8 +404,6 @@ async function processh(model){
 }
 
 function diagnose(model){
-
-    console.log("MODEL ", model)
 
     let diagnosis = {}
 
@@ -505,7 +501,6 @@ function diagnose(model){
         }
     }
 
-    console.log("Second Model ",model)
 
     //ionograma
     if(model.hyponatremia === "low"){
