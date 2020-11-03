@@ -108,6 +108,7 @@ function validatePatient(res, patient) {
 
 function cleanPatientToSend(patient) {
     console.log("LAB ", patient)
+
     let newPatient = {
         score: patient.score,
         age: patient.info.age,
@@ -115,7 +116,12 @@ function cleanPatientToSend(patient) {
         date: new Date().getTime(),
         patientID: crypto.randomBytes(10).toString("hex"),
         nearestHospital: patient.nearestHospital,
-        lab: patient.lab
+    }
+
+    if(patient.lab === false){
+
+    } else {
+        newPatient.lab = patient.lab
     }
 
     return newPatient;

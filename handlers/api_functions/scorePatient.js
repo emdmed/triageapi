@@ -27,8 +27,9 @@ function scorePatient(patient){
     if(patient.lab.isPresent === true){
 
         processedLab = labprocess.processh(patient.lab.values);
-        console.log("processed lab ", processedLab)
         
+    } else {
+        processedLab = false
     }
 
     //rule out
@@ -44,8 +45,10 @@ function scorePatient(patient){
     let diagnosed = diagnose(checkedAgePriority);
 
     //append processedLab
-    if(processedLab){
+    if(processedLab !== false){
         diagnosed.lab = processedLab;
+    } else {
+        diagnosed.lab = false;
     }
 
     return diagnosed;
