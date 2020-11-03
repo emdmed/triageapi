@@ -1,7 +1,7 @@
 let geo = require("./findGeolocation");
 let labprocess = require("./labprocess");
 //disable console log
-//console.log = () => {}
+console.log = () => {}
 
 let score = {
     scorePatient,
