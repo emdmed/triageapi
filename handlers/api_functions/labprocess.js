@@ -415,93 +415,93 @@ function diagnose(model){
         if(model.anemia.vcm === "low"){
             //check iron studies
             if(model.anemia.ironParameters.ferremia === false || model.anemia.ironParameters.ferritina === false){
-                console.log("anemia microcitica, pedir parametros de hierro")
-                diagnosis.anemia = {title: "Anemia Microcitica", suggestion: "Solicitar parametros de hierro"}
+                console.log("Microcytic anemia, request iron parameters")
+                diagnosis.anemia = {title: "Microcytic anemia", suggestion: "Request iron parameters"}
             } else if(model.anemia.ironParameters.ferritina === "low" && model.anemia.ironParameters.ferremia === "low"){
                 console.log("anemia ferropenica")
-                diagnosis.anemia = {title: "Anemia Ferropenica", suggestion: "Solicitar turnos con médico clínico o hematólogo"}
+                diagnosis.anemia = {title: "Iron deficiency anemia", suggestion: "Request an appointment with a medical doctor"}
             } else if(model.anemia.ironParameters.ferremia === "low" && model.anemia.ironParameters.ferritina === "high" || model.anemia.ironParameters.ferritina === "normal" &&  model.anemia.ironParameters.ferremia === "low"){
                 console.log("Anemia de los trastornos cronicos")
-                diagnosis.anemia = {title: "Anemia de los Trastornos Crónicos", suggestion: "Solicitar turno con médico clínico"}
+                diagnosis.anemia = {title: "Chronic disease anemia", suggestion: "Request an appointment with a medical doctor"}
             } else if (model.anemia.ironParameters.ferremia === "high" && model.anemia.ironParameters.ferritina === "normal" || model.anemia.ironParameters.ferritina === "high"){
                 console.log("Anemia sideroblastca vs talasemia")
-                diagnosis.anemia = {title: "Anemia sideroblástica vs Talasemia", suggestion: "Solitictar turno con médico hematólogo"}
+                diagnosis.anemia = {title: "Sideroblastic anemia vs Talasemia", suggestion: "Request an appointment with a hematologist doctor"}
             }
         } else if(model.anemia.vcm === "normal"){
             //check for hemolysis
             if(model.hemolysis){
                 console.log("Anemia hemolitica")
-                diagnosis.anemia = {title: "Anemia Hemolitica", suggestion: "Dirijase hacia la guardia mas cercana con su laboratorio"}
+                diagnosis.anemia = {title: "Hemolytic anemia", suggestion: "Go to you nearest hospital or ask for at home medical assistance"}
             }
             //check for bone marrow supression
             if(!model.cytopenias){
 
             } else if (model.plqt === "low" || model.lowLeucocytes === true){
                 console.log("Supresion de medula osea")
-                diagnosis.anemia = {title: "Anemia con posible supresion de medula osea", suggestion: "Dirijase hacia la guardia mas cercana con su laboratorio"}
+                diagnosis.anemia = {title: "Posible bone marrow supresion anemia", suggestion: "Go to you nearest hospital or ask for at home medical assistance"}
             }
             //check for renal insufficiency
             if(model.renal){
                 if(model.renal.cr === "high"){
                     console.log("Posible insuficiencia renal cronica");
-                    diagnosis.anemia = {title: "Anemia de los trastornos cronicos, posiblemente asociada a alteración renal", suggestion: "Solicite turno con su médico clínico o dirijase a la guardia mas cercana"}
+                    diagnosis.anemia = {title: "Chronic diseas anemia, possibly related to chronic renal injury", suggestion: "Request an appointment with a medical doctor"}
                 }
             }
         } else if (model.anemia.vcm === "high"){
             //check for cytopenias
             if(model.cytopenias.leucocitos === "low" || model.plqt === "low"){
                 console.log("Posible sindrome mielodisplasico")
-                diagnosis.anemia = {title: "Anemia, probable mielodisplasia", suggestion: "Dirijase hacia la guardia mas cercana con su laboratorio"}
+                diagnosis.anemia = {title: "Anemia, myelodysplasia probable", suggestion: "Request an appointment with a medical doctor"}
             }
             //check b12 and folate
             if(model.anemia.b12 === "low"){
                 console.log("Deficiencia de B12")
-                diagnosis.anemia = {title: "Anemia, probable deficit de b12", suggestion: "Dirijase hacia la guardia mas cercana con su laboratorio"}
+                diagnosis.anemia = {title: "Anemia, probable b12 deficiency", suggestion: "Go to you nearest hospital or ask for at home medical assistance"}
             }
             if(model.anemia.acfolico === "low"){
                 console.log("Deficiencia de folatos");
-                diagnosis.anemia = {title: "Anemia, probablemente por deficit de folatos", suggestion: "Saque turno con su hematólogo"}
+                diagnosis.anemia = {title: "Anemia, probablemente folate deficiency", suggestion: "Request an appointment with a medical doctor"}
             }
         } else {
-            diagnosis.anemia = {title: "Anemia", suggestion: "Consulte con su médico clínico"}
+            diagnosis.anemia = {title: "Anemia", suggestion: "Request an appointment with a medical doctor"}
         }
 
     }else if (model.anemia.isPresent === false){
         if(model.anemia.vcm === "low"){
-            diagnosis.anemia = {title: "Posible alteracion de los globulos rojos o hemoglobina", suggestion: "Consulte a su médico clínico o hematólogo"}
+            diagnosis.anemia = {title: "Possible red blood cell or hemoglobin alteration", suggestion: "Request an appointment with a medical doctor"}
         } else if (model.anemia.vcm === "high"){
-            diagnosis.anemia = {title: "Posible alteracion de los globulos rojos", suggestion: "Consulte a su médico clínico o hematólogo"}
+            diagnosis.anemia = {title: "Possible red blood cell alteration", suggestion: "Request an appointment with a medical doctor"}
         }
     }
 
     if(model.highLeucocytes === true && model.highNeutrophils === true){
-        diagnosis.infection = {title: "Posible infección bacteriana", suggestion: "Si tiene o tuvo fiebre consulte a la guardia"}
+        diagnosis.infection = {title: "Possible bacterian infection", suggestion: "if fever consult with a medical doctor"}
     }
 
     if(model.lowLeucocytes === true){
-        diagnosis.leucopenia = {title: "Globulos blancos bajos", suggestion: "Consulte a su médico clínico"}
+        diagnosis.leucopenia = {title: "Low white blood cells", suggestion: "Request an appointment with a medical doctor"}
     }
 
     if(model.plqt === "low"){
-        diagnosis.plaquetopenia = {title: "Plaquetas bajas", suggestion: "Consulte a su médico clínico"}
+        diagnosis.plaquetopenia = {title: "Low platelets", suggestion: "Request an appointment with a medical doctor"}
     }
 
     if(model.plqt === "very low"){
-        diagnosis.plaquetopenia = {title: "Plaquetas muy bajas", suggestion: "Consulte a la guardia"}
+        diagnosis.plaquetopenia = {title: "Very low platelets", suggestion: "Consult at the emergency ward"}
     }
 
     if(model.plqt === "extremely low"){
-        diagnosis.plaquetopenia = {title: "Plaquetas extremedamente bajas", suggestion: "Consulte urgente a la guardia"}
+        diagnosis.plaquetopenia = {title: "Extremely low platelets", suggestion: "Ask for an ambulance"}
     }
 
     //renal
     if(model.renalInjury.isPresent === true){
         if(model.renalInjury.hypoperfusion === true){
-            diagnosis.injuriaRenal = {title: "Probable injuria renal prerrenal", suggestion: "Consulte de inmediato a su médico o a la guardia"}
+            diagnosis.injuriaRenal = {title: "Prerenal acute renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward"}
         }
 
         if(model.renalInjury.glomerularInjury === true){
-            diagnosis.injuriaRenal = {title: "Probable injuria renal renal", suggestion: "Consulte de inmediato a su médico o a la guardia"}
+            diagnosis.injuriaRenal = {title: "Renal acute renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward"}
         }
     }
 
@@ -509,13 +509,13 @@ function diagnose(model){
 
     //ionograma
     if(model.hyponatremia === "low"){
-        diagnosis.hyponatremia = {title: "Sodio bajo", suggestion: "Consulte a su médico clínico"}
+        diagnosis.hyponatremia = {title: "Low sodium", suggestion: "Request an appointment with a medical doctor "}
     }else if (model.hyponatremia === "very low"){
-        diagnosis.hyponatremia = {title: "Sodio muy bajo", suggestion: "Consulte lo antes posible a su médico o concurra a la guardia"}
+        diagnosis.hyponatremia = {title: "very low sodium", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward"}
     }
 
     if(model.hypernatremia === true){
-        diagnosis.hypernatremia = {title: "Sodio alto", suggestion: "Consulte a su médico clínico"}
+        diagnosis.hypernatremia = {title: "High sodium", suggestion: "Request an appointment with a medical doctor "}
     }
 
     /* PROBLEM IN VERY LOW HYPOKALEMIA

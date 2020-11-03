@@ -68,16 +68,6 @@ router.post("/nearestHospital", authorizeHeader, async function (req, res) {
 
 router.post("/labtest", async function (req, res) {
     let data = req.body;
-
-    try {
-        if (config.environment.production === true) {
-            await db_handler.storeLabRequest(data);
-        }
-    } catch (error) {
-        res.send({message: "Error storing labrequest"})
-        console.log(error);
-    }
-
     let dx;
     try{
         dx = await api_handler.labprocess.processh(data);
