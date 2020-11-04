@@ -19,7 +19,7 @@ Example:
                 "title": "Microcytic anemia",
                 "suggestion": "Request iron parameters"
             },
-            "plaquetopenia": {
+            "thrombocytopenia": {
                 "title": "Very low platelets",
                 "suggestion": "Consult at the emergency ward"
             },
