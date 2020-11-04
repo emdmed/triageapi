@@ -1963,7 +1963,7 @@ CONTACT PAGE
   top: -50px;
   left: 0%;
   z-index: 2;
-  opacity: 0.4;
+  opacity: 0.2;
 }
 
 .cross2{
@@ -1971,7 +1971,7 @@ CONTACT PAGE
   top: -50px;
   left: 0%;
   z-index: 0;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .cross-animation{
