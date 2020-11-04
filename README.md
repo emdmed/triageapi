@@ -25,7 +25,7 @@ Example:
             },
             "hyponatremia": {
                 "title": "Low sodium",
-                "suggestion": "Request an appointment with a medical doctor "
+                "suggestion": "Consult at the emergency ward"
             }
         }
     }
