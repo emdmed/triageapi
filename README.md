@@ -1,9 +1,35 @@
 # triageapi
 A triage API that receives symptoms and returns an urgency score. It also returns the nearest hospital (only in Buenos Aires)
 
-Access readme at https://triageapi.herokuapp.com
+Access website at https://triageapi.herokuapp.com
 
-(When cloning check that "prod" variable in config.js is set to false)
+- Laboratory interpretation model now merged with patient model.
+Now basic laboratory results can be interpreted by the API.
+
+Example:
+<pre>
+    {
+        "score": 30,
+        "age": 50,
+        "covidAlert": false,
+        "date": 1604461368362,
+        "patientID": "47fca1fa9445c4f84390",
+        "lab": {
+            "anemia": {
+                "title": "Microcytic anemia",
+                "suggestion": "Request iron parameters"
+            },
+            "plaquetopenia": {
+                "title": "Very low platelets",
+                "suggestion": "Consult at the emergency ward"
+            },
+            "hyponatremia": {
+                "title": "Low sodium",
+                "suggestion": "Request an appointment with a medical doctor "
+            }
+        }
+    }
+</pre>
 
 # TODO
 
@@ -28,6 +54,7 @@ Access readme at https://triageapi.herokuapp.com
         "covidAlert": false
         "date": 1589811614301
         "patientID": null
+        "lab": (if lab parameters are sent, the system will try to respond with an interpretation)
     }
 </pre>
 
