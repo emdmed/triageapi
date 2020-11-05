@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="it" />
+    <meta
+      name="keywords"
+      content="Rapoo,creative, agency, startup,onepage, clean, modern,business, company,it"
+    />
+
+    <meta name="author" content="themefisher.com" />
+
+    <title>Open Source Clinical Triage Api</title>
+
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" />
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="plugins/animate-css/animate.css" />
+    <!-- Icon Font css -->
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="plugins/fonts/Pe-icon-7-stroke.css" />
+    <!-- Themify icon Css -->
+    <link rel="stylesheet" href="plugins/themify/css/themify-icons.css" />
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css" />
+    <link
+      rel="stylesheet"
+      href="plugins/slick-carousel/slick/slick-theme.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+  </head>
+
+  <body id="top-header">
+    <!-- LOADER TEMPLATE -->
+    <div id="page-loader">
+      <div class="loader-icon fa fa-spin colored-border"></div>
+    </div>
+    <!-- /LOADER TEMPLATE -->
+
+    <div class="top-bar bg-dark" id="top-bar">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 ml-lg-auto col-md-6">
+            <ul class="d-flex list-unstyled header-socials float-lg-right">
+              <li>
+                <a href="https://www.linkedin.com/in/edarderes/"> <i class="fab fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVBAR
+    ================================================= -->
+    <div class="main-navigation" id="mainmenu-area">
+      <div class="container">
+        <nav
+          class="navbar navbar-expand-lg navbar-dark bg-primary main-nav navbar-togglable rounded-radius"
+        >
+          <a class="navbar-brand d-lg-none d-block" href="">
+            <h4>Clinical Triage API</h4>
+          </a>
+          <!-- Toggler -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="fa fa-bars"></span>
+          </button>
+
+            <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Links -->
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="navbarWelcome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                          <a href="documentation-en.html" class="nav-link js-scroll-trigger">
+                              Documentation
+                          </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="https://github.com/emdmed/triageapi" class="nav-link js-scroll-trigger">
+                                GitHub
+                            </a>
+                        </li>
+                        <!--
+                        <li class="nav-item ">
+                            <a href="service.html" class="nav-link js-scroll-trigger">
+                                Test
+                            </a>
+                        </li>-->
+                    </ul>
+                </div> 
+        </nav>
+      </div>
+      <!-- / .container -->
+    </div>
+
+    <!-- HERO
+    ================================================== -->
+    <section class="banner-area py-7">
+      <!-- Content -->
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-12 col-lg-7 text-center text-lg-left">
+            <input class="form-control modern-input w-50" id="hb" type="number" placeholder="Hemoglobin (gr/dl)">
+            <input class="form-control modern-input w-50 mt-2" id="mcv" type="number" placeholder="MCV (fl)">
+            <input class="form-control modern-input w-50 mt-2" id="ferritin" type="number" placeholder="Ferritin (mg/dl)">
+            <input class="form-control modern-input w-50 mt-2" id="wbc" type="number" placeholder="White blood cells">
+            <input class="form-control modern-input w-50 mt-2" id="neutrophils" type="number" placeholder="Neutrophils (%)">
+          </div>
+
+          <div class="col-lg-5 d-lg-block">
+            <div class="container-fluid">
+              <div class="col">
+
+                <h4>Age</h4>
+                <input class="form-control modern-input mb-4" type="number" id="age" placeholder="Age">
+                <h4>Rule out</h4>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="intensiveCareInLastMonth">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Admitted to the ICU in the last month
+                  </label>
+                </div>
+
+                       
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="cancer">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Pacient diagnosed with cancer
+                  </label>
+                </div>
+
+                       
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="immuneDefficiency">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Patient diagnosed with an immune defficiency
+                  </label>
+                </div>
+
+                       
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="chemoInLast2Months">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Patient received chemotherapy in the last 2 months
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="dyspnea">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Patient with shortness of breath
+                  </label>
+                </div>
+
+                       
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="acuteMotorImpairment">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Patient with motor impairment of difficulty talking
+                  </label>
+                </div>
+                       
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="chestPain">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Patient with chest pain
+                  </label>
+                </div>
+     
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="hematemesis">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Patient vomiting blood
+                  </label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / .row -->
+      </div>
+      <!-- / .container -->
+    </section>
+
+    <!--second triage step-->
+    <section class="banner-area py-1 pb-5 mb-5">
+      <!-- Content -->
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-12 col-lg-7 text-center text-lg-left">
+            <h4 class="mb-3">Symptoms</h4>
+            <h5 class="mt-2 mb-0">Abdominal pain</h5>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="one">
+              <label class="form-check-label" for="defaultCheck1">
+                Right hypochondrium
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="two">
+              <label class="form-check-label" for="defaultCheck1">
+                Epigastric region
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="three">
+              <label class="form-check-label" for="defaultCheck1">
+                Left hypochondrium
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="four">
+              <label class="form-check-label" for="defaultCheck1">
+                Right lumbar
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="five">
+              <label class="form-check-label" for="defaultCheck1">
+                Umbilical region
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="six">
+              <label class="form-check-label" for="defaultCheck1">
+                Left lumbar
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="seven">
+              <label class="form-check-label" for="defaultCheck1">
+                Right iliac region
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="eight">
+              <label class="form-check-label" for="defaultCheck1">
+                Hypogastrium
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="nine">
+              <label class="form-check-label" for="defaultCheck1">
+                Left iliac region
+              </label>
+            </div>
+          
+            
+
+          </div>
+
+          <div class="col-lg-5 d-lg-block">
+            <div class="container-fluid">
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="throatPain">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Throat pain
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="urinatingPain">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Urinating pain
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="diarrhea">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Diarrhea
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="vomiting">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Vomiting
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="fever">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Fever
+                  </label>
+                </div>       
+                
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="cough">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Cough
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / .row -->
+        <button class="btn btn-primary float-right" id="check">Check</button>
+      </div>
+   
+      <!-- / .container -->
+    </section>
+
+    <section class="section bg-grey" id="feature">
+      <div class="container">
+        <div class="row justy-content-center">
+          <div class="col-lg-3 col-sm-6 col-md-6">
+            <div class="text-center feature-block"> 
+              <img class="mb-3" src="./images//open.png" height="80px">
+              <h4 class="mb-2">Open Source</h4>
+              <p>For easy localization, peer review and improvement</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 col-md-6">
+            <div class="text-center feature-block">
+              <img class="mb-3" src="./images//free.png" height="80px">
+              <h4 class="mb-2">Free of charge</h4>
+              <p>This project is non profit</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 col-md-6">
+            <div class="text-center feature-block">
+              <img class="mb-3" src="./images//circle.png" height="80px">
+              <h4 class="mb-2">Continuously updated</h4>
+              <p>
+                If you know how to improve it make a pull request at our GitHub!
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 col-md-6">
+            <div class="text-center feature-block">
+              <img class="mb-3" src="./images//stop.png" height="80px">
+              <h4 class="mb-2">Not available yet for production</h4>
+              <p>Currently on debugging and testing phase</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / .container -->
+    </section>
+
+    <!-- SERVICE-1
+    ================================================== -->
+
+    <section class="section bg-grey" id="process">
+      <div class="container">
+          <div class="row justify-content-center mb-4">
+              <div class="col-md-8 col-lg-6 text-center">
+                  <div class="section-heading">
+                      <!-- Heading -->
+                      <h2 class="section-title ">
+                          How it works
+                      </h2>
+
+                      <!-- Subheading -->
+                      <p>
+                          Our API can be integrated for your projects
+                      </p>
+                  </div>
+              </div>
+          </div> <!-- / .row -->
+
+          <div class="row justify-content-center">
+              <div class="col-lg-4 col-sm-6 col-md-6">
+                  <div class="process-block">
+                      <img src="images/api1.png" alt="" class="img-fluid">
+
+                      <h3>Request the Patient Model</h3>
+                      <p>You can then store it or modify it</p>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-sm-6 col-md-6">
+                  <div class="process-block">
+                      <img src="images/api2.png" alt="" class="img-fluid">
+
+                      <h3>Set the parameters</h3>
+                      <p>Set the symptoms and laboratory determinations to our Patient Model</p>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-sm-6 col-md-6">
+                  <div class="process-block">
+                      <img src="images/api3.png" alt="" class="img-fluid">
+
+                      <h3>Score your patient</h3>
+                      <p>Send back the modified patient model to our backend and it will respond with a priority score from 0 to 100</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+    <footer class="section" id="footer">
+      <div class="overlay footer-overlay"></div>
+      <!--Content -->
+      <div class="container">
+        <div class="row justify-content-start">
+          <div class="col-lg-4 col-sm-12">
+            <div class="footer-widget">
+              <!-- Brand -->
+              <a href="#" class="footer-brand text-white"> Triage API </a>
+              <p>
+                For fast priorization of non emergency medical consultations.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-sm-6">
+            <div class="footer-widget">
+              <h3>About</h3>
+              <!-- Links -->
+              <ul class="footer-links">
+                <li>
+                  <a href="mailto:enrique.darderes@gmail.com"> Contact </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-sm-6">
+            <div class="footer-widget">
+              <h3>Socials</h3>
+              <!-- Links -->
+              <ul class="list-unstyled footer-links">
+                <li>
+                  <a href="https://www.linkedin.com/in/edarderes/"><i class="fab fa-linkedin"></i>linkedin </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- / .row -->
+
+        <div class="row text-right pt-5">
+          <div class="col-lg-12">
+            <!-- Copyright -->
+            <p class="footer-copy">
+              &copy; Copyright <span class="current-year">Themefisher</span> All
+              rights reserved.
+            </p>
+          </div>
+        </div>
+        <!-- / .row -->
+      </div>
+      <!-- / .container -->
+    </footer>
+
+    <!--  Page Scroll to Top  -->
+
+    <a class="scroll-to-top js-scroll-trigger" href="#top-header">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    <!-- Main jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="plugins/bootstrap/js/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <!-- Map Js -->
+    <script src="plugins/google-map/gmap3.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwIQh7LGryQdDDi-A603lR8NqiF3R_ycA"></script>
+
+    <script src="js/form/contact.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/apitest.js"></script>
+  </body>
+</html>

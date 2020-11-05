@@ -1,7 +1,7 @@
 let geo = require("./findGeolocation");
 let labprocess = require("./labprocess");
 //disable console log
-console.log = () => {}
+//console.log = () => {}
 
 let score = {
     scorePatient,
@@ -89,6 +89,7 @@ function diagnose(patient) {
     if (patient.symptoms.throatPain.isPresent === true) {
         if (patient.symptoms.fever.isPresent === true) {
             patient.score = score + 2
+            patient.info.covidAlert = true;
             console.log("Fever + ")
         } else if (patient.symptoms.fever.isPresent === false) {
             patient.score = score + 1
