@@ -449,6 +449,10 @@ function getPatient() {
 }
 
 $("body").on("click", "#check", function () {
+
+    //clear result div
+    $("#result").empty();
+
     let patient = checkCheckboxes()
 
     console.log(patient)
@@ -486,11 +490,24 @@ function renderResultCard(location, object) {
                 <h4>Covid Alert: ${object.covidAlert}</h4>
                 <hr>
                 <h5>Laboratory</h5>
-                <p>${object.lab}</p>
+                <div id="labHere"></div>
 
             </div>
         
         </div>
     
     `)
+
+    console.log("LAB ", object.lab)
+
+    if(object.lab){
+        for(key in object.lab){
+            console.log(object.lab[key])
+            $("#labHere").append(`
+            
+                <p>${object.lab[key].title}</p>
+
+            `)
+        }
+    } 
 }

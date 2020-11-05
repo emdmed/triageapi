@@ -4,81 +4,84 @@ const lab = {
     processh,
 }
 
+//disable console log
+//console.log = () => {}
+
 const labModel = {
-        hemograma : {
-            hto: false,
-            hb: 8,
-            gb: {
-                count: 3000,
-                neu: 90,
-                lin: false,
-                mon: false,
-                eos: false,
-                bas: false
-            },
-            plqt: 50000,
-            ferritina: 70,
-            transferrina: 15,
-            satTransferrina: false,
-            TIBC: false,
-            ferremia: 200,
-            vcm: 50,
-            rdw: 12,
-            vsg: false,
-            pcr: false,
-            acidofolico: false,
-            b12: false,
-            LDH: false
+    hemograma: {
+        hto: false,
+        hb: 8,
+        gb: {
+            count: 3000,
+            neu: 90,
+            lin: false,
+            mon: false,
+            eos: false,
+            bas: false
         },
-        renal: {
-            urea: false,
-            creatinina: false
-        },
-        ionograma: {
-            na: false,
-            k: false, 
-            cl: false,
-            p: false,
-            mg: false
-        },
-        eab: {
-            ph: false,
-            po2: false,
-            pco2: false,
-            hco3: false,
-            eb: false,
-            sato2: false
-        },
-        hepatograma: {
-            bt: false,
-            bd: false,
-            bi: false,
-            fal: false, 
-            tgo: false, 
-            tgp: false,
-            amilasa: false,
-            lipasa: false,
-            gammagt: false,
-            nucleot5: false,
-            albumina: false,
-            proteinas: false
-        },
-        coagulograma: {
-            tp: false,
-            kptt: false,
-            RIN: false,
-            factores: {
-                XVIII: false,
-                V: false
-            }
+        plqt: 50000,
+        ferritina: 70,
+        transferrina: 15,
+        satTransferrina: false,
+        TIBC: false,
+        ferremia: 200,
+        vcm: 50,
+        rdw: 12,
+        vsg: false,
+        pcr: false,
+        acidofolico: false,
+        b12: false,
+        LDH: false
+    },
+    renal: {
+        urea: false,
+        creatinina: false
+    },
+    ionograma: {
+        na: false,
+        k: false,
+        cl: false,
+        p: false,
+        mg: false
+    },
+    eab: {
+        ph: false,
+        po2: false,
+        pco2: false,
+        hco3: false,
+        eb: false,
+        sato2: false
+    },
+    hepatograma: {
+        bt: false,
+        bd: false,
+        bi: false,
+        fal: false,
+        tgo: false,
+        tgp: false,
+        amilasa: false,
+        lipasa: false,
+        gammagt: false,
+        nucleot5: false,
+        albumina: false,
+        proteinas: false
+    },
+    coagulograma: {
+        tp: false,
+        kptt: false,
+        RIN: false,
+        factores: {
+            XVIII: false,
+            V: false
         }
-    
+    }
+
 }
 
-function getValues(){
+function getValues() {
     let values;
-    return  values = {
-        hemograma : {
+    return values = {
+        hemograma: {
             hto: {
                 min: {
                     h: 43,
@@ -113,7 +116,7 @@ function getValues(){
                 },
                 eos: {
                     unit: "%",
-                    max: 4 
+                    max: 4
                 },
                 bas: {
                     unit: "%",
@@ -212,13 +215,13 @@ function getValues(){
                 max: 5
             }
         }
-    
+
     }
 }
 
-function processh(model){
+function processh(model) {
     console.log("processing")
-    
+
     let values = getValues();
 
     //add algorythm keys here
@@ -248,151 +251,181 @@ function processh(model){
 
     //HEMOGRAMA
 
-    for(key in model.hemograma){
+    for (key in model.hemograma) {
         //hb
-        if(key === "hb"){
-            if(model.hemograma[key] <= values.hemograma.hb.min.h){
+        if (key === "hb") {
+            if (model.hemograma[key] < values.hemograma.hb.min.h) {
                 console.log("->hemoglobina baja")
                 modelDetection.anemia.isPresent = true
             }
         }
         //vcm
-        if(key === "vcm"){
-            if(model.hemograma[key] === false){
-            
-            } else if(model.hemograma[key] > values.hemograma.vcm.max){
+        if (key === "vcm") {
+            if (model.hemograma[key] === false) {
+
+            } else if (model.hemograma[key] > values.hemograma.vcm.max) {
                 console.log("->vcm alto")
                 modelDetection.anemia.vcm = "high"
-            } else if (model.hemograma[key] <= values.hemograma.vcm.min){
+            } else if (model.hemograma[key] <= values.hemograma.vcm.min) {
                 console.log("->vcm bajo")
                 modelDetection.anemia.vcm = "low"
             }
         }
         //rdw
-        if(key === "rdw"){
-            if(model.hemograma[key] === false){
-              
+        if (key === "rdw") {
+            if (model.hemograma[key] === false) {
+
             } else if (model.hemograma[key] < values.hemograma.rdw.max) {
                 console.log("->rdw normal")
                 modelDetection.anemia.rdw = "normal"
-            } else if (model.hemograma[key] >= values.hemograma.rdw.max){
+            } else if (model.hemograma[key] >= values.hemograma.rdw.max) {
                 console.log("->rdw alto")
                 modelDetection.anemia.rdw = "high"
             }
         }
         //iron parametes
         //ferritina
-        if(key === "ferritina"){
-            if(model.hemograma[key] === false){
+        if (key === "ferritina") {
+            if (model.hemograma[key] === false || model.hemograma[key] === undefined) {
 
-            } else if (model.hemograma[key] > values.hemograma.ferritina.max){
-                console.log("->ferritina alta")
-                modelDetection.anemia.ironParameters.ferritina = "high"
-            } else if (model.hemograma[key] < values.hemograma.ferritina.min){
-                console.log("->ferritina baja")
-                modelDetection.anemia.ironParameters.ferritina = "low"
             } else {
-                modelDetection.anemia.ironParameters.ferritina = "normal"
+                if (model.hemograma[key] > values.hemograma.ferritina.max) {
+                    console.log("->ferritina alta")
+                    modelDetection.anemia.ironParameters.ferritina = "high"
+                } else if (model.hemograma[key] < values.hemograma.ferritina.min) {
+                    console.log("->ferritina baja")
+                    modelDetection.anemia.ironParameters.ferritina = "low"
+                } else {
+                    modelDetection.anemia.ironParameters.ferritina = "normal"
+                }
             }
+
         }
         //ferremia
-        if(key === "ferremia"){
-            if(model.hemograma[key] === false){
+        if (key === "ferremia") {
+            if (model.hemograma[key] === false || model.hemograma[key] === undefined) {
 
-            } else if (model.hemograma[key] <= values.hemograma.ferremia.min){
-                console.log("->ferremia baja")
-                modelDetection.anemia.ironParameters.ferremia = "low"
-            } else if (model.hemograma[key] > values.hemograma.ferremia.max){
-                console.log("->ferremia alta")
-                modelDetection.anemia.ironParameters.ferremia = "high"
+            } else {
+                if (model.hemograma[key] <= values.hemograma.ferremia.min) {
+                    console.log("->ferremia baja")
+                    modelDetection.anemia.ironParameters.ferremia = "low"
+                } else if (model.hemograma[key] > values.hemograma.ferremia.max) {
+                    console.log("->ferremia alta")
+                    modelDetection.anemia.ironParameters.ferremia = "high"
+                }
             }
+
         }
         //leucocitos
-        if(key === "gb"){
-            if(model.hemograma[key].count === false){
+        if (key === "gb") {
 
-            } else if (model.hemograma[key].count < values.hemograma.gb.count.min){
-                console.log("->leucocitos bajos")
-                modelDetection.cytopenias = true;
-                modelDetection.lowLeucocytes = true
-            } else if (model.hemograma[key].count > values.hemograma.gb.count.max){
-                console.log("->Leococitos altos")
-                modelDetection.highLeucocytes = true;
-                if(model.hemograma[key].neu > values.hemograma.gb.neu.max){
-                    console.log("->Leococitos altos con desviacion a la izquierda")
-                    modelDetection.highNeutrophils = true;
+            if (model.hemograma[key].count === false || model.hemograma[key].count === null || model.hemograma[key].count === undefined) {
+
+            } else {
+                if (model.hemograma[key].count < values.hemograma.gb.count.min) {
+                    console.log("->leucocitos bajos", model.hemograma[key].count),
+                        modelDetection.cytopenias = true;
+                    modelDetection.lowLeucocytes = true
+                } else if (model.hemograma[key].count > values.hemograma.gb.count.max) {
+                    console.log("->Leococitos altos")
+                    modelDetection.highLeucocytes = true;
+                    if (model.hemograma[key].neu > values.hemograma.gb.neu.max) {
+                        console.log("->Leococitos altos con desviacion a la izquierda")
+                        modelDetection.highNeutrophils = true;
+                    }
                 }
             }
         }
 
-        if(key === "plqt"){
-            if(model.hemograma[key] < values.hemograma.plqt.min){
-                console.log("->plaquetas bajas")
-                modelDetection.plqt = "low"
-                if(model.hemograma[key] < 50000){
-                    console.log("ALERTA plaquetas muy bajas")
-                    modelDetection.plqt = "very low"
-                } else if(model.hemograma[key] < 30000){
-                    console.log("ALERTA! plaquetas extremadamente bajas")
-                    modelDetection.plqt = "extremely low"
+        if (key === "plqt") {
+            if (model.hemograma[key] === false) {
+
+            } else {
+                if (model.hemograma[key] < values.hemograma.plqt.min) {
+                    console.log("->plaquetas bajas ", model.hemograma[key])
+                    modelDetection.plqt = "low"
+                    if (model.hemograma[key] < 50000) {
+                        console.log("ALERTA plaquetas muy bajas")
+                        modelDetection.plqt = "very low"
+                    } else if (model.hemograma[key] < 30000) {
+                        console.log("ALERTA! plaquetas extremadamente bajas")
+                        modelDetection.plqt = "extremely low"
+                    }
                 }
             }
+
         }
 
-     
+
     }
 
-    for(key in model){
-        if(key === "renal"){
+    for (key in model) {
+        if (key === "renal") {
 
-            if(+model[key].creatinina >= +values.renal.creatinina.max){
-                console.log("renal injury true")
-                modelDetection.renalInjury.isPresent = true
-            }
+            if (model[key].creatinina === false || model[key].creatinina === undefined) {
 
-            if(model[key].urea >= values.renal.urea.max){
-                //check creatinina
-                if(model[key].creatinina > values.renal.creatinina.max){
-                    //check creatinine urea relation
-                    let crUrRelation = model[key].urea / model[key].creatinina 
-                    if(crUrRelation > 35){
-                        //hypoperfusion
-
-                        modelDetection.renalInjury.hypoperfusion = true;
-                    } else if(crUrRelation < 20) {
-                        //glomerular Injury
-
-                        modelDetection.renalInjury.glomerularInjury = true;
-                    }
-
+            } else {
+                if (+model[key].creatinina >= +values.renal.creatinina.max) {
+                    console.log("renal injury true")
+                    modelDetection.renalInjury.isPresent = true
                 }
             }
+
+
+            if (model[key].urea === false || model[key].urea === undefined) {
+
+            } else {
+                if (model[key].urea >= values.renal.urea.max) {
+                    //check creatinina
+                    if (model[key].creatinina > values.renal.creatinina.max) {
+                        //check creatinine urea relation
+                        let crUrRelation = model[key].urea / model[key].creatinina
+                        if (crUrRelation > 35) {
+                            //hypoperfusion
+
+                            modelDetection.renalInjury.hypoperfusion = true;
+                        } else if (crUrRelation < 20) {
+                            //glomerular Injury
+
+                            modelDetection.renalInjury.glomerularInjury = true;
+                        }
+
+                    }
+                }
+            }
+
         }
 
-        if(key === "ionograma"){
-            if(model[key].na < values.ionograma.na.min){
-                modelDetection.hyponatremia = "low"
-            } else if (model.hemograma[key] < 120){
-                modelDetection.hyponatremia = "very low"
+        if (key === "ionograma") {
+            if (model[key].na === false || model[key].na === null || model[key].na === undefined) {
+
+            } else {
+                if (model[key].na < values.ionograma.na.min) {
+                    modelDetection.hyponatremia = "low"
+                } else if (model.hemograma[key] < 120) {
+                    modelDetection.hyponatremia = "very low"
+                }
+
+                if (model[key].na > values.ionograma.na.max) {
+                    modelDetection.hypernatremia = true;
+                }
             }
 
-            if(model[key].na > values.ionograma.na.max){
-                modelDetection.hypernatremia = true;
-            }
+            if (model[key].k === false || model[key].k === null || model[key].k === undefined) {
+                if (model[key].k < values.ionograma.k.min) {
+                    modelDetection.hypokalemia = "low"
+                } else if (model[key].k < 3) {
+                    console.log(model[key].k)
+                    modelDetection.hypokalemia = "very low"
+                } else if (model[key].k === false || model[key].k === NaN) {
+                    modelDetection.hypokalemia = false
+                }
 
-            if(model[key].k < values.ionograma.k.min){
-                modelDetection.hypokalemia = "low"
-            } else if(model[key].k < 3){
-                console.log(model[key].k)
-                modelDetection.hypokalemia = "very low"
-            } else if(model[key].k === false || model[key].k === NaN){
-                modelDetection.hypokalemia = false
-            }
-
-            if(model[key].k > values.ionograma.k.max){
-                modelDetection.hyperkalemia = "high"
-            } else if(model[key].k > 6){
-                modelDetection.hyperkalemia = "very high"
+                if (model[key].k > values.ionograma.k.max) {
+                    modelDetection.hyperkalemia = "high"
+                } else if (model[key].k > 6) {
+                    modelDetection.hyperkalemia = "very high"
+                }
             }
         }
     }
@@ -404,114 +437,114 @@ function processh(model){
 
 }
 
-function diagnose(model){
+function diagnose(model) {
 
     let diagnosis = {}
 
-    if(model.anemia.isPresent === true){
-        if(model.anemia.vcm === "low"){
+    if (model.anemia.isPresent === true) {
+        if (model.anemia.vcm === "low") {
             //check iron studies
-            if(model.anemia.ironParameters.ferremia === false || model.anemia.ironParameters.ferritina === false){
+            if (model.anemia.ironParameters.ferremia === false || model.anemia.ironParameters.ferritina === false) {
                 console.log("Microcytic anemia, request iron parameters")
-                diagnosis.anemia = {title: "Microcytic anemia", suggestion: "Request iron parameters"}
-            } else if(model.anemia.ironParameters.ferritina === "low" && model.anemia.ironParameters.ferremia === "low"){
+                diagnosis.anemia = { title: "Microcytic anemia", suggestion: "Request iron parameters" }
+            } else if (model.anemia.ironParameters.ferritina === "low" && model.anemia.ironParameters.ferremia === "low") {
                 console.log("anemia ferropenica")
-                diagnosis.anemia = {title: "Iron deficiency anemia", suggestion: "Request an appointment with a medical doctor"}
-            } else if(model.anemia.ironParameters.ferremia === "low" && model.anemia.ironParameters.ferritina === "high" || model.anemia.ironParameters.ferritina === "normal" &&  model.anemia.ironParameters.ferremia === "low"){
+                diagnosis.anemia = { title: "Iron deficiency anemia", suggestion: "Request an appointment with a medical doctor" }
+            } else if (model.anemia.ironParameters.ferremia === "low" && model.anemia.ironParameters.ferritina === "high" || model.anemia.ironParameters.ferritina === "normal" && model.anemia.ironParameters.ferremia === "low") {
                 console.log("Anemia de los trastornos cronicos")
-                diagnosis.anemia = {title: "Chronic disease anemia", suggestion: "Request an appointment with a medical doctor"}
-            } else if (model.anemia.ironParameters.ferremia === "high" && model.anemia.ironParameters.ferritina === "normal" || model.anemia.ironParameters.ferritina === "high"){
+                diagnosis.anemia = { title: "Chronic disease anemia", suggestion: "Request an appointment with a medical doctor" }
+            } else if (model.anemia.ironParameters.ferremia === "high" && model.anemia.ironParameters.ferritina === "normal" || model.anemia.ironParameters.ferritina === "high") {
                 console.log("Anemia sideroblastca vs talasemia")
-                diagnosis.anemia = {title: "Sideroblastic anemia vs Talasemia", suggestion: "Request an appointment with a hematologist doctor"}
+                diagnosis.anemia = { title: "Sideroblastic anemia vs Talasemia", suggestion: "Request an appointment with a hematologist doctor" }
             }
-        } else if(model.anemia.vcm === "normal"){
+        } else if (model.anemia.vcm === "normal") {
             //check for hemolysis
-            if(model.hemolysis){
+            if (model.hemolysis) {
                 console.log("Anemia hemolitica")
-                diagnosis.anemia = {title: "Hemolytic anemia", suggestion: "Go to you nearest hospital or ask for at home medical assistance"}
+                diagnosis.anemia = { title: "Hemolytic anemia", suggestion: "Go to you nearest hospital or ask for at home medical assistance" }
             }
             //check for bone marrow supression
-            if(!model.cytopenias){
+            if (!model.cytopenias) {
 
-            } else if (model.plqt === "low" || model.lowLeucocytes === true){
+            } else if (model.plqt === "low" || model.lowLeucocytes === true) {
                 console.log("Supresion de medula osea")
-                diagnosis.anemia = {title: "Posible bone marrow supresion anemia", suggestion: "Go to you nearest hospital or ask for at home medical assistance"}
+                diagnosis.anemia = { title: "Posible bone marrow supresion anemia", suggestion: "Go to you nearest hospital or ask for at home medical assistance" }
             }
             //check for renal insufficiency
-            if(model.renal){
-                if(model.renal.cr === "high"){
+            if (model.renal) {
+                if (model.renal.cr === "high") {
                     console.log("Posible insuficiencia renal cronica");
-                    diagnosis.anemia = {title: "Chronic diseas anemia, possibly related to chronic renal injury", suggestion: "Request an appointment with a medical doctor"}
+                    diagnosis.anemia = { title: "Chronic diseas anemia, possibly related to chronic renal injury", suggestion: "Request an appointment with a medical doctor" }
                 }
             }
-        } else if (model.anemia.vcm === "high"){
+        } else if (model.anemia.vcm === "high") {
             //check for cytopenias
-            if(model.cytopenias.leucocitos === "low" || model.plqt === "low"){
+            if (model.cytopenias.leucocitos === "low" || model.plqt === "low") {
                 console.log("Posible sindrome mielodisplasico")
-                diagnosis.anemia = {title: "Anemia, myelodysplasia probable", suggestion: "Request an appointment with a medical doctor"}
+                diagnosis.anemia = { title: "Anemia, myelodysplasia probable", suggestion: "Request an appointment with a medical doctor" }
             }
             //check b12 and folate
-            if(model.anemia.b12 === "low"){
+            if (model.anemia.b12 === "low") {
                 console.log("Deficiencia de B12")
-                diagnosis.anemia = {title: "Anemia, probable b12 deficiency", suggestion: "Go to you nearest hospital or ask for at home medical assistance"}
+                diagnosis.anemia = { title: "Anemia, probable b12 deficiency", suggestion: "Go to you nearest hospital or ask for at home medical assistance" }
             }
-            if(model.anemia.acfolico === "low"){
+            if (model.anemia.acfolico === "low") {
                 console.log("Deficiencia de folatos");
-                diagnosis.anemia = {title: "Anemia, probablemente folate deficiency", suggestion: "Request an appointment with a medical doctor"}
+                diagnosis.anemia = { title: "Anemia, probablemente folate deficiency", suggestion: "Request an appointment with a medical doctor" }
             }
         } else {
-            diagnosis.anemia = {title: "Anemia", suggestion: "Request an appointment with a medical doctor"}
+            diagnosis.anemia = { title: "Anemia", suggestion: "Request an appointment with a medical doctor" }
         }
 
-    }else if (model.anemia.isPresent === false){
-        if(model.anemia.vcm === "low"){
-            diagnosis.anemia = {title: "Possible red blood cell or hemoglobin alteration", suggestion: "Request an appointment with a medical doctor"}
-        } else if (model.anemia.vcm === "high"){
-            diagnosis.anemia = {title: "Possible red blood cell alteration", suggestion: "Request an appointment with a medical doctor"}
+    } else if (model.anemia.isPresent === false) {
+        if (model.anemia.vcm === "low") {
+            diagnosis.anemia = { title: "Possible red blood cell or hemoglobin alteration", suggestion: "Request an appointment with a medical doctor" }
+        } else if (model.anemia.vcm === "high") {
+            diagnosis.anemia = { title: "Possible red blood cell alteration", suggestion: "Request an appointment with a medical doctor" }
         }
     }
 
-    if(model.highLeucocytes === true && model.highNeutrophils === true){
-        diagnosis.infection = {title: "Possible bacterian infection", suggestion: "if fever consult with a medical doctor"}
+    if (model.highLeucocytes === true && model.highNeutrophils === true) {
+        diagnosis.infection = { title: "Possible bacterian infection", suggestion: "if fever consult with a medical doctor" }
     }
 
-    if(model.lowLeucocytes === true){
-        diagnosis.leucopenia = {title: "Low white blood cells", suggestion: "Request an appointment with a medical doctor"}
+    if (model.lowLeucocytes === true) {
+        diagnosis.leucopenia = { title: "Low white blood cells", suggestion: "Request an appointment with a medical doctor" }
     }
 
-    if(model.plqt === "low"){
-        diagnosis.plaquetopenia = {title: "Low platelets", suggestion: "Request an appointment with a medical doctor"}
+    if (model.plqt === "low") {
+        diagnosis.plaquetopenia = { title: "Low platelets", suggestion: "Request an appointment with a medical doctor" }
     }
 
-    if(model.plqt === "very low"){
-        diagnosis.plaquetopenia = {title: "Very low platelets", suggestion: "Consult at the emergency ward"}
+    if (model.plqt === "very low") {
+        diagnosis.plaquetopenia = { title: "Very low platelets", suggestion: "Consult at the emergency ward" }
     }
 
-    if(model.plqt === "extremely low"){
-        diagnosis.plaquetopenia = {title: "Extremely low platelets", suggestion: "Ask for an ambulance"}
+    if (model.plqt === "extremely low") {
+        diagnosis.plaquetopenia = { title: "Extremely low platelets", suggestion: "Ask for an ambulance" }
     }
 
     //renal
-    if(model.renalInjury.isPresent === true){
-        if(model.renalInjury.hypoperfusion === true){
-            diagnosis.injuriaRenal = {title: "Prerenal acute renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward"}
+    if (model.renalInjury.isPresent === true) {
+        if (model.renalInjury.hypoperfusion === true) {
+            diagnosis.injuriaRenal = { title: "Prerenal acute renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward" }
         }
 
-        if(model.renalInjury.glomerularInjury === true){
-            diagnosis.injuriaRenal = {title: "Renal acute renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward"}
+        if (model.renalInjury.glomerularInjury === true) {
+            diagnosis.injuriaRenal = { title: "Renal acute renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward" }
         }
     }
 
 
     //ionograma
-    if(model.hyponatremia === "low"){
-        diagnosis.hyponatremia = {title: "Low sodium", suggestion: "Request an appointment with a medical doctor "}
-    }else if (model.hyponatremia === "very low"){
-        diagnosis.hyponatremia = {title: "very low sodium", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward"}
+    if (model.hyponatremia === "low") {
+        diagnosis.hyponatremia = { title: "Low sodium", suggestion: "Request an appointment with a medical doctor " }
+    } else if (model.hyponatremia === "very low") {
+        diagnosis.hyponatremia = { title: "very low sodium", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward" }
     }
 
-    if(model.hypernatremia === true){
-        diagnosis.hypernatremia = {title: "High sodium", suggestion: "Request an appointment with a medical doctor "}
+    if (model.hypernatremia === true) {
+        diagnosis.hypernatremia = { title: "High sodium", suggestion: "Request an appointment with a medical doctor " }
     }
 
     /* PROBLEM IN VERY LOW HYPOKALEMIA
