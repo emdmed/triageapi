@@ -254,33 +254,42 @@ function processh(model) {
     for (key in model.hemograma) {
         //hb
         if (key === "hb") {
-            if (model.hemograma[key] < values.hemograma.hb.min.h) {
-                console.log("->hemoglobina baja")
-                modelDetection.anemia.isPresent = true
+            if(model.hemograma[key] === false){
+
+            } else {
+                if (model.hemograma[key] < values.hemograma.hb.min.h) {
+                    console.log("->hemoglobina baja")
+                    modelDetection.anemia.isPresent = true
+                }
             }
+        
         }
         //vcm
         if (key === "vcm") {
             if (model.hemograma[key] === false) {
 
-            } else if (model.hemograma[key] > values.hemograma.vcm.max) {
-                console.log("->vcm alto")
-                modelDetection.anemia.vcm = "high"
-            } else if (model.hemograma[key] <= values.hemograma.vcm.min) {
-                console.log("->vcm bajo")
-                modelDetection.anemia.vcm = "low"
+            } else {
+                if (model.hemograma[key] > values.hemograma.vcm.max) {
+                    console.log("->vcm alto")
+                    modelDetection.anemia.vcm = "high"
+                } else if (model.hemograma[key] <= values.hemograma.vcm.min) {
+                    console.log("->vcm bajo")
+                    modelDetection.anemia.vcm = "low"
+                }
             }
         }
         //rdw
         if (key === "rdw") {
             if (model.hemograma[key] === false) {
 
-            } else if (model.hemograma[key] < values.hemograma.rdw.max) {
-                console.log("->rdw normal")
-                modelDetection.anemia.rdw = "normal"
-            } else if (model.hemograma[key] >= values.hemograma.rdw.max) {
-                console.log("->rdw alto")
-                modelDetection.anemia.rdw = "high"
+            } else {
+                if (model.hemograma[key] < values.hemograma.rdw.max) {
+                    console.log("->rdw normal")
+                    modelDetection.anemia.rdw = "normal"
+                } else if (model.hemograma[key] >= values.hemograma.rdw.max) {
+                    console.log("->rdw alto")
+                    modelDetection.anemia.rdw = "high"
+                }
             }
         }
         //iron parametes
