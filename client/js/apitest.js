@@ -1,3 +1,8 @@
+let url = {
+    prod: "https://triageapi.herokuapp.com",
+    test: "http://localhost:3000"
+}
+
 function checkCheckboxes() {
     let intensiveCareInLastMonth;
     if ($("#intensiveCareInLastMonth").is(":checked") === true) {
@@ -458,7 +463,7 @@ $("body").on("click", "#check", function () {
     console.log(patient)
 
     $.ajax({
-        url: "https://triageapi.herokuapp.com/api/score",
+        url: url.test + "/api/score",
         method: "POST",
         headers: { "Authorization": "linkedin" },
         contentType: "application/json",

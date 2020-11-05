@@ -254,7 +254,7 @@ function processh(model) {
     for (key in model.hemograma) {
         //hb
         if (key === "hb") {
-            if(model.hemograma[key] === false){
+            if(model.hemograma[key] === false || model.hemograma[key] === NaN || model.hemograma[key] === undefined || model.hemograma[key] === null){
 
             } else {
                 if (model.hemograma[key] < values.hemograma.hb.min.h) {
@@ -266,7 +266,7 @@ function processh(model) {
         }
         //vcm
         if (key === "vcm") {
-            if (model.hemograma[key] === false) {
+            if (model.hemograma[key] === false || model.hemograma[key] === NaN || model.hemograma[key] === undefined || model.hemograma[key] === null) {
 
             } else {
                 if (model.hemograma[key] > values.hemograma.vcm.max) {
@@ -280,7 +280,7 @@ function processh(model) {
         }
         //rdw
         if (key === "rdw") {
-            if (model.hemograma[key] === false) {
+            if (model.hemograma[key] === false || model.hemograma[key] === NaN || model.hemograma[key] === undefined || model.hemograma[key] === null) {
 
             } else {
                 if (model.hemograma[key] < values.hemograma.rdw.max) {
@@ -295,7 +295,7 @@ function processh(model) {
         //iron parametes
         //ferritina
         if (key === "ferritina") {
-            if (model.hemograma[key] === false || model.hemograma[key] === undefined) {
+            if (model.hemograma[key] === false || model.hemograma[key] === NaN || model.hemograma[key] === undefined || model.hemograma[key] === null) {
 
             } else {
                 if (model.hemograma[key] > values.hemograma.ferritina.max) {
@@ -312,7 +312,7 @@ function processh(model) {
         }
         //ferremia
         if (key === "ferremia") {
-            if (model.hemograma[key] === false || model.hemograma[key] === undefined) {
+            if (model.hemograma[key] === false || model.hemograma[key] === NaN || model.hemograma[key] === undefined || model.hemograma[key] === null) {
 
             } else {
                 if (model.hemograma[key] <= values.hemograma.ferremia.min) {
@@ -328,7 +328,7 @@ function processh(model) {
         //leucocitos
         if (key === "gb") {
 
-            if (model.hemograma[key].count === false || model.hemograma[key].count === null || model.hemograma[key].count === undefined) {
+            if (model.hemograma[key].count === false || model.hemograma[key].count === null || model.hemograma[key].count === undefined || model.hemograma[key].count === null) {
 
             } else {
                 if (model.hemograma[key].count < values.hemograma.gb.count.min) {
