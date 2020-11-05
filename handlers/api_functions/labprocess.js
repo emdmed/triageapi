@@ -396,9 +396,10 @@ function processh(model){
             }
         }
     }
-
+    console.log("MODEL DETECTION ", modelDetection)
     //Diagnostic algorythm
     let diagnosis = diagnose(modelDetection);
+    console.log("DIAGNOSIS ", diagnosis)
     return diagnosis;
 
 }

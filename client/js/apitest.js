@@ -226,16 +226,24 @@ function checkCheckboxes() {
         wbc === NaN &&
         neutrophils === NaN
     ) {
-        newpatient.lab.isPresent === false
+        newpatient.lab.isPresent = false
     } else {
-        newpatient.lab.isPresent === true
+        newpatient.lab.isPresent = true
     }
 
     newpatient.lab.values.hemograma.hb = hb;
     newpatient.lab.values.hemograma.vcm = mcv;
     newpatient.lab.values.hemograma.ferritina = ferritin;
-    newpatient.lab.values.hemograma.gb = wbc;
+    newpatient.lab.values.hemograma.gb.count = wbc;
     newpatient.lab.values.hemograma.gb.neu = neutrophils;
+
+    if(newpatient.lab.values.hemograma.gb.count === NaN ){
+        newpatient.lab.values.hemograma.gb.count = false
+    }
+
+    if(newpatient.lab.values.hemograma.gb.neu === NaN){
+        newpatient.lab.values.hemograma.gb.neu = false
+    }
 
     return newpatient;
 

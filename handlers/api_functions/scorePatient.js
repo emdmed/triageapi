@@ -24,8 +24,9 @@ function scorePatient(patient){
     
     //check for lab
     let processedLab;
+    console.log("SCORING PATIENT ->", patient.lab)
     if(patient.lab.isPresent === true){
-
+        console.log("RUN TRUE")
         processedLab = labprocess.processh(patient.lab.values);
         
     } else {

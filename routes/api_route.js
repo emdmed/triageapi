@@ -18,6 +18,7 @@ router.post("/score", authorizeHeader, function (req, res) {
     console.log("Authorized, scoring...");
     let scoredPatient;
     let patient = req.body;
+    console.log("Patient -> ", patient, patient.lab.hemograma)
     let validatedPatient;
 
     try {
@@ -30,6 +31,7 @@ router.post("/score", authorizeHeader, function (req, res) {
 
         try {
             scoredPatient = api_handler.score.scorePatient(patient);
+            console.log("SCORED ", scoredPatient)
         } catch (error) {
             res.send({ message: "Scoring error" }).status(200).end();
         }
