@@ -458,7 +458,7 @@ $("body").on("click", "#check", function () {
     console.log(patient)
 
     $.ajax({
-        url: "http://triageiapi.herokuapp.com/api/score",
+        url: "https://triageapi.herokuapp.com/api/score",
         method: "POST",
         headers: { "Authorization": "linkedin" },
         contentType: "application/json",
