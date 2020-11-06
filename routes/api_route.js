@@ -18,7 +18,6 @@ router.post("/score", authorizeHeader, function (req, res) {
     console.log("Authorized, scoring...");
     let scoredPatient;
     let patient = req.body;
-    console.log("Patient -> ", patient, patient.lab.hemograma)
     let validatedPatient;
 
     try {

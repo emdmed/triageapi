@@ -169,16 +169,17 @@ test("Check Anemia, myelodysplasia probability diagnostic", ()=>{
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
+    patient.lab.values.hemograma.vcm = 150;
     patient.lab.values.hemograma.plqt = 8;
-    patient.lab.values.hemograma.gb.count = 8;
 
     expect(labprocess.processh(patient.lab.values)).toMatchObject({
         anemia: {
             title: "Anemia, myelodysplasia probability"
         },
-        anemia: {
-            title: "Anemia"
+        thrombocytopenia: {
+            title: "Very low platelets",
         }
     })
 
 })
+

@@ -125,7 +125,7 @@ function getValues() {
             },
             plqt: {
                 min: 150000,
-                mac: 500000
+                max: 500000
             },
             ferritina: {
                 unit: "ng/ml",
@@ -365,7 +365,7 @@ function processh(model) {
         }
 
         if (key === "plqt") {
-            if (model.hemograma[key].count === false || model.hemograma[key].count === null || model.hemograma[key].count === undefined) {
+            if (model.hemograma[key] === false || model.hemograma[key] === null || model.hemograma[key] === undefined) {
 
             } else {
                 if (model.hemograma[key] < values.hemograma.plqt.min) {
@@ -506,7 +506,7 @@ function diagnose(model) {
             }
         } else if (model.anemia.vcm === "high") {
             //check for cytopenias
-            if (model.cytopenias.leucocitos === "low" || model.plqt === "low") {
+            if (model.cytopenias === true || model.plqt === "low" || model.plqt === "very low") {
                 console.log("Posible sindrome mielodisplasico")
                 diagnosis.anemia = { title: "Anemia, myelodysplasia probability", suggestion: "Request an appointment with a medical doctor" }
             }
@@ -540,15 +540,15 @@ function diagnose(model) {
     }
 
     if (model.plqt === "low") {
-        diagnosis.plaquetopenia = { title: "Low platelets", suggestion: "Request an appointment with a medical doctor" }
+        diagnosis.thrombocytopenia = { title: "Low platelets", suggestion: "Request an appointment with a medical doctor" }
     }
 
     if (model.plqt === "very low") {
-        diagnosis.plaquetopenia = { title: "Very low platelets", suggestion: "Consult at the emergency ward" }
+        diagnosis.thrombocytopenia = { title: "Very low platelets", suggestion: "Consult at the emergency ward" }
     }
 
     if (model.plqt === "extremely low") {
-        diagnosis.plaquetopenia = { title: "Extremely low platelets", suggestion: "Ask for an ambulance" }
+        diagnosis.thrombocytopenia = { title: "Extremely low platelets", suggestion: "Ask for an ambulance" }
     }
 
     //renal
