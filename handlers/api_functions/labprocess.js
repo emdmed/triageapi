@@ -328,7 +328,7 @@ function processh(model) {
         //leucocitos
         if (key === "gb") {
 
-            if (model.hemograma[key].count === false || model.hemograma[key].count === null || model.hemograma[key].count === undefined || model.hemograma[key].count === null) {
+            if (model.hemograma[key].count === false || model.hemograma[key].count === null || model.hemograma[key].count === undefined) {
 
             } else {
                 if (model.hemograma[key].count < values.hemograma.gb.count.min) {
@@ -347,7 +347,7 @@ function processh(model) {
         }
 
         if (key === "plqt") {
-            if (model.hemograma[key] === false) {
+            if (model.hemograma[key].count === false || model.hemograma[key].count === null || model.hemograma[key].count === undefined) {
 
             } else {
                 if (model.hemograma[key] < values.hemograma.plqt.min) {
@@ -371,7 +371,7 @@ function processh(model) {
     for (key in model) {
         if (key === "renal") {
 
-            if (model[key].creatinina === false || model[key].creatinina === undefined) {
+            if (model[key].creatinina === false || model[key].creatinina === undefined || model[key].creatinina === null) {
 
             } else {
                 if (+model[key].creatinina >= +values.renal.creatinina.max) {
@@ -381,7 +381,7 @@ function processh(model) {
             }
 
 
-            if (model[key].urea === false || model[key].urea === undefined) {
+            if (model[key].urea === false || model[key].urea === undefined || model[key].urea === null) {
 
             } else {
                 if (model[key].urea >= values.renal.urea.max) {
