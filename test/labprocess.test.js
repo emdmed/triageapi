@@ -102,3 +102,83 @@ test("Check Sideroblastic anemia vs Talasemia anemia diagnostic", ()=>{
     })
 
 })
+
+test("Check hemolytic anemia diagnostic", ()=>{
+
+    let patient = patientModel;
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.hb = 8;
+    patient.lab.values.hemograma.vcm = 90
+    patient.lab.values.hemograma.LDH = 500
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        anemia: {
+            title: "Hemolytic anemia"
+        },
+        anemia: {
+            title: "Anemia"
+        }
+    })
+
+    //add bi and haptoglobina testt when implemented
+
+})
+
+test("Check Posible bone marrow supresion anemia diagnostic", ()=>{
+
+    let patient = patientModel;
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.hb = 8;
+    patient.lab.values.hemograma.plqt = 1;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        anemia: {
+            title: "Posible bone marrow supresion"
+        },
+        anemia: {
+            title: "Anemia"
+        }
+    })
+
+})
+
+test("Check Chronic disease anemia, possibly related to chronic renal injury diagnostic", ()=>{
+
+    let patient = patientModel;
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.hb = 8;
+    patient.lab.values.renal.creatinina = 8;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        anemia: {
+            title: "Chronic disease anemia, possibly related to chronic renal injury"
+        },
+        anemia: {
+            title: "Anemia"
+        }
+    })
+
+})
+
+test("Check Anemia, myelodysplasia probability diagnostic", ()=>{
+
+    let patient = patientModel;
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.hb = 8;
+    patient.lab.values.hemograma.plqt = 8;
+    patient.lab.values.hemograma.gb.count = 8;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        anemia: {
+            title: "Anemia, myelodysplasia probability"
+        },
+        anemia: {
+            title: "Anemia"
+        }
+    })
+
+})

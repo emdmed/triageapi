@@ -231,6 +231,11 @@ function processh(model) {
             ironParameters: {
                 ferremia: false,
                 ferritina: false
+            },
+            hemolysisParameters: {
+                LDH: false,
+                BI: false,
+                haptoglobina: false
             }
         },
         cytopenias: false,
@@ -260,6 +265,19 @@ function processh(model) {
                 if (model.hemograma[key] < values.hemograma.hb.min.h) {
                     console.log("->hemoglobina baja")
                     modelDetection.anemia.isPresent = true
+                }
+
+                if(model.hemograma.LDH === false || model.hemograma.LDH === undefined || model.hemograma.LDH === null ){
+
+                } else{
+
+                    if(model.hemograma.LDH > values.hemograma.LDH){
+                        modelDetection.anemia.hemolysisParameters.LDH = true
+                    }
+
+                    //add BI parameter
+
+                    //add haptoglobina parameter
                 }
             }
         
@@ -468,7 +486,7 @@ function diagnose(model) {
             }
         } else if (model.anemia.vcm === "normal") {
             //check for hemolysis
-            if (model.hemolysis) {
+            if (model.anemia.hemolysisParameters.LDH === true || model.anemia.hemolysisParameters.bi === true || model.anemia.hemolysisParameters.haptoglobina === true) {
                 console.log("Anemia hemolitica")
                 diagnosis.anemia = { title: "Hemolytic anemia", suggestion: "Go to you nearest hospital or ask for at home medical assistance" }
             }
@@ -483,14 +501,14 @@ function diagnose(model) {
             if (model.renal) {
                 if (model.renal.cr === "high") {
                     console.log("Posible insuficiencia renal cronica");
-                    diagnosis.anemia = { title: "Chronic diseas anemia, possibly related to chronic renal injury", suggestion: "Request an appointment with a medical doctor" }
+                    diagnosis.anemia = { title: "Chronic disease anemia, possibly related to chronic renal injury", suggestion: "Request an appointment with a medical doctor" }
                 }
             }
         } else if (model.anemia.vcm === "high") {
             //check for cytopenias
             if (model.cytopenias.leucocitos === "low" || model.plqt === "low") {
                 console.log("Posible sindrome mielodisplasico")
-                diagnosis.anemia = { title: "Anemia, myelodysplasia probable", suggestion: "Request an appointment with a medical doctor" }
+                diagnosis.anemia = { title: "Anemia, myelodysplasia probability", suggestion: "Request an appointment with a medical doctor" }
             }
             //check b12 and folate
             if (model.anemia.b12 === "low") {
