@@ -5,7 +5,7 @@ const lab = {
 }
 
 //disable console log
-console.log = () => {}
+//console.log = () => {}
 
 const labModel = {
     hemograma: {
@@ -381,6 +381,17 @@ function processh(model) {
                 }
             }
 
+        }
+
+        if (key === "b12") {
+            if (model.hemograma[key] === false || model.hemograma[key] === null || model.hemograma[key] === undefined) {
+
+            } else {
+                if (model.hemograma[key] < values.hemograma.b12.min) {
+                    console.log("->b12 baja ", model.hemograma[key])
+                    modelDetection.anemia.b12 = "low"
+                }
+            }
         }
 
 
