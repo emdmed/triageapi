@@ -394,6 +394,17 @@ function processh(model) {
             }
         }
 
+        if (key === "acidofolico") {
+            if (model.hemograma[key] === false || model.hemograma[key] === null || model.hemograma[key] === undefined) {
+
+            } else {
+                if (model.hemograma[key] < values.hemograma.b12.min) {
+                    console.log("->acfolico bajo ", model.hemograma[key])
+                    modelDetection.anemia.acfolico = "low"
+                }
+            }
+        }
+
 
     }
 
@@ -528,7 +539,7 @@ function diagnose(model) {
             }
             if (model.anemia.acfolico === "low") {
                 console.log("Deficiencia de folatos");
-                diagnosis.anemia = { title: "Anemia, probablemente folate deficiency", suggestion: "Request an appointment with a medical doctor" }
+                diagnosis.anemia = { title: "Anemia, probable folate deficiency", suggestion: "Request an appointment with a medical doctor" }
             }
         } else {
             diagnosis.anemia = { title: "Anemia", suggestion: "Request an appointment with a medical doctor" }

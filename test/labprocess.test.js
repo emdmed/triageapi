@@ -215,3 +215,20 @@ test("Check Anemia, probable b12 deficiency diagnostic", ()=>{
 
 })
 
+test("Check Anemia, probable folate deficiency diagnostic", ()=>{
+
+    let patient = patientModel;
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.hb = 8;
+    patient.lab.values.hemograma.vcm = 150;
+    patient.lab.values.hemograma.acidofolico = 4;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        anemia: {
+            title: "Anemia, probable folate deficiency"
+        }
+    })
+
+})
+
