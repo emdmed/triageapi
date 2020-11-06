@@ -5,7 +5,7 @@ const lab = {
 }
 
 //disable console log
-//console.log = () => {}
+console.log = () => {}
 
 const labModel = {
     hemograma: {
