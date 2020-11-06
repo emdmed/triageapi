@@ -74,3 +74,8 @@ Example:
 - Cardiac failure (incomplete)
 - Alergy (incomplete)
 - Gastroenteritis
+
+# TODO
+
+- labProcess diagnostics testing
+- debug hipokalemia diagnostic
