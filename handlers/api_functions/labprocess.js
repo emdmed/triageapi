@@ -196,11 +196,11 @@ function getValues() {
         renal: {
             urea: {
                 unit: "mg/dl",
-                max: 45
+                max: 50
             },
             creatinina: {
                 unit: "mg/dl",
-                max: 1.4
+                max: 1.3
             }
         },
         ionograma: {
@@ -426,21 +426,26 @@ function processh(model) {
             if (model[key].urea === false || model[key].urea === undefined || model[key].urea === null) {
 
             } else {
+                //high urea renal injury
                 if (model[key].urea >= values.renal.urea.max) {
                     //check creatinina
                     if (model[key].creatinina > values.renal.creatinina.max) {
                         //check creatinine urea relation
                         let crUrRelation = model[key].urea / model[key].creatinina
+                        console.log("crUrRealation ", crUrRelation, " values ", model[key].urea, model[key].creatinina);
                         if (crUrRelation > 35) {
                             //hypoperfusion
-
                             modelDetection.renalInjury.hypoperfusion = true;
-                        } else if (crUrRelation < 20) {
+                        } else if (crUrRelation < 35) {
                             //glomerular Injury
-
                             modelDetection.renalInjury.glomerularInjury = true;
-                        }
+                        } 
 
+                    }
+                } else if(model[key].urea < values.renal.urea.max){
+                    if (model[key].creatinina > values.renal.creatinina.max) {
+                        //glomerular injury
+                        modelDetection.renalInjury.glomerularInjury = true;
                     }
                 }
             }
@@ -452,9 +457,12 @@ function processh(model) {
 
             } else {
                 if (model[key].na < values.ionograma.na.min) {
-                    modelDetection.hyponatremia = "low"
-                } else if (model.hemograma[key] < 120) {
-                    modelDetection.hyponatremia = "very low"
+                    if (model[key].na > 120){
+                        modelDetection.hyponatremia = "low"
+                    } else if (model[key].na <= 120){
+                        modelDetection.hyponatremia = "very low"
+                    }
+                
                 }
 
                 if (model[key].na > values.ionograma.na.max) {
@@ -583,11 +591,11 @@ function diagnose(model) {
     //renal
     if (model.renalInjury.isPresent === true) {
         if (model.renalInjury.hypoperfusion === true) {
-            diagnosis.injuriaRenal = { title: "Prerenal acute renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward" }
+            diagnosis.renalInjury = { title: "Probable prerenal, renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward" }
         }
 
         if (model.renalInjury.glomerularInjury === true) {
-            diagnosis.injuriaRenal = { title: "Renal acute renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward" }
+            diagnosis.renalInjury = { title: "Probable renal, renal injury", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward" }
         }
     }
 
@@ -596,7 +604,7 @@ function diagnose(model) {
     if (model.hyponatremia === "low") {
         diagnosis.hyponatremia = { title: "Low sodium", suggestion: "Request an appointment with a medical doctor " }
     } else if (model.hyponatremia === "very low") {
-        diagnosis.hyponatremia = { title: "very low sodium", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward" }
+        diagnosis.hyponatremia = { title: "Very low sodium", suggestion: "Request an appointment with a medical doctor righ away or consult to the emergency ward" }
     }
 
     if (model.hypernatremia === true) {

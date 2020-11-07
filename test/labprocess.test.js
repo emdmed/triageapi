@@ -336,4 +336,69 @@ test("Check low platelets", () => {
 
 })
 
+test("Check Prerenal acute renal injury diagnostic", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.renal.urea = 90;
+    patient.lab.values.renal.creatinina = 2
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        renalInjury: {
+            title: "Probable prerenal, renal injury"
+        }
+    })
+
+})
+
+
+test("Check renal renal injury diagnostic", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.renal.urea = 90;
+    patient.lab.values.renal.creatinina = 5
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        renalInjury: {
+            title: "Probable renal, renal injury"
+        }
+    })
+
+    patient.lab.values.renal.urea = 20;
+    patient.lab.values.renal.creatinina = 5
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        renalInjury: {
+            title: "Probable renal, renal injury"
+        }
+    })
+
+})
+
+test("Check hyonatremia diagnostic", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.ionograma.na = 130;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        hyponatremia: {
+            title: "Low sodium"
+        }
+    })
+
+    patient.lab.values.ionograma.na = 110;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        hyponatremia: {
+            title: "Very low sodium"
+        }
+    })
+
+})
+
 
