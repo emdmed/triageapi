@@ -71,8 +71,8 @@ Example:
 
 # TODO short term
 
-- labProcess diagnostics testing
-- debug hipokalemia diagnostic
+- Write labProcess diagnostics tests
+- debug labprocess.js
 
 # TODO long term
 
