@@ -12,7 +12,7 @@ test("Check ruleout only", ()=>{
 
 })
 
-test("Check ruled out patient through full scorePatient", ()=>{
+test("Scoring ruleout integration test", ()=>{
 
     let patient = patientModelRuleOut;
     expect(score.scorePatient(patient)).toMatchObject({
