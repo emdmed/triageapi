@@ -7,7 +7,7 @@ Access website at https://triageapi.herokuapp.com
 Now basic laboratory results can be interpreted by the API.
 
 Example:
-<pre>
+```javascript
     {
         "score": 30,
         "age": 50,
@@ -29,13 +29,7 @@ Example:
             }
         }
     }
-</pre>
-
-# TODO
-
-- add more diagnostic options
-- debug laboratory interpretation
-
+```
 --------------------------------------------------------------------------
 # How to use it
 
@@ -47,7 +41,7 @@ Example:
 
 4) Scoring response example:
 
-<pre>
+```javascript
     {
         "score": 85
         "age": 52
@@ -56,7 +50,7 @@ Example:
         "patientID": null
         "lab": (if lab parameters are sent, the system will try to respond with an interpretation)
     }
-</pre>
+```
 
 --------------------------------------------------------------------------
 
@@ -75,7 +69,11 @@ Example:
 - Alergy (incomplete)
 - Gastroenteritis
 
-# TODO
+# TODO short term
 
 - labProcess diagnostics testing
 - debug hipokalemia diagnostic
+
+# TODO long term
+
+- add more diagnostic options
