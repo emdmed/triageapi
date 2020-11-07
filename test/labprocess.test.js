@@ -1,7 +1,7 @@
 let patientModel = require("./patientModelNoRuleOut");
 let labprocess = require("../handlers/api_functions/labprocess");
 
-test("Check anemia diagnostic", ()=>{
+test("Check anemia diagnostic", () => {
 
     let patient = JSON.parse(JSON.stringify(patientModel));
 
@@ -16,9 +16,9 @@ test("Check anemia diagnostic", ()=>{
 
 })
 
-test("Check microcytic anemia diagnostic", ()=>{
+test("Check microcytic anemia diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 10;
@@ -32,9 +32,9 @@ test("Check microcytic anemia diagnostic", ()=>{
 
 })
 
-test("Check iron deficiency anemia diagnostic", ()=>{
+test("Check iron deficiency anemia diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 10;
@@ -51,9 +51,9 @@ test("Check iron deficiency anemia diagnostic", ()=>{
 
 })
 
-test("Check chronic disease anemia diagnostic", ()=>{
+test("Check chronic disease anemia diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 10;
@@ -77,9 +77,9 @@ test("Check chronic disease anemia diagnostic", ()=>{
 
 })
 
-test("Check Sideroblastic anemia vs Talasemia anemia diagnostic", ()=>{
+test("Check Sideroblastic anemia vs Talasemia anemia diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 10;
@@ -103,9 +103,9 @@ test("Check Sideroblastic anemia vs Talasemia anemia diagnostic", ()=>{
 
 })
 
-test("Check hemolytic anemia diagnostic", ()=>{
+test("Check hemolytic anemia diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -125,9 +125,9 @@ test("Check hemolytic anemia diagnostic", ()=>{
 
 })
 
-test("Check Posible bone marrow supresion anemia diagnostic", ()=>{
+test("Check Posible bone marrow supresion anemia diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -144,9 +144,9 @@ test("Check Posible bone marrow supresion anemia diagnostic", ()=>{
 
 })
 
-test("Check Chronic disease anemia, possibly related to chronic renal injury diagnostic", ()=>{
+test("Check Chronic disease anemia, possibly related to chronic renal injury diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -163,9 +163,9 @@ test("Check Chronic disease anemia, possibly related to chronic renal injury dia
 
 })
 
-test("Check Anemia, myelodysplasia probability diagnostic", ()=>{
+test("Check Anemia, myelodysplasia probability diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -177,7 +177,7 @@ test("Check Anemia, myelodysplasia probability diagnostic", ()=>{
             title: "Anemia, myelodysplasia probability"
         },
         thrombocytopenia: {
-            title: "Very low platelets",
+            title: "Extremely low platelets",
         }
     })
 
@@ -188,7 +188,7 @@ test("Check Anemia, myelodysplasia probability diagnostic", ()=>{
             title: "Anemia, myelodysplasia probability"
         },
         thrombocytopenia: {
-            title: "Very low platelets",
+            title: "Extremely low platelets",
         },
         leucopenia: {
             title: "Low white blood cells",
@@ -198,9 +198,9 @@ test("Check Anemia, myelodysplasia probability diagnostic", ()=>{
 
 })
 
-test("Check Anemia, probable b12 deficiency diagnostic", ()=>{
+test("Check Anemia, probable b12 deficiency diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -215,9 +215,9 @@ test("Check Anemia, probable b12 deficiency diagnostic", ()=>{
 
 })
 
-test("Check Anemia, probable folate deficiency diagnostic", ()=>{
+test("Check Anemia, probable folate deficiency diagnostic", () => {
 
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -232,10 +232,9 @@ test("Check Anemia, probable folate deficiency diagnostic", ()=>{
 
 })
 
+test("Check High vcm anemia diagnostic", () => {
 
-test("Check High vcm anemia diagnostic", ()=>{
-
-       let patient = JSON.parse(JSON.stringify(patientModel));
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     console.log("macrocytic ", patient.lab)
 
@@ -250,4 +249,91 @@ test("Check High vcm anemia diagnostic", ()=>{
     })
 
 })
+
+test("Check low vcm without anemia", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.hb = 16;
+    patient.lab.values.hemograma.vcm = 3;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        anemia: {
+            title: "Possible red blood cell or hemoglobin alteration"
+        }
+    })
+
+})
+
+test("Check high vcm without anemia", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.hb = 16;
+    patient.lab.values.hemograma.vcm = 130;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        anemia: {
+            title: "Possible red blood cell alteration"
+        }
+    })
+
+})
+
+test("Check high wbc with high neutrophils", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.gb.count = 20000;
+    patient.lab.values.hemograma.gb.neu = 130;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        infection: {
+            title: "Possible bacterian infection"
+        }
+    })
+
+})
+
+test("Check leucopenia", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.gb.count = 1;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        leucopenia: {
+            title: "Low white blood cells"
+        }
+    })
+
+})
+
+test("Check low platelets", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.plqt = 45000;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        thrombocytopenia: {
+            title: "Very low platelets"
+        }
+    })
+
+    patient.lab.values.hemograma.plqt = 10000;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        thrombocytopenia: {
+            title: "Extremely low platelets"
+        }
+    })
+
+})
+
 

@@ -373,7 +373,7 @@ function processh(model) {
                 if (model.hemograma[key] < values.hemograma.plqt.min) {
                     console.log("->plaquetas bajas ", model.hemograma[key])
                     modelDetection.plqt = "low"
-                    if (model.hemograma[key] < 50000) {
+                    if (model.hemograma[key] < 50000 && model.hemograma[key] > 30000) {
                         console.log("ALERTA plaquetas muy bajas")
                         modelDetection.plqt = "very low"
                     } else if (model.hemograma[key] < 30000) {
@@ -530,7 +530,7 @@ function diagnose(model) {
             }
         } else if (model.anemia.vcm === "high") {
             //check for cytopenias
-            if (model.cytopenias === true || model.plqt === "low" || model.plqt === "very low") {
+            if (model.cytopenias === true || model.plqt === "low" || model.plqt === "very low" || model.plqt === "extremely low") {
                 console.log("Posible sindrome mielodisplasico")
                 diagnosis.anemia = { title: "Anemia, myelodysplasia probability", suggestion: "Request an appointment with a medical doctor" }
             }
