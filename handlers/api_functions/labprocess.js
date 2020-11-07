@@ -236,7 +236,9 @@ function processh(model) {
                 LDH: false,
                 BI: false,
                 haptoglobina: false
-            }
+            },
+            acfolico: false,
+            b12: false
         },
         cytopenias: false,
         highLeucocytes: false,
@@ -541,6 +543,11 @@ function diagnose(model) {
                 console.log("Deficiencia de folatos");
                 diagnosis.anemia = { title: "Anemia, probable folate deficiency", suggestion: "Request an appointment with a medical doctor" }
             }
+
+            if(model.cytopenias === false && model.anemia.b12 === false && model.anemia.acfolico === false && model.plqt === false){
+                diagnosis.anemia = { title: "Macrocytic anemia", suggestion: "Request an appointment with a medical doctor" }
+            }
+
         } else {
             diagnosis.anemia = { title: "Anemia", suggestion: "Request an appointment with a medical doctor" }
         }

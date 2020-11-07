@@ -3,7 +3,7 @@ let labprocess = require("../handlers/api_functions/labprocess");
 
 test("Check anemia diagnostic", ()=>{
 
-    let patient = patientModel;
+    let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 10;
@@ -18,7 +18,7 @@ test("Check anemia diagnostic", ()=>{
 
 test("Check microcytic anemia diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 10;
@@ -34,7 +34,7 @@ test("Check microcytic anemia diagnostic", ()=>{
 
 test("Check iron deficiency anemia diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 10;
@@ -53,7 +53,7 @@ test("Check iron deficiency anemia diagnostic", ()=>{
 
 test("Check chronic disease anemia diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 10;
@@ -79,7 +79,7 @@ test("Check chronic disease anemia diagnostic", ()=>{
 
 test("Check Sideroblastic anemia vs Talasemia anemia diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 10;
@@ -105,7 +105,7 @@ test("Check Sideroblastic anemia vs Talasemia anemia diagnostic", ()=>{
 
 test("Check hemolytic anemia diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -127,7 +127,7 @@ test("Check hemolytic anemia diagnostic", ()=>{
 
 test("Check Posible bone marrow supresion anemia diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -146,7 +146,7 @@ test("Check Posible bone marrow supresion anemia diagnostic", ()=>{
 
 test("Check Chronic disease anemia, possibly related to chronic renal injury diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -165,7 +165,7 @@ test("Check Chronic disease anemia, possibly related to chronic renal injury dia
 
 test("Check Anemia, myelodysplasia probability diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -200,7 +200,7 @@ test("Check Anemia, myelodysplasia probability diagnostic", ()=>{
 
 test("Check Anemia, probable b12 deficiency diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -217,7 +217,7 @@ test("Check Anemia, probable b12 deficiency diagnostic", ()=>{
 
 test("Check Anemia, probable folate deficiency diagnostic", ()=>{
 
-    let patient = patientModel;
+       let patient = JSON.parse(JSON.stringify(patientModel));
 
     patient.lab.isPresent = true;
     patient.lab.values.hemograma.hb = 8;
@@ -227,6 +227,25 @@ test("Check Anemia, probable folate deficiency diagnostic", ()=>{
     expect(labprocess.processh(patient.lab.values)).toMatchObject({
         anemia: {
             title: "Anemia, probable folate deficiency"
+        }
+    })
+
+})
+
+
+test("Check High vcm anemia diagnostic", ()=>{
+
+       let patient = JSON.parse(JSON.stringify(patientModel));
+
+    console.log("macrocytic ", patient.lab)
+
+    patient.lab.isPresent = true;
+    patient.lab.values.hemograma.hb = 8;
+    patient.lab.values.hemograma.vcm = 150;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        anemia: {
+            title: "Macrocytic anemia"
         }
     })
 
