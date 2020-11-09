@@ -52,11 +52,13 @@ Example:
     }
 ```
 
+6) To send lab parameters, "lab": {isPresent: true, values: "values here"} in the patient object.
+
 --------------------------------------------------------------------------
 
 # Pathologies taken in account for priorization:
 
-- Acute abdomen (medical, quirurgic)
+- Acute abdomen
 - Appendicitis
 - Cholecystitis
 - Pharyngitis
