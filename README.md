@@ -33,7 +33,7 @@ Access website at https://triageapi.herokuapp.com
 0) Please use this header in all your requests to acces the API:
 
 ```javascript
-    headers: {"Authorization": "password"}
+    headers: {"Authorization": "linkedin"}
 ```
 
 1) Request patient object with the following route -> https://triageapi.herokuapp.com/api/patientModel
