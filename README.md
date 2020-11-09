@@ -4,7 +4,7 @@ A triage API that receives symptoms and returns an urgency score. It also return
 Access website at https://triageapi.herokuapp.com
 
 - Laboratory interpretation model now merged with patient model.
-Now basic laboratory results can be interpreted by the API.
+Basic laboratory results can be interpreted by the API.
 
 Example:
 ```javascript
@@ -71,9 +71,9 @@ Example:
 
 # TODO short term
 
-- Write labProcess diagnostics tests
-- debug labprocess.js
+- [x] Write labProcess diagnostics tests
+- [x] debug labprocess.js
 
 # TODO long term
 
-- add more diagnostic options
+- [] add more diagnostic options
