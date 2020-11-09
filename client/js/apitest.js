@@ -221,6 +221,8 @@ function checkCheckboxes() {
     let ferritin = parseInt($("#ferritin").val());
     let wbc = parseInt($("#wbc").val());
     let neutrophils = parseInt($("#neutrophils").val());
+    let creatinin = parseInt($("#creatinin").val())
+    let urea = parseInt($("#urea").val());
 
     console.log(hb, mcv, ferritin, wbc, neutrophils)
 
@@ -229,7 +231,9 @@ function checkCheckboxes() {
         mcv === NaN &&
         ferritin === NaN &&
         wbc === NaN &&
-        neutrophils === NaN
+        neutrophils === NaN &&
+        creatinin === NaN &&
+        urea === NaN
     ) {
         newpatient.lab.isPresent = false
     } else {
@@ -241,6 +245,8 @@ function checkCheckboxes() {
     newpatient.lab.values.hemograma.ferritina = ferritin;
     newpatient.lab.values.hemograma.gb.count = wbc;
     newpatient.lab.values.hemograma.gb.neu = neutrophils;
+    newpatient.lab.values.renal.creatinina = creatinin;
+    newpatient.lab.values.renal.urea = urea;
 
     if(newpatient.lab.values.hemograma.gb.count === NaN ){
         newpatient.lab.values.hemograma.gb.count = false
