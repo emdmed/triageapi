@@ -350,7 +350,17 @@ test("Check Prerenal acute renal injury diagnostic", () => {
         }
     })
 
+    patient.lab.values.renal.creatinina = 1
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        renalInjury: {
+            title: "Probable prerenal, renal injury"
+        }
+    })
+
 })
+
+
 
 
 test("Check renal renal injury diagnostic", () => {
