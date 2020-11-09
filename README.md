@@ -46,12 +46,25 @@ Access website at https://triageapi.herokuapp.com
 
 ```javascript
     {
-        "score": 85
-        "age": 52
-        "covidAlert": false
-        "date": 1589811614301
-        "patientID": null
-        "lab": (if lab parameters are sent, the system will try to respond with an interpretation)
+        "score": 30,
+        "age": 50,
+        "covidAlert": false,
+        "date": 1604461368362,
+        "patientID": "47fca1fa9445c4f84390",
+        "lab": {
+            "anemia": {
+                "title": "Microcytic anemia",
+                "suggestion": "Request iron parameters"
+            },
+            "thrombocytopenia": {
+                "title": "Very low platelets",
+                "suggestion": "Consult at the emergency ward"
+            },
+            "hyponatremia": {
+                "title": "Low sodium",
+                "suggestion": "Consult at the emergency ward"
+            }
+        }
     }
 ```
 
