@@ -75,6 +75,8 @@ Example:
 
 - [x] Write labProcess diagnostics tests
 - [x] debug labprocess.js
+- [ ] add ions to apitest frontend
+- [ ] add more iron and anemia parameters to apitest frontend
 
 # TODO long term
 
