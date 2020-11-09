@@ -30,7 +30,7 @@ Access website at https://triageapi.herokuapp.com
 --------------------------------------------------------------------------
 # How to use it
 
-0) Please use this header in all your requeststo acces the API:
+0) Please use this header in all your requests to acces the API:
 
 ```javascript
     headers: {"Authorization": "password"}
