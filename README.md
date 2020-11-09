@@ -95,7 +95,7 @@ Access website at https://triageapi.herokuapp.com
 
 # TODO short term
 
-- [x] Write labProcess diagnostics tests
+- [x] write labProcess diagnostics tests
 - [x] debug labprocess.js
 - [ ] add ions to apitest frontend
 - [ ] add more iron and anemia parameters to apitest frontend
