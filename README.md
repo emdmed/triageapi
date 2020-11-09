@@ -76,4 +76,4 @@ Example:
 
 # TODO long term
 
-- [] add more diagnostic options
+- [ ] add more diagnostic options
