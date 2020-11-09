@@ -68,7 +68,13 @@ Access website at https://triageapi.herokuapp.com
     }
 ```
 
-6) To send lab parameters, "lab": {isPresent: true, values: "values here"} in the patient object.
+6) To send lab parameters:
+
+```javascript
+ "lab": {isPresent: true, values: "values here"}
+ ```
+
+ in the patient object
 
 --------------------------------------------------------------------------
 
