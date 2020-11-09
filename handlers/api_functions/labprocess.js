@@ -471,19 +471,23 @@ function processh(model) {
             }
 
             if (model[key].k === false || model[key].k === null || model[key].k === undefined) {
-                if (model[key].k < values.ionograma.k.min) {
-                    modelDetection.hypokalemia = "low"
-                } else if (model[key].k < 3) {
-                    console.log(model[key].k)
-                    modelDetection.hypokalemia = "very low"
-                } else if (model[key].k === false || model[key].k === NaN) {
-                    modelDetection.hypokalemia = false
-                }
+              
+            } else {
 
-                if (model[key].k > values.ionograma.k.max) {
-                    modelDetection.hyperkalemia = "high"
-                } else if (model[key].k > 6) {
-                    modelDetection.hyperkalemia = "very high"
+                if (model[key].k < values.ionograma.k.min) {
+                    if(model[key].k < 3){
+                        modelDetection.hypokalemia = "very low"
+                    } else {
+                        modelDetection.hypokalemia = "low"
+                    }
+             
+                } else if (model[key].k > values.ionograma.k.max) {
+
+                    if(model[key].k > 6){
+                        modelDetection.hyperkalemia = "very high"
+                    } else {
+                        modelDetection.hyperkalemia = "high"
+                    }
                 }
             }
         }
@@ -611,19 +615,19 @@ function diagnose(model) {
         diagnosis.hypernatremia = { title: "High sodium", suggestion: "Request an appointment with a medical doctor " }
     }
 
-    /* PROBLEM IN VERY LOW HYPOKALEMIA
+    //PROBLEM IN VERY LOW HYPOKALEMIA
     if(model.hypokalemia === "low"){
-        diagnosis.hypokalemia = {title: "Potasio bajo", suggestion: "Consulte a su médico clínico"}
+        diagnosis.hypokalemia = {title: "Low potassium", suggestion: "Consulte a su médico clínico"}
     } else if(model.hypokalemia = "very low"){
         console.log(model.hypokalemia)
-        diagnosis.hypokalemia = {title: "Potasio muy bajo", suggestion: "Consulte urgente a la guardia"}
+        diagnosis.hypokalemia = {title: "Very low potassium", suggestion: "Consulte urgente a la guardia"}
     }
 
     if(model.hyperkalemia === "high"){
-        diagnosis.hyperkalemia = {title: "Potasio alto", suggestion: "Consulte a su médico clínico"};
+        diagnosis.hyperkalemia = {title: "High potassium", suggestion: "Consulte a su médico clínico"};
     } else if(model.hyperkalemia === "very high"){
-        diagnosis.hyperkalemia = {title: "Potasio muy alto", suggestion: "Consulte urgente a la guardia"}
-    }*/
+        diagnosis.hyperkalemia = {title: "Very high potassium", suggestion: "Consulte urgente a la guardia"}
+    }
 
     //return diagnosis here
     console.log(diagnosis)

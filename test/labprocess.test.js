@@ -401,4 +401,65 @@ test("Check hyonatremia diagnostic", () => {
 
 })
 
+test("Check hypernatremia diagnostic", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.ionograma.na = 160;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        hypernatremia: {
+            title: "High sodium"
+        }
+    })
+
+})
+
+test("Check hypokalemia diagnostic", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.ionograma.k = 3;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        hypokalemia: {
+            title: "Low potassium"
+        }
+    })
+
+    patient.lab.values.ionograma.k = 1;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        hypokalemia: {
+            title: "Very low potassium"
+        }
+    })
+
+})
+
+test("Check hyperkalemia diagnostic", () => {
+
+    let patient = JSON.parse(JSON.stringify(patientModel));
+
+    patient.lab.isPresent = true;
+    patient.lab.values.ionograma.k = 6;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        hyperkalemia: {
+            title: "High potassium"
+        }
+    })
+
+    patient.lab.values.ionograma.k = 8;
+
+    expect(labprocess.processh(patient.lab.values)).toMatchObject({
+        hyperkalemia: {
+            title: "Very high potassium"
+        }
+    })
+
+})
+
 
