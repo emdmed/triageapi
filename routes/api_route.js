@@ -19,6 +19,8 @@ router.post("/score", authorizeHeader, function (req, res) {
     let patient = req.body;
     let validatedPatient;
 
+    console.log("patient lab: ", patient.lab.values)
+
     try {
         validatedPatient = validatePatient(res, patient)
     } catch (error) {
@@ -29,7 +31,6 @@ router.post("/score", authorizeHeader, function (req, res) {
 
         try {
             scoredPatient = api_handler.score.scorePatient(patient);
-            console.log("SCORED ", scoredPatient)
         } catch (error) {
             res.send({ message: "Scoring error" }).status(200).end();
         }
@@ -107,8 +108,6 @@ function validatePatient(res, patient) {
 }
 
 function cleanPatientToSend(patient) {
-    console.log("LAB ", patient)
-
     let newPatient = {
         score: patient.score,
         age: patient.info.age,

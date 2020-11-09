@@ -3,7 +3,7 @@ const lab = {
     processh,
 }
 //disable console log
-console.log = () => {}
+//console.log = () => {}
 
 var values = require("./labvalues");
 
@@ -208,7 +208,7 @@ function processh(model) {
             if (model[key].creatinina === false || model[key].creatinina === undefined || model[key].creatinina === null) {
 
             } else {
-                if (+model[key].creatinina >= +values.renal.creatinina.max) {
+                if (model[key].creatinina >= values.renal.creatinina.max) {
                     console.log("renal injury true")
                     modelDetection.renalInjury.isPresent = true
                 }
@@ -227,12 +227,18 @@ function processh(model) {
                         console.log("crUrRealation ", crUrRelation, " values ", model[key].urea, model[key].creatinina);
                         if (crUrRelation > 35) {
                             //hypoperfusion
+                            modelDetection.renalInjury.isPresent = true
                             modelDetection.renalInjury.hypoperfusion = true;
                         } else if (crUrRelation < 35) {
                             //glomerular Injury
+                            modelDetection.renalInjury.isPresent = true
                             modelDetection.renalInjury.glomerularInjury = true;
                         } 
 
+                    } else {
+                         //hypoperfusion
+                         modelDetection.renalInjury.isPresent = true
+                         modelDetection.renalInjury.hypoperfusion = true;
                     }
                 } else if(model[key].urea < values.renal.urea.max){
                     if (model[key].creatinina > values.renal.creatinina.max) {
@@ -265,7 +271,7 @@ function processh(model) {
             if (model[key].k === false || model[key].k === null || model[key].k === undefined) {
               
             } else {
-
+                console.log("K KEY ", model[key].k)
                 if (model[key].k < values.ionograma.k.min) {
                     if(model[key].k < 3){
                         modelDetection.hypokalemia = "very low"
@@ -410,7 +416,7 @@ function diagnose(model) {
     //PROBLEM IN VERY LOW HYPOKALEMIA
     if(model.hypokalemia === "low"){
         diagnosis.hypokalemia = {title: "Low potassium", suggestion: "Consulte a su médico clínico"}
-    } else if(model.hypokalemia = "very low"){
+    } else if(model.hypokalemia === "very low"){
         console.log(model.hypokalemia)
         diagnosis.hypokalemia = {title: "Very low potassium", suggestion: "Consulte urgente a la guardia"}
     }
