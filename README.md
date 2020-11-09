@@ -3,10 +3,7 @@ A triage API that receives symptoms and returns an urgency score. It also return
 
 Access website at https://triageapi.herokuapp.com
 
-- Laboratory interpretation model now merged with patient model.
-Basic laboratory results can be interpreted by the API.
-
-Example:
+### Scoring response example:
 ```javascript
     {
         "score": 30,
@@ -32,6 +29,12 @@ Example:
 ```
 --------------------------------------------------------------------------
 # How to use it
+
+0) Please use this header in all your requeststo acces the API:
+
+```javascript
+    headers: {"Authorization": "password"}
+```
 
 1) Request patient object with the following route -> https://triageapi.herokuapp.com/api/patientModel
 
