@@ -7,7 +7,6 @@ const patient_model = require("../patient_model.json");
 const config = require("../config");
 const crypto = require("crypto");
 
-
 router.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
