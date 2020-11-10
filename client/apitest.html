@@ -136,33 +136,122 @@
       <!-- Content -->
       <div class="container">
         <div class="row">
-          <div class="col" id="result">
+          <div class="col-sm" id="result">
    
           </div>
         </div>
-        <div class="row align-items-center">
-          <div class="col-md-12 col-lg-7 text-center text-lg-left">
-            <h4>Lab</h4>
-            <hr>
-            <h5 class="mt-3">Hemogram</h5>
-            <input class="form-control modern-input w-50" id="hb" type="number" placeholder="Hemoglobin (gr/dl)">
-            <input class="form-control modern-input w-50 mt-2" id="mcv" type="number" placeholder="MCV (fl)">
-            <input class="form-control modern-input w-50 mt-2" id="wbc" type="number" placeholder="White blood cells">
-            <input class="form-control modern-input w-50 mt-2" id="neutrophils" type="number" placeholder="Neutrophils (%)">
-            <h5 class="mt-3">Iron parameters</h5>
-            <input class="form-control modern-input w-50 mt-2" id="ferritin" type="number" placeholder="Ferritin (mg/dl)">
-            <h5 class="mt-3">Renal</h5>
-            <input class="form-control modern-input w-50 mt-2" id="creatinin" type="number" placeholder="Creatinin (mg/dl)">
-            <input class="form-control modern-input w-50 mt-2" id="urea" type="number" placeholder="Urea (mg/dl)">
+        <div class="row">
+          <div class="col-sm mb-5">
+            <!--Empty-->
+            <div class="container-fluid">
+              <h4 class="mb-3">Symptoms</h4>
+              <h5 class="mt-2 mb-0">Abdominal pain</h5>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="one">
+                <label class="form-check-label" for="defaultCheck1">
+                  Right hypochondrium
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="two">
+                <label class="form-check-label" for="defaultCheck1">
+                  Epigastric region
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="three">
+                <label class="form-check-label" for="defaultCheck1">
+                  Left hypochondrium
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="four">
+                <label class="form-check-label" for="defaultCheck1">
+                  Right lumbar
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="five">
+                <label class="form-check-label" for="defaultCheck1">
+                  Umbilical region
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="six">
+                <label class="form-check-label" for="defaultCheck1">
+                  Left lumbar
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="seven">
+                <label class="form-check-label" for="defaultCheck1">
+                  Right iliac region
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="eight">
+                <label class="form-check-label" for="defaultCheck1">
+                  Hypogastrium
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="nine">
+                <label class="form-check-label" for="defaultCheck1">
+                  Left iliac region
+                </label>
+              </div>
+            </div>
+            </div>
+       
 
+          <div class="col-sm mb-5">
+            <div class="container-fluid">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="throatPain">
+                <label class="form-check-label" for="defaultCheck1">
+                  Throat pain
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="urinatingPain">
+                <label class="form-check-label" for="defaultCheck1">
+                  Urinating pain
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="diarrhea">
+                <label class="form-check-label" for="defaultCheck1">
+                  Diarrhea
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="vomiting">
+                <label class="form-check-label" for="defaultCheck1">
+                  Vomiting
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="fever">
+                <label class="form-check-label" for="defaultCheck1">
+                  Fever
+                </label>
+              </div>       
+              
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="cough">
+                <label class="form-check-label" for="defaultCheck1">
+                  Cough
+                </label>
+              </div>
+            </div>
           </div>
 
-          <div class="col-lg-5 d-lg-block">
+          <div class="col-sm mb-3">
             <div class="container-fluid">
-              <div class="col">
+
 
                 <h4>Patient</h4>
-                <input class="form-control modern-input mb-4" type="number" id="age" placeholder="Age">
+                <input class="form-control modern-input mb-4 w-50" type="number" id="age" placeholder="Age">
                 <h4>Rule out</h4>
 
                 <div class="form-check">
@@ -225,7 +314,7 @@
                   </label>
                 </div>
 
-              </div>
+
             </div>
           </div>
         </div>
@@ -239,115 +328,36 @@
       <!-- Content -->
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-12 col-lg-7 text-center text-lg-left">
-            <h4 class="mb-3">Symptoms</h4>
-            <h5 class="mt-2 mb-0">Abdominal pain</h5>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="one">
-              <label class="form-check-label" for="defaultCheck1">
-                Right hypochondrium
-              </label>
+          <div class="col-sm">
+            <div class="container-fluid">
+              <h4>Lab</h4>
+              <br>
+              <h5 class="mt-3">Hemogram</h5>
+              <input class="form-control modern-input w-50" id="hb" type="number" placeholder="Hemoglobin (gr/dl)">
+              <input class="form-control modern-input w-50 mt-2" id="mcv" type="number" placeholder="MCV (fl)">
+              <input class="form-control modern-input w-50 mt-2" id="wbc" type="number" placeholder="White blood cells">
+              <input class="form-control modern-input w-50 mt-2" id="neutrophils" type="number" placeholder="Neutrophils (%)">
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="two">
-              <label class="form-check-label" for="defaultCheck1">
-                Epigastric region
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="three">
-              <label class="form-check-label" for="defaultCheck1">
-                Left hypochondrium
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="four">
-              <label class="form-check-label" for="defaultCheck1">
-                Right lumbar
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="five">
-              <label class="form-check-label" for="defaultCheck1">
-                Umbilical region
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="six">
-              <label class="form-check-label" for="defaultCheck1">
-                Left lumbar
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="seven">
-              <label class="form-check-label" for="defaultCheck1">
-                Right iliac region
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="eight">
-              <label class="form-check-label" for="defaultCheck1">
-                Hypogastrium
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="nine">
-              <label class="form-check-label" for="defaultCheck1">
-                Left iliac region
-              </label>
-            </div>
-          
-            
-
           </div>
 
-          <div class="col-lg-5 d-lg-block">
+          <div class="col-sm">
             <div class="container-fluid">
               <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="throatPain">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Throat pain
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="urinatingPain">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Urinating pain
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="diarrhea">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Diarrhea
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="vomiting">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Vomiting
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="fever">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Fever
-                  </label>
-                </div>       
-                
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="cough">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Cough
-                  </label>
-                </div>
+                <h5 class="mt-3">Iron parameters</h5>
+                <input class="form-control modern-input w-50 mt-2" id="ferritin" type="number" placeholder="Ferritin (mg/dl)">
+                <h5 class="mt-3">Renal</h5>
+                <input class="form-control modern-input w-50 mt-2" id="creatinin" type="number" placeholder="Creatinin (mg/dl)">
+                <input class="form-control modern-input w-50 mt-2" id="urea" type="number" placeholder="Urea (mg/dl)">
               </div>
             </div>
           </div>
         </div>
         <!-- / .row -->
-        <button class="btn btn-primary float-right" id="check">Check</button>
-        <button class="btn btn-outline-secondary float-right" onclick="location.reload()" id="check">Reset</button>
+        <div class="container-fluid mt-5">
+          <button class="btn btn-primary float-right" id="check">Check</button>
+          <button class="btn btn-outline-secondary float-right" onclick="location.reload()" id="check">Reset</button>
+        </div>
+   
 
       </div>
    
