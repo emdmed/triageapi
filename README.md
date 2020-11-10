@@ -43,7 +43,7 @@ Access website at https://triageapi.herokuapp.com
 3) Send the modified object back to the API for scoring at -> https://triageapi.herokuapp.com/api/score
 
 4) Scoring response example:
-
+    *date in unix timestamp*
 ```javascript
     {
         "score": 30,
