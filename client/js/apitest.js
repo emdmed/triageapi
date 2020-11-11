@@ -469,7 +469,7 @@ $("body").on("click", "#check", function () {
     console.log(patient)
 
     $.ajax({
-        url: url.test + "/api/score",
+        url: url.prod + "/api/score",
         method: "POST",
         headers: { "Authorization": "linkedin" },
         contentType: "application/json",
