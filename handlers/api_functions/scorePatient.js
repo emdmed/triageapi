@@ -68,14 +68,14 @@ function diagnose(patient) {
     //apendicitis
     if (patient.symptoms.fever.isPresent === true && patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.abdominalPain.location.seven == true) {
         console.log("Apendicitis");
-        patient.score = 70;
+        patient.score = 85;
     }
 
     //colecistitis
     if (patient.symptoms.fever.isPresent === true && patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.abdominalPain.location.one == true) {
         console.log("Cholecystitis");
         let score = patient.score;
-        patient.score = score + 15;
+        patient.score = score + 10;
 
     } else if (patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.abdominalPain.location.one == true) {
         console.log("Cholecystitis, without fever");
