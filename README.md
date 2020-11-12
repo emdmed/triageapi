@@ -97,6 +97,18 @@ setPatientAge() : updates the patient's age. *Must* call it before sending the p
 ```
 updatePatientSymptoms() : sets desired symptom to true
 
+### Symptoms: 
+- fever
+- cough
+- abdominalPain
+- throatPain
+- runnyNose
+- urinatingPain
+- diarrhea
+- vomiting
+- pain
+- edema
+
 ```javascript
     triageAPI.setAbdominalPainLocation("rightHypochondium", true)
 ```
@@ -131,18 +143,21 @@ Response:
         "patientID": "47fca1fa9445c4f84390"
     }
 ```
+```javascript
+    triageAPI.setRuleOut("intensiveCareInLastMonth", true)
+```
 
-### Symptoms: 
-- fever
-- cough
-- abdominalPain
-- throatPain
-- runnyNose
-- urinatingPain
-- diarrhea
-- vomiting
-- pain
-- edema
+setRuleOut() : sets ruleOut keys to true or false
+
+### ruleOut keys
+- intensiveCareInLastMonth
+- cancer
+- immuneDefficiency
+- chemoInLast2Months
+- dyspnea
+- acuteMotorImpairment
+- chestPain
+- hematemesis
 
 # Pathologies taken in account for priorization:
 
@@ -163,6 +178,7 @@ Response:
 
 - [x] write labProcess diagnostics tests
 - [x] debug labprocess.js
+- [ ] expand triage.js library
 - [ ] add ions to apitest frontend
 - [ ] add more iron and anemia parameters to apitest frontend
 
