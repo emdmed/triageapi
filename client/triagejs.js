@@ -200,6 +200,7 @@ const triageAPI = {
     updatePatientSymptoms,
     scorePatient,
     setPatientAge,
+    setAbdominalPainLocation,
     patientObject
 }
 
@@ -256,4 +257,26 @@ function setPatientAge(age){
   }
 }
 
+function setAbdominalPainLocation(location, value){
+  let patientObjectExists = JSON.parse(localStorage.getItem("patientObject"));
+  if(location === "rightHypochondium"){
+    patientObjectExists.symptoms.abdominalPain.location.one = value;
+  } else if (location === "epigastricRegion"){
+    patientObjectExists.symptoms.abdominalPain.location.two = value;
+  } else if (location === "leftHypochondium"){
+    patientObjectExists.symptoms.abdominalPain.location.three = value;
+  } else if (location === "rightLumbar"){
+    patientObjectExists.symptoms.abdominalPain.location.four = value;
+  } else if (location === "umbilicalRegion"){
+    patientObjectExists.symptoms.abdominalPain.location.five = value;
+  } else if (location === "leftLumbar"){
+    patientObjectExists.symptoms.abdominalPain.location.six = value;
+  } else if (location === "rightIliacRegion"){
+    patientObjectExists.symptoms.abdominalPain.location.seven = value;
+  } else if (location === "hypogastrium"){
+    patientObjectExists.symptoms.abdominalPain.location.eight = value;
+  } else if (location === "leftIliacRegion"){
+    patientObjectExists.symptoms.abdominalPain.location.nine = value;
+  }
+}
 

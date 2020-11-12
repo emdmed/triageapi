@@ -79,7 +79,7 @@ Access website at https://triageapi.herokuapp.com
 
 # triage.js library
 
-### Use this library to easily update the patient object in steps
+## Use this library to easily update the patient object in steps
 *for chatbots or step by step forms*
 
 ```javascript
@@ -90,8 +90,40 @@ InitPatient() : creates the patient object in localstorage for easy modification
 ```javascript
    triageAPI.setPatientAge(35)
 ```
-setPatientAge() : updates the patient's age. *Must* call it before sending the patient to the API to avoid receiveing an error response. Patient without a set age cant be scored.
+setPatientAge() : updates the patient's age. *Must* call it before sending the patient to the API to avoid receiveing an error response. Patient without a set age can't be scored.
 
+```javascript
+    triageAPI.updatePatientSymptoms("fever", true)
+```
+updatePatientSymptoms() : sets desired symptom to true
+
+```javascript
+    triageAPI.setAbdominalPainLocation("rightHypochondium", true)
+```
+setAbdominalPainLocation() : sets desired abdominal zone to true or false for scoring
+
+Zones: 
+- rightHypochondium
+- epigastricRegion
+- leftHypochondium
+- rightLumbar
+- umbilicalRegion
+- leftLumbar
+- rightIliacRegion
+- hypogastrium
+- leftIliacRegion
+
+### Symptoms: 
+- fever
+- cough
+- abdominalPain
+- throatPain
+- runnyNose
+- urinatingPain
+- diarrhea
+- vomiting
+- pain
+- edema
 
 # Pathologies taken in account for priorization:
 
