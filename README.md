@@ -113,6 +113,23 @@ Zones:
 - hypogastrium
 - leftIliacRegion
 
+```javascript
+    let scored = triageAPI.scorePatient();
+    console.log(scored);
+```
+scorePatient() *synchronous ajax call* sends modified patient object to the API for scoring and returns a scored response
+
+Response: 
+```javascript
+    {
+        "score": 30,
+        "age": 50,
+        "covidAlert": false,
+        "date": 1604461368362,
+        "patientID": "47fca1fa9445c4f84390"
+    }
+```
+
 ### Symptoms: 
 - fever
 - cough
