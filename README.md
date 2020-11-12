@@ -82,6 +82,8 @@ Access website at https://triageapi.herokuapp.com
 ## Use this library to easily update the patient object in steps
 *for chatbots or step by step forms*
 
+<hr>
+
 ```javascript
     triageAPI.initPatient()
 ```
