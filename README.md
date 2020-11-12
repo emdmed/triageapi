@@ -83,6 +83,12 @@ Access website at https://triageapi.herokuapp.com
 
 <hr>
 
+Installation in HTML file
+```javascript
+  <script src="http://triageapi.herokuapp.com/triagejs"></script>
+```
+<hr>
+
 ```javascript
     triageAPI.initPatient()
 ```
