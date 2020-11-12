@@ -79,7 +79,7 @@ Access website at https://triageapi.herokuapp.com
 
 # triage.js library
 
-### Use this library to easyly update the patient object in steps
+### Use this library to easily update the patient object in steps
 *for chatbots or step by step forms*
 
 ```javascript
