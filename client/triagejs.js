@@ -267,7 +267,7 @@ function setAbdominalPainLocation(location, value) {
       patientObjectExists.symptoms.abdominalPain.location.one = value;
     } else if (location === "epigastricRegion") {
       patientObjectExists.symptoms.abdominalPain.location.two = value;
-    } else if (location === "leftHypochondium") {
+    } else if (location === "leftHypochondrium") {
       patientObjectExists.symptoms.abdominalPain.location.three = value;
     } else if (location === "rightLumbar") {
       patientObjectExists.symptoms.abdominalPain.location.four = value;

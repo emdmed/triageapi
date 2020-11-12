@@ -123,7 +123,7 @@ updatePatientSymptoms() : sets desired symptom to true
 <hr>
 
 ```javascript
-    triageAPI.setAbdominalPainLocation("rightHypochondium", true)
+    triageAPI.setAbdominalPainLocation("rightHypochondrium", true)
 ```
 setAbdominalPainLocation() : sets desired abdominal zone to true or false for scoring
 
