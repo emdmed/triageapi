@@ -74,7 +74,6 @@ Access website at https://triageapi.herokuapp.com
  "lab": {isPresent: true, values: "values here"}
  ```
 
-
 --------------------------------------------------------------------------
 
 # triage.js library
