@@ -113,11 +113,13 @@ Zones:
 - hypogastrium
 - leftIliacRegion
 
+
 ```javascript
     let scored = triageAPI.scorePatient();
     console.log(scored);
 ```
-scorePatient() *synchronous ajax call* sends modified patient object to the API for scoring and returns a scored response
+scorePatient() sends modified patient object to the API for scoring and returns a scored response
+*synchronous ajax call* 
 
 Response: 
 ```javascript
