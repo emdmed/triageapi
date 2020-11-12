@@ -94,6 +94,8 @@ InitPatient() : creates the patient object in localstorage for easy modification
 ```
 setPatientAge() : updates the patient's age. *Must* call it before sending the patient to the API to avoid receiveing an error response. Patient without a set age can't be scored.
 
+<hr>
+
 ```javascript
     triageAPI.updatePatientSymptoms("fever", true)
 ```
@@ -111,6 +113,8 @@ updatePatientSymptoms() : sets desired symptom to true
 - pain
 - edema
 
+<hr>
+
 ```javascript
     triageAPI.setAbdominalPainLocation("rightHypochondium", true)
 ```
@@ -127,6 +131,7 @@ Zones:
 - hypogastrium
 - leftIliacRegion
 
+<hr>
 
 ```javascript
     let scored = triageAPI.scorePatient();
@@ -145,6 +150,8 @@ Response:
         "patientID": "47fca1fa9445c4f84390"
     }
 ```
+<hr>
+
 ```javascript
     triageAPI.setRuleOut("intensiveCareInLastMonth", true)
 ```
@@ -160,6 +167,8 @@ setRuleOut() : sets ruleOut keys to true or false
 - acuteMotorImpairment
 - chestPain
 - hematemesis
+
+<hr>
 
 # Pathologies taken in account for priorization:
 
