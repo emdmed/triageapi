@@ -1,3 +1,5 @@
+var SCORED;
+
 let patientObject = {
     info: {
       gender: false,
@@ -194,14 +196,14 @@ let patientObject = {
   }
 
 const triageAPI = {
-    initPatientSymptoms,
+    initPatient,
     updatePatientSymptoms,
+    scorePatient,
+    setPatientAge,
     patientObject
 }
 
-
-
-function initPatientSymptoms(){
+function initPatient(){
     localStorage.setItem("patientObject", JSON.stringify(patientObject))
 }
 
@@ -220,4 +222,38 @@ function updatePatientSymptoms(objectkey, value){
         }
     }
 }
+
+function scorePatient(){
+    let patientObjectExists = JSON.parse(localStorage.getItem("patientObject"));
+    if(!patientObjectExists){
+        console.log("Error: there is no patient object to send in localstorage, call first initPatient()");
+    } else {
+        let done = $.ajax({
+            url: "http://triageapi.herokuapp.com/api/score",
+            method: "POST",
+            headers: {"Authorization": "linkedin"},
+            async: false,
+            contentType: "application/json",
+            data: localStorage.getItem("patientObject"),
+            success: function(res){
+                let data = res;
+                return data
+            }
+        })
+        return done.responseJSON
+    }
+}
+
+function setPatientAge(age){
+  let patientObjectExists = JSON.parse(localStorage.getItem("patientObject"));
+  if(!patientObjectExists){
+      console.log("ALERT: call initPatientSymptoms() before trying to update the stored patient object");
+  } else {
+      patientObjectExists.info.age = age
+      localStorage.setItem("patientObject", JSON.stringify(patientObjectExists))
+      console.log("<<Updated age>>");
+   
+  }
+}
+
 

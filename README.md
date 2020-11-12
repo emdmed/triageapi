@@ -68,15 +68,30 @@ Access website at https://triageapi.herokuapp.com
     }
 ```
 
-6) To send lab parameters:
+6) To send lab parameters in the patient object:
 
 ```javascript
  "lab": {isPresent: true, values: "values here"}
  ```
 
- in the patient object
 
 --------------------------------------------------------------------------
+
+# triage.js library
+
+### Use this library to easyly update the patient object in steps
+*for chatbots or step by step forms*
+
+```javascript
+    triageAPI.initPatient()
+```
+InitPatient() : creates the patient object in localstorage for easy modification through different pages. *Must* call it always before trying to update with the following methods. 
+
+```javascript
+   triageAPI.setPatientAge(35)
+```
+setPatientAge() : updates the patient's age. *Must* call it before sending the patient to the API to avoid receiveing an error response. Patient without a set age cant be scored.
+
 
 # Pathologies taken in account for priorization:
 
