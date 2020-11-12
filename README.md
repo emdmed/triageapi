@@ -87,6 +87,8 @@ Access website at https://triageapi.herokuapp.com
 ```
 InitPatient() : creates the patient object in localstorage for easy modification through different pages. *Must* call it always before trying to update with the following methods. 
 
+<hr>
+
 ```javascript
    triageAPI.setPatientAge(35)
 ```
