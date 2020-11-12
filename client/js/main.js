@@ -6,4 +6,4 @@ triageAPI.updatePatientSymptoms("sorongo", true)
 triageAPI.setRuleOut("intensiveCareInLastMonth", true)
 
 let scored = triageAPI.scorePatient();
-console.log(scored);
+console.log(scored); // scored patient object returned
