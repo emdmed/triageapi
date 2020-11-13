@@ -144,7 +144,7 @@ Zones:
     let scored = triageAPI.scorePatient();
     console.log(scored);
 ```
-scorePatient() sends modified patient object to the API for scoring and returns a scored response
+scorePatient() sends modified patient object to the API for scoring and returns a scored response <br>
 *synchronous ajax call* 
 
 Response: 
