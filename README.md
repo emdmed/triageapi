@@ -197,6 +197,7 @@ setRuleOut() : sets ruleOut keys to true or false
 - [x] write labProcess diagnostics tests
 - [x] debug labprocess.js
 - [ ] expand triage.js library
+- [ ] Unique and consistent patientID
 - [ ] add ions to apitest frontend
 - [ ] add more iron and anemia parameters to apitest frontend
 
