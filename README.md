@@ -186,7 +186,7 @@ The hashing can be done with sha256 or base64.
 ### With triage.js library
 
 ```javascript
-    triageAPI.setHashString("helloworld", "sha256")
+    triageAPI.setUniquePatientID("helloworld", "sha256")
 ```
 ### Without triage.js library
 

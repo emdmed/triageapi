@@ -204,7 +204,7 @@ const triageAPI = {
   setPatientAge,
   setAbdominalPainLocation,
   setRuleOut,
-  setHashString,
+  setUniquePatientID,
   patientObject
 }
 
@@ -304,7 +304,7 @@ function setRuleOut(key, value) {
   }
 }
 
-function setHashString(string, algo){
+function setUniquePatientID(string, algo){
   let patientObjectExists = JSON.parse(localStorage.getItem("patientObject"));
   if (!patientObjectExists) {
     console.log("ALERT: call initPatientSymptoms() before trying to update the stored patient object");
