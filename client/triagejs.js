@@ -234,7 +234,7 @@ function scorePatient() {
     console.log("Error: there is no patient object to send in localstorage, call first initPatient()");
   } else {
     let done = $.ajax({
-      url: "http://localhost:3000/api/score",
+      url: "http://triageapi.herokuapp.com/api/score",
       method: "POST",
       headers: { "Authorization": "linkedin" },
       async: false,
