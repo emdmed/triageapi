@@ -177,6 +177,27 @@ setRuleOut() : sets ruleOut keys to true or false
 
 <hr>
 
+## Unique ID generation
+Consistent hashed ID for patient tracking <br>
+
+Enabling uniqueID the scored response will return a hashed patientID, it will be always the same provided the same string parameter.
+The hashing can be done with sha256 or base64.
+
+### With triage.js library
+
+```javascript
+    triageAPI.setHashString("helloworld", "sha256")
+```
+### Without triage.js library
+
+```javascript
+    patientModel.info.hashString = "helloworld"
+```
+```javascript
+    patientModel.config = {uniqueIdEncryption: "sha256"}
+```
+<hr>
+
 # Pathologies taken in account for priorization:
 
 - Acute abdomen
