@@ -31,6 +31,7 @@ router.post("/score", authorizeHeader, function (req, res) {
         //check configs
         for(key in patient.config){
             if(key === "uniqueIdEncryption"){
+                console.log("unique encryption config key exists")
                 if(patient.info.hashString === false || patient.info.hashString === ""){
                     console.log("No hashString key in patient info")
                 } else {

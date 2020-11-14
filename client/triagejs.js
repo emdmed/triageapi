@@ -234,7 +234,7 @@ function scorePatient() {
     console.log("Error: there is no patient object to send in localstorage, call first initPatient()");
   } else {
     let done = $.ajax({
-      url: "http://triageapi.herokuapp.com/api/score",
+      url: "http://localhost:3000/api/score",
       method: "POST",
       headers: { "Authorization": "linkedin" },
       async: false,
@@ -316,7 +316,7 @@ function setUniquePatientID(string, algo){
         console.log("Error, in hashing options")
       } else {
         patientObjectExists.info.hashString = string;
-        patientObjectExists.config = {uniqueidEncryption: algo}
+        patientObjectExists.config = {uniqueIdEncryption: algo}
         localStorage.setItem("patientObject", JSON.stringify(patientObjectExists));
       }
     }
