@@ -10,7 +10,8 @@ var Patient = {
         geolocation: {
             lat: false,
             lng: false
-        }
+        },
+        hashString: false
     },
     ruleOut: {
         intensiveCareInLastMonth: false,
@@ -168,7 +169,8 @@ var Patient = {
                 V: false
             }
         }
-    }
+    },
+    config:{}
 }
 
 module.exports = Patient;

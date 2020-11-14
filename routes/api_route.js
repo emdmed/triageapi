@@ -18,8 +18,7 @@ router.post("/score", authorizeHeader, function (req, res) {
     let scoredPatient;
     let patient = req.body;
     let validatedPatient;
-
-    console.log("patient lab: ", patient.lab.values)
+    let uniqueID;
 
     try {
         validatedPatient = validatePatient(res, patient)
@@ -29,6 +28,21 @@ router.post("/score", authorizeHeader, function (req, res) {
 
     if (validatedPatient === true) {
 
+        //check configs
+        for(key in patient.config){
+            if(key === "uniqueIdEncryption"){
+                if(patient.info.hashString === false || patient.info.hashString === ""){
+                    console.log("No hashString key in patient info")
+                } else {
+                    try{
+                        uniqueID = api_handler.encryptUniquePatientID(patient.info.hashString, patient.config.uniqueIdEncryption)
+                    }catch(error){
+                        console.log("Error in trying to hash hashString in patient info")
+                    }
+                }
+            }
+        }
+
         try {
             scoredPatient = api_handler.score.scorePatient(patient);
         } catch (error) {
@@ -37,7 +51,7 @@ router.post("/score", authorizeHeader, function (req, res) {
 
         let sendPatient;
         try {
-            sendPatient = cleanPatientToSend(scoredPatient);
+            sendPatient = cleanPatientToSend(scoredPatient, uniqueID);
             console.log("send patient ", sendPatient)
             res.send(sendPatient).status(200).end();
         } catch (error) {
@@ -107,14 +121,22 @@ function validatePatient(res, patient) {
     }
 }
 
-function cleanPatientToSend(patient) {
+function cleanPatientToSend(patient, uniqueID) {
+
     let newPatient = {
         score: patient.score,
         age: patient.info.age,
         covidAlert: patient.info.covidAlert,
         date: new Date().getTime(),
-        patientID: crypto.randomBytes(10).toString("hex"),
         nearestHospital: patient.nearestHospital,
+    }
+
+    if(uniqueID){
+        console.log("Start UNIQUE ID")
+        newPatient.patientID = uniqueID;
+    } else {
+        console.log("NO UNIQUE ID")
+        newPatient.patientID = crypto.randomBytes(10).toString("hex");
     }
 
     if(patient.lab === false){
