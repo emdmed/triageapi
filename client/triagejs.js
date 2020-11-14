@@ -12,7 +12,8 @@ let patientObject = {
     geolocation: {
       lat: false,
       lng: false
-    }
+    },
+    hashString: false
   },
   ruleOut: {
     intensiveCareInLastMonth: false,
@@ -192,7 +193,8 @@ let patientObject = {
         }
       }
     }
-  }
+  },
+  config: {}
 }
 
 const triageAPI = {
@@ -202,6 +204,7 @@ const triageAPI = {
   setPatientAge,
   setAbdominalPainLocation,
   setRuleOut,
+  setHashString,
   patientObject
 }
 
@@ -298,5 +301,24 @@ function setRuleOut(key, value) {
     } else {
       console.log("Error: no such key exists in patient object -> " + key)
     } 
+  }
+}
+
+function setHashString(string, algo){
+  let patientObjectExists = JSON.parse(localStorage.getItem("patientObject"));
+  if (!patientObjectExists) {
+    console.log("ALERT: call initPatientSymptoms() before trying to update the stored patient object");
+  } else {
+    if(string === false || string === ""){
+      console.log("Error, in hashString")
+    } else {
+      if(algo === false || algo === ""){
+        console.log("Error, in hashing options")
+      } else {
+        patientObjectExists.info.hashString = string;
+        patientObjectExists.config = {uniqueidEncryption: algo}
+        localStorage.setItem("patientObject", JSON.stringify(patientObjectExists));
+      }
+    }
   }
 }
