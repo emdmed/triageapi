@@ -1,6 +1,5 @@
-const { create } = require("domain");
-
 var CHATGLOBALSTATE = 0;
+triageAPI.initPatient();
 var ruleOutArray = [
   "1 - I have been hospitalized in an intensive care unit in the last 2 months",
   "2 - I have been diagnosed with cancer",
@@ -10,7 +9,7 @@ var ruleOutArray = [
   "6 - It is difficult for me to speak and/or I have a limb or face paralysis",
   "7 - I have chest pain",
   "8 - I have been vomiting blood",
-  "if none of these statements are true, please write continue",
+  "if none of these statements are true, please write continue"
 ];
 var symptomsArray = [
   "1 - Fever",
@@ -41,15 +40,26 @@ function createChatbotChatbubble(text) {
             <p class="mb-0">${text}</p>
         </div>
     `);
-  }, 2000);
+
+    //scroll to bottom of chat
+    var objDiv = document.getElementById("main-card");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+  }, 500);
+
+
 }
 
 function createUserChatbubble(text) {
   $("#chat-area").append(`
-          <div class="chatbubble user">
-              <p class="mb-0">${text}</p>
-          </div>
-      `);
+    <div class="chatbubble user">
+        <p class="mb-0">${text}</p>
+    </div>
+  `);
+
+
+  var objDiv = document.getElementById("main-card");
+  objDiv.scrollTop = objDiv.scrollHeight;
 }
 
 setTimeout(() => {
@@ -62,6 +72,8 @@ $("body").on("click", "#sendchat", function () {
   let text = $(".user-textarea").val();
   createUserChatbubble(text);
   processResponse(text);
+  $(".user-textarea").val("");
+  score();
 });
 
 function processResponse(text) {
@@ -70,6 +82,7 @@ function processResponse(text) {
     if (hasNumber(text) === true) {
       console.log("CHATGLOBALSTATE", CHATGLOBALSTATE);
       //go to ruleout
+      triageAPI.setPatientAge(text)
       createChatbotChatbubble("Great");
       createChatbotChatbubble(
         "If one of the following statements are true, please answer with the corresponding number"
@@ -89,6 +102,7 @@ function processResponse(text) {
       chatbotDoesNotUnderstand();
     }
   } else if (CHATGLOBALSTATE === 1) {
+    CHATGLOBALSTATE = 2
     //resolve ruleout
     if (hasNumber(text) === true) {
       //end chatbot loop, patient ruled out
@@ -96,7 +110,6 @@ function processResponse(text) {
         "Please contact your personal medical doctor or go to the hospital ER"
       );
     } else if (text === "continue" || text === "Continue") {
-      CHATGLOBALSTATE = 2
       createChatbotChatbubble(
         "Alright, please select your symptoms from the following list. Please type the corresponding numbers separated by a space"
       );
@@ -108,14 +121,28 @@ function processResponse(text) {
           if (i < symptomsArray.length) myLoop(i);
         }, 2500);
       })(0);
+      
 
     } else {
       chatbotDoesNotUnderstand();
     }
-  } else if (CHATGLOBALSTATE === 2){
+  } else if (CHATGLOBALSTATE === 2) {
     processSymptoms(text)
+ 
+  } else if (CHATGLOBALSTATE === 3){
+    //abdominal pain details
+    if(hasNumber(text) === true){
+      CHATGLOBALSTATE = 4
+      processSymptoms(text)
+ 
+    } else {
+      chatbotDoesNotUnderstand();
+    }
+
+  } else if (CHATGLOBALSTATE === 4){
     createChatbotChatbubble("Scoring...")
-  }
+
+  } 
 }
 
 function hasNumber(myString) {
@@ -145,15 +172,21 @@ function processSymptoms(text) {
     receivedSymptomArray.forEach((element) => {
       if (element === "1") {
         console.log("Fever");
+        CHATGLOBALSTATE = 5
+        triageAPI.updatePatientSymptoms("fever", true);
       }
 
       if (element === "2") {
         console.log("Cough");
+        CHATGLOBALSTATE = 5
+        triageAPI.updatePatientSymptoms("cough", true);
       }
 
       if (element === "3") {
+        CHATGLOBALSTATE = 3
         //abdominal pain, ask where
         console.log("Abdominal pain");
+        updatePatientSymptoms("abdominalPain", true);
         createChatbotChatbubble(
           "In what part of the abdomen does it hurt the most?"
         );
@@ -169,21 +202,79 @@ function processSymptoms(text) {
 
       if (element === "4") {
         console.log("Throat pain");
+        updatePatientSymptoms("throatPain", true);
+        CHATGLOBALSTATE = 5
       }
 
       if (element === "5") {
         console.log("Urinating pain");
+        updatePatientSymptoms("urinatingPain", true);
+        CHATGLOBALSTATE = 5
       }
 
       if (element === "6") {
         console.log("Diarrhea");
+        updatePatientSymptoms("Diarrhea", true);
+        CHATGLOBALSTATE = 5
       }
 
       if (element === "7") {
         console.log("Vomiting");
+        updatePatientSymptoms("vomiting", true);
+        CHATGLOBALSTATE = 5
+      }
+
+      if(CHATGLOBALSTATE === 4){
+        receivedSymptomArray.forEach(element => {
+          if(element === "1"){
+            triageAPI.setAbdominalPainLocation("rightHypochondium", true)
+          }
+
+          if(element === "2"){
+            triageAPI.setAbdominalPainLocation("epigastricRegion", true)
+          }
+
+          if(element === "3"){
+            triageAPI.setAbdominalPainLocation("leftHypochondium", true)
+          }
+
+          if(element === "4"){
+            triageAPI.setAbdominalPainLocation("rightLumbar", true)
+          }
+
+          if(element === "5"){
+            triageAPI.setAbdominalPainLocation("umbilicalRegion", true)
+          }
+
+          if(element === "6"){
+            triageAPI.setAbdominalPainLocation("leftLumbar", true)
+          }
+
+          if(element === "7"){
+            triageAPI.setAbdominalPainLocation("rightIliacRegion", true)
+          }
+
+          if(element === "8"){
+            triageAPI.setAbdominalPainLocation("hypogastrium", true)
+          }
+
+          if(element === "9"){
+            triageAPI.setAbdominalPainLocation("leftIliacRegion", true)
+          }
+
+          CHATGLOBALSTATE === 5
+        
+        })
       }
     });
   } else {
     chatbotDoesNotUnderstand();
+  }
+}
+
+function score(){
+  if(CHATGLOBALSTATE === 5){
+    let score = triageAPI.scorePatient();
+    createChatbotChatbubble(JSON.stringify(score))
   }
 }

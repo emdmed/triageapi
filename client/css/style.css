@@ -2024,28 +2024,29 @@ CONTACT PAGE
 
 .chat-area{
   height: 80vh;
-  border: none;
 }
 
 .chatbubble{
   border-style: solid;
   border-width: 1px;
-  padding: 8px;
+  padding: 13px;
   margin-bottom: 8px;
 }
 
 .chatbot{
   border-color: #3b7ba0;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  background-color: #e5f0f7;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .user{
   border-color: rgb(77, 158, 90);
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  background-color:  rgb(223, 243, 226);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .user-textarea{
@@ -2053,9 +2054,19 @@ CONTACT PAGE
   border-right: none;
   border-bottom: none;
   padding-top: 8px;
-  
+  position: relative;
+  margin-bottom: 0px;
 }
 
 .user-textarea:focus {
   outline: none !important;
+}
+
+.main-card{
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.user-interface{
+ 
 }
