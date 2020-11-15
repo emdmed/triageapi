@@ -2021,3 +2021,41 @@ CONTACT PAGE
             transform: rotate(360deg);
   }
 }
+
+.chat-area{
+  height: 80vh;
+  border: none;
+}
+
+.chatbubble{
+  border-style: solid;
+  border-width: 1px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.chatbot{
+  border-color: #3b7ba0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.user{
+  border-color: rgb(77, 158, 90);
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.user-textarea{
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  padding-top: 8px;
+  
+}
+
+.user-textarea:focus {
+  outline: none !important;
+}
