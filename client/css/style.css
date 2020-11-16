@@ -2050,12 +2050,11 @@ CONTACT PAGE
 }
 
 .user-textarea{
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
   padding-top: 8px;
   position: relative;
   margin-bottom: 0px;
+  border: none;
+  border-color: grey;
 }
 
 .user-textarea:focus {
@@ -2065,8 +2064,6 @@ CONTACT PAGE
 .main-card{
   height: 60vh;
   overflow-y: auto;
+  max-width: 500px;
 }
 
-.user-interface{
- 
-}
