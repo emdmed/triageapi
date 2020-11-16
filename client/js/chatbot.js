@@ -50,6 +50,43 @@ function createChatbotChatbubble(text) {
 
 }
 
+function createFinalChatbotChatbubble(object) {
+  let code;
+  let wait;
+  let color;
+  let white;
+  if(object.score <= 30){
+    code = "Green"
+    wait = "2 hours"
+    color = "bg-success border-success"
+  } else if (object.score > 30 && object.score <= 70){
+    code = "Yellow"
+    wait = "1 hour"
+    color = "bg-warning border-warning"
+  } else if (object.score > 70){
+    code = "Red"
+    wait = "5 minutes"
+    color = "bg-danger border-danger"
+    white = "text-white"
+  }
+
+  setTimeout(() => {
+    $("#chat-area").append(`
+        <div class="chatbubble ${color}">
+            <h5 class="mb-0 ${white}">Your priority is ${code}</h5>
+            <p class="${white}">Your average waiting time is ${wait}</p>
+        </div>
+    `);
+
+    //scroll to bottom of chat
+    var objDiv = document.getElementById("main-card");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+  }, 500);
+
+
+}
+
 function createUserChatbubble(text) {
   $("#chat-area").append(`
     <div class="chatbubble user">
@@ -70,6 +107,8 @@ setTimeout(() => {
 
 $("body").on("click", "#sendchat", function () {
   let text = $(".user-textarea").val();
+  //disable button
+  $(this).attr("disabled", true)
   createUserChatbubble(text);
   processResponse(text);
   $(".user-textarea").val("");
@@ -93,6 +132,7 @@ function processResponse(text) {
           createChatbotChatbubble(ruleOutArray[i]);
           ++i;
           if (i < ruleOutArray.length) myLoop(i);
+          if(i === ruleOutArray.length) $("#sendchat").attr("disabled", false)
         }, 2500);
       })(0);
 
@@ -119,6 +159,7 @@ function processResponse(text) {
           createChatbotChatbubble(symptomsArray[i]);
           ++i;
           if (i < symptomsArray.length) myLoop(i);
+          if(i === symptomsArray.length) $("#sendchat").attr("disabled", false)
         }, 2500);
       })(0);
       
@@ -196,6 +237,7 @@ function processSymptoms(text) {
             createChatbotChatbubble(abdominalZones[i]);
             ++i;
             if (i < abdominalZones.length) myLoop(i);
+            if(i === abdominalZones.length) $("#sendchat").attr("disabled", false)
           }, 2500);
         })(0);
       }
@@ -276,6 +318,6 @@ function score(){
   if(CHATGLOBALSTATE === 5){
     createChatbotChatbubble("Scoring...")
     let score = triageAPI.scorePatient();
-    createChatbotChatbubble(JSON.stringify(score))
+    createFinalChatbotChatbubble(score)
   }
 }
