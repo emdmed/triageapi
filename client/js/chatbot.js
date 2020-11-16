@@ -274,6 +274,7 @@ function processSymptoms(text) {
 
 function score(){
   if(CHATGLOBALSTATE === 5){
+    createChatbotChatbubble("Scoring...")
     let score = triageAPI.scorePatient();
     createChatbotChatbubble(JSON.stringify(score))
   }
