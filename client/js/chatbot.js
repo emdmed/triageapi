@@ -3,13 +3,13 @@ triageAPI.initPatient();
 var ruleOutArray = [
   "1 - I have been hospitalized in an intensive care unit in the last 2 months",
   "2 - I have been diagnosed with cancer",
-  "3 - I have been diagnosed an immune defficiency",
+  "3 - I have been diagnosed with an immune defficiency",
   "4 - I have had chemotherapy in the last 2 months",
   "5 - I have shortness of breath right now",
   "6 - It is difficult for me to speak and/or I have a limb or face paralysis",
   "7 - I have chest pain",
   "8 - I have been vomiting blood",
-  "if none of these statements are true, please write continue"
+  "if none of these statements are true, please write: continue"
 ];
 var symptomsArray = [
   "1 - Fever",
