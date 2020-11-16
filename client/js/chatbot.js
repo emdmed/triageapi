@@ -59,6 +59,7 @@ function createFinalChatbotChatbubble(object) {
     code = "Green"
     wait = "2 hours"
     color = "bg-success border-success"
+    white = "text-white"
   } else if (object.score > 30 && object.score <= 70){
     code = "Yellow"
     wait = "1 hour"
