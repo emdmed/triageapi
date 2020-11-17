@@ -39,6 +39,7 @@ function createChatbotChatbubble(text) {
         <div class="chatbubble chatbot">
             <p class="mb-0">${text}</p>
         </div>
+   
     `);
 
     //scroll to bottom of chat
@@ -55,16 +56,16 @@ function createFinalChatbotChatbubble(object) {
   let wait;
   let color;
   let white;
-  if(object.score <= 30){
+  if (object.score <= 30) {
     code = "Green"
     wait = "2 hours"
     color = "bg-success border-success"
     white = "text-white"
-  } else if (object.score > 30 && object.score <= 70){
+  } else if (object.score > 30 && object.score <= 70) {
     code = "Yellow"
     wait = "1 hour"
     color = "bg-warning border-warning"
-  } else if (object.score > 70){
+  } else if (object.score > 70) {
     code = "Red"
     wait = "5 minutes"
     color = "bg-danger border-danger"
@@ -90,11 +91,10 @@ function createFinalChatbotChatbubble(object) {
 
 function createUserChatbubble(text) {
   $("#chat-area").append(`
-    <div class="chatbubble user">
+    <div class="chatbubble user text-right">
         <p class="mb-0">${text}</p>
     </div>
   `);
-
 
   var objDiv = document.getElementById("main-card");
   objDiv.scrollTop = objDiv.scrollHeight;
@@ -133,7 +133,7 @@ function processResponse(text) {
           createChatbotChatbubble(ruleOutArray[i]);
           ++i;
           if (i < ruleOutArray.length) myLoop(i);
-          if(i === ruleOutArray.length) $("#sendchat").attr("disabled", false)
+          if (i === ruleOutArray.length) $("#sendchat").attr("disabled", false)
         }, 2500);
       })(0);
 
@@ -160,31 +160,31 @@ function processResponse(text) {
           createChatbotChatbubble(symptomsArray[i]);
           ++i;
           if (i < symptomsArray.length) myLoop(i);
-          if(i === symptomsArray.length) $("#sendchat").attr("disabled", false)
+          if (i === symptomsArray.length) $("#sendchat").attr("disabled", false)
         }, 2500);
       })(0);
-      
+
 
     } else {
       chatbotDoesNotUnderstand();
     }
   } else if (CHATGLOBALSTATE === 2) {
     processSymptoms(text)
- 
-  } else if (CHATGLOBALSTATE === 3){
+
+  } else if (CHATGLOBALSTATE === 3) {
     //abdominal pain details
-    if(hasNumber(text) === true){
+    if (hasNumber(text) === true) {
       CHATGLOBALSTATE = 4
       processSymptoms(text)
- 
+
     } else {
       chatbotDoesNotUnderstand();
     }
 
-  } else if (CHATGLOBALSTATE === 4){
+  } else if (CHATGLOBALSTATE === 4) {
     createChatbotChatbubble("Scoring...")
 
-  } 
+  }
 }
 
 function hasNumber(myString) {
@@ -200,11 +200,18 @@ function chatbotDoesNotUnderstand() {
   let random = Math.floor(Math.random() * res.length);
   console.log("random", random);
 
-  $("#chat-area").append(`
+  setTimeout(() => {
+    $("#chat-area").append(`
     <div class="chatbubble chatbot">
         <p class="mb-0">${res[random]}</p>
     </div>
-`);
+  `);
+
+    $("#sendchat").attr("disabled", false);
+  }, 500);
+
+
+
 }
 
 function processSymptoms(text) {
@@ -238,7 +245,7 @@ function processSymptoms(text) {
             createChatbotChatbubble(abdominalZones[i]);
             ++i;
             if (i < abdominalZones.length) myLoop(i);
-            if(i === abdominalZones.length) $("#sendchat").attr("disabled", false)
+            if (i === abdominalZones.length) $("#sendchat").attr("disabled", false)
           }, 2500);
         })(0);
       }
@@ -267,46 +274,46 @@ function processSymptoms(text) {
         CHATGLOBALSTATE = 5
       }
 
-      if(CHATGLOBALSTATE === 4){
+      if (CHATGLOBALSTATE === 4) {
         receivedSymptomArray.forEach(element => {
-          if(element === "1"){
+          if (element === "1") {
             triageAPI.setAbdominalPainLocation("rightHypochondium", true)
           }
 
-          if(element === "2"){
+          if (element === "2") {
             triageAPI.setAbdominalPainLocation("epigastricRegion", true)
           }
 
-          if(element === "3"){
+          if (element === "3") {
             triageAPI.setAbdominalPainLocation("leftHypochondium", true)
           }
 
-          if(element === "4"){
+          if (element === "4") {
             triageAPI.setAbdominalPainLocation("rightLumbar", true)
           }
 
-          if(element === "5"){
+          if (element === "5") {
             triageAPI.setAbdominalPainLocation("umbilicalRegion", true)
           }
 
-          if(element === "6"){
+          if (element === "6") {
             triageAPI.setAbdominalPainLocation("leftLumbar", true)
           }
 
-          if(element === "7"){
+          if (element === "7") {
             triageAPI.setAbdominalPainLocation("rightIliacRegion", true)
           }
 
-          if(element === "8"){
+          if (element === "8") {
             triageAPI.setAbdominalPainLocation("hypogastrium", true)
           }
 
-          if(element === "9"){
+          if (element === "9") {
             triageAPI.setAbdominalPainLocation("leftIliacRegion", true)
           }
 
           CHATGLOBALSTATE === 5
-        
+
         })
       }
     });
@@ -315,8 +322,8 @@ function processSymptoms(text) {
   }
 }
 
-function score(){
-  if(CHATGLOBALSTATE === 5){
+function score() {
+  if (CHATGLOBALSTATE === 5) {
     createChatbotChatbubble("Scoring...")
     let score = triageAPI.scorePatient();
     createFinalChatbotChatbubble(score)
