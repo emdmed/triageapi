@@ -2031,6 +2031,7 @@ CONTACT PAGE
   border-width: 1px;
   padding: 13px;
   margin-bottom: 8px;
+  display: table;
 }
 
 .chatbot{
