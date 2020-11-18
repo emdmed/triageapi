@@ -157,6 +157,21 @@ Response:
         "patientID": "47fca1fa9445c4f84390"
     }
 ```
+
+<hr>
+
+### Scoring Example
+
+```javascript
+    triageAPI.initPatient();
+    triageAPI.setUniquePatientID("thisisanuniqueid", "sha256");
+    triageAPI.setPatientAge(45);
+    triageAPI.updatePatientSymptoms("fever", true);
+    triageAPI.updatePatientSymptoms("cough", true);
+    let scored = triageAPI.scorePatient();
+    console.log(scored);
+```
+
 <hr>
 
 ```javascript
