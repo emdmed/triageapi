@@ -55,7 +55,7 @@ var Patient = {
                 five: false,
                 six: false,
                 seven: false,
-                eight: false, 
+                eight: false,
                 nine: false
             }
         },
@@ -65,7 +65,7 @@ var Patient = {
             durationInDays: null
         },
         runnyNose: {
-            isPresent: false, 
+            isPresent: false,
             sputum: {
                 color: {
                     isGreen: false,
@@ -99,10 +99,35 @@ var Patient = {
         },
         vomiting: {
             isPresent: false
+        },
+        pain: {
+            isPresent: false,
+            location: {
+                rightLeg: false,
+                leftLeg: false,
+                rightArm: false,
+                leftArm: false,
+                head: false,
+                neck: false,
+                lumbar: false
+            }
+        },
+        edema: {
+            isPresent: false,
+            location: { rightLeg: false, leftLeg: false, face: false }
+        },
+        headache: {
+            isPresent: false,
+            characteristics: {
+                intensity: false,
+                pulsating: false,
+                wholeHead: false,
+                neckPain: false
+            }
         }
     },
     lab: {
-        hemograma : {
+        hemograma: {
             hto: false,
             hb: false,
             gb: {
@@ -133,7 +158,7 @@ var Patient = {
         },
         ionograma: {
             na: false,
-            k: false, 
+            k: false,
             cl: false,
             p: false,
             mg: false
@@ -150,8 +175,8 @@ var Patient = {
             bt: false,
             bd: false,
             bi: false,
-            fal: false, 
-            tgo: false, 
+            fal: false,
+            tgo: false,
             tgp: false,
             amilasa: false,
             lipasa: false,
@@ -170,7 +195,7 @@ var Patient = {
             }
         }
     },
-    config:{}
+    config: {}
 }
 
 module.exports = Patient;

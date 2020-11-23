@@ -3,7 +3,7 @@ const router = express.Router();
 const api_handler = require("../handlers/api_handler");
 const db_handler = require("../handlers/db_handler");
 const api_key = "linkedin";
-const patient_model = require("../patient_model.json");
+const patient_model = require("../patient_model");
 const config = require("../config");
 const crypto = require("crypto");
 
