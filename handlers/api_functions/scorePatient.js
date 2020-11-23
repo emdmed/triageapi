@@ -59,19 +59,19 @@ function diagnose(patient) {
 
     //Abdominal 
 
-    //Abdomen agudo medico/quirurgico (esto tiene que estar antes que los otros cuadros abdominales)
+    //Acute abdomen (this must be before all other abdominal cases)
     if (patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.fever.isPresent === true) {
         console.log("Acute abdomen");
         patient.score = 70;
     }
 
-    //apendicitis
+    //Appendicitis
     if (patient.symptoms.fever.isPresent === true && patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.abdominalPain.location.seven == true) {
         console.log("Apendicitis");
         patient.score = 85;
     }
 
-    //colecistitis
+    //Cholecystitis
     if (patient.symptoms.fever.isPresent === true && patient.symptoms.abdominalPain.isPresent === true && patient.symptoms.abdominalPain.location.one == true) {
         console.log("Cholecystitis");
         let score = patient.score;
@@ -123,26 +123,26 @@ function diagnose(patient) {
         patient.score = score + 10;
     }
 
-    //Generalidades urgentes (escapan ruleOut inicial, no son tan urgentes pero tienen que ser vistos lo antes posible)
-    //TVP
+    //Urgent generalities (not top urgency but need to be prioritized before anything else)
+    //DVT
     if (patient.symptoms.edema.isPresent === true && patient.symptoms.edema.location.rightLeg === true || patient.symptoms.edema.isPresent === true && patient.symptoms.edema.location.leftLeg === true) {
         console.log("DVT");
         patient.score = 85;
     }
 
-    //ICC descompensada
+    //Heart failure
     if (patient.symptoms.edema.isPresent === true && patient.symptoms.edema.location.rightLeg === true && patient.symptoms.edema.location.leftLeg === true && patient.symptoms.cough.isPresent === true) {
         console.log("Heart failure");
         patient.score = score + 20;
     }
 
-    //Alergia
+    //Alergy
     if (patient.symptoms.cough.isPresent === true && patient.symptoms.edema.isPresent === true && patient.symptoms.edema.location.face) {
         console.log("Alergies");
         patient.score = 75;
     }
 
-    //Generalidades de prioridad variable
+    //Variable priority generalities
     //Gastroenteritis
     if (patient.symptoms.fever.isPresent === true && patient.symptoms.diarrhea.isPresent === true) {
         console.log("Enteritis/gastroenteritis")
@@ -153,6 +153,18 @@ function diagnose(patient) {
     } else if (patient.symptoms.diarrhea.isPresent === true && patient.symptoms.vomiting.isPresent === true) {
         console.log("Intoxication, dehydration risk");
         patient.score = score + 19; //menos puntaje que fiebre aproposito para que el que está febril pase primero y le bajen la fiebre
+    }
+
+    //Headache
+    if (patient.symptoms.headache.isPresent === true){
+        //Tensional headache
+        if (patient.symptoms.headache.characteristics.intensity === 10 || patient.symptoms.headache.characteristics.intensity === 9){
+            patient.score = 90
+        } else if (patient.symptoms.headache.characteristics.intensity < 9 && patient.symptoms.headache.characteristics.intensity > 5){
+            patient.score + 15
+        } else {
+            patient.score + 5
+        }
     }
 
     return patient;
