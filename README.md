@@ -230,12 +230,13 @@ The hashing can be done with sha256 or base64.
 
 # TODO short term
 
-- [x] write labProcess diagnostics tests
-- [x] debug labprocess.js
+- [ ] write unit test for headache
 - [ ] expand triage.js library
-- [ ] Unique and consistent patientID
 - [ ] add ions to apitest frontend
 - [ ] add more iron and anemia parameters to apitest frontend
+- [x] write labProcess diagnostics tests
+- [x] debug labprocess.js
+- [x] Unique and consistent patientID
 
 # TODO long term
 
