@@ -1,7 +1,5 @@
 console.log("loaded")
 
-triageAPI.requestEbadgeDataFromLocalstorage()
-
 var insurance
 
 $("body").on("click", "#saveEbadge", function(){
