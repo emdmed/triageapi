@@ -18,6 +18,8 @@ app.use(express.static(__dirname + "/client"));
 //ROUTES
 const api_route = require("./routes/api_route");
 app.use("/api", api_route);
+const ebadge_route = require("./routes/ebadgeRoute");
+app.use("/ebadge", ebadge_route);
 
 app.get("/", function(req, res){
     res.sendFile("index.html")

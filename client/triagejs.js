@@ -205,7 +205,9 @@ const triageAPI = {
   setAbdominalPainLocation,
   setRuleOut,
   setUniquePatientID,
-  patientObject
+  patientObject,
+  requestEbadgeDataFromLocalstorage,
+  saveEbadgeDataInBrowser
 }
 
 function initPatient() {
@@ -321,4 +323,18 @@ function setUniquePatientID(string, algo){
       }
     }
   }
+}
+
+function requestEbadgeDataFromLocalstorage(){
+  let data = JSON.parse(localStorage.getItem("EBADGE"))
+  if(data){
+    return data
+  } else {
+    alert("No ebadge found")
+    return false
+  }
+}
+
+function saveEbadgeDataInBrowser(data){
+  localStorage.set("EBADGE", JSON.stringify(data))
 }
