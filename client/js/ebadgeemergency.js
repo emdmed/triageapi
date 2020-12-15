@@ -14,7 +14,7 @@ if(done.id === "undefined" && done.insurance === "undefined"){
         done.insurance = storedEbadge.insurance
         everythingok = true
     } else {
-        alert("ERROR, something went wrong. No stored Ebadge credentials and no URL params")
+        alert("No data found, you will be redirected to create your badge")
         window.location.href = "http://triageapi.herokuapp.com/ebadge";
     }
 
