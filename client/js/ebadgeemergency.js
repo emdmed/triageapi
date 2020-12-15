@@ -1,5 +1,26 @@
 var geolocation
 var payload
+let storedEbadge = JSON.parse(localStorage.getItem("EBADGE"))
+let done = getParams()
+let everythingok = false
+
+console.log("PARAMS ", done)
+
+if(done.id === "undefined" && done.insurance === "undefined"){
+
+    if(storedEbadge){
+        console.log("universal EBADGE")
+        done.id = storedEbadge.id
+        done.insurance = storedEbadge.insurance
+        everythingok = true
+    } else {
+        alert("ERROR, something went wrong. No stored Ebadge credentials and no URL params")
+    }
+
+} else {
+    console.log("Personal Ebadge")
+    everythingok = true
+}
 
 getLocation()
 
@@ -35,29 +56,58 @@ function showPosition(position) {
   }
 }
 
-let done = getParams()
+
 
 $("#patient").text(done.id)
 $("#insurance").text(done.insurance)
 
 $("body").on("click", ".emerbutton", async function(){
-    let text = $(this).text();
+
+    if(everythingok === true){
+        let text = $(this).text();
 
 
-    payload = {
-        patientid: done.id,
-        insurance: done.insurance,
-        emergency: text,
-        geolocation: geolocation
+        payload = {
+            patientid: done.id,
+            insurance: done.insurance,
+            emergency: text,
+            geolocation: geolocation
+        }
+    
+        console.log(payload)
+    
+        $("#numbermodal").modal("show")
+    } else {
+        alert("CRITICAL ERROR")
     }
 
-    console.log(payload)
-
-    $("#numbermodal").modal("show")
 })
 
 $("body").on("click", "#send", function(){
-    payload.phone = $("#phone").val().trim()
+    if(everythingok === true){
+        payload.phone = $("#phone").val().trim()
 
-    console.log("send payload", payload)
+        console.log("send payload", payload)
+        $("#numbermodal").modal("hide")
+        //render wait and be contacted
+        $("#maindiv").empty();
+        $("#maindiv").append(`
+        
+            <div class="card bg-danger text-white w-100">
+            
+                <div class="card-body bg-danger text-white w-100 text-center">
+                
+                    <h2 class="text-white">Help is on the way</h2>
+                    <h5 class="text-white">You will be contacted at</h5>
+                    <h5 class="text-white">${payload.phone}</h5>
+                
+                </div>
+            
+            </div>
+        
+        `);
+    } else {
+        alert("CRITICAL ERROR")
+    }
+
 })

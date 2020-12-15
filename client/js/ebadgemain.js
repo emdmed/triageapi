@@ -19,11 +19,11 @@ $("body").on("click", "#saveEbadge", function(){
     }
 
     localStorage.setItem("EBADGE", JSON.stringify(ebadgeData))
-    new QRCode(document.getElementById("renderPersonalEbadge"), `http://localhost:3000/ebadge/em?id=${ebadgeData.id}&insurance=${ebadgeData.insurance}`);
-
+    new QRCode(document.getElementById("renderPersonalEbadge"), `http://triageapi.herokuapp.com/ebadge/em?id=${ebadgeData.id}&insurance=${ebadgeData.insurance}`);
+    new QRCode(document.getElementById("renderUniversalEbadge"), `http://triageapi.herokuapp.com/ebadge/em`);
     $("#qrsdiv").show("fast")
-
-    alert("EBADGE saved!")
     
 })
+
+
 

@@ -31,7 +31,7 @@
     />
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
@@ -176,12 +176,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <h5>Your unique id</h5>
+            <div class="col-md">
+                <h5 class="mt-4">Your Health Insurance number or id</h5>
                 <input type="text" id="uniqueID" placeholder="Write here..." class="form-control w-50">
             </div>
-            <div class="col">
-                <h5>Your Healthcare Insurance</h5>
+            <div class="col-md">
+                <h5 class="mt-4">Your Healthcare Insurance</h5>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="exampleRadios" id="hcinsurance1" value="hcinsurance1">
                     <label class="form-check-label" for="exampleRadios1">
@@ -206,10 +206,15 @@
             <button class="btn btn-success btn-block mt-4" id="saveEbadge">Save Ebadge in your Browser</button>
         </div>
         <div class="row mt-4" style="display: none;" id="qrsdiv">
-            <div class="col">
+            <div class="col text-center">
                 <h2 class="mt-4 mb-2">Your Personal Ebadge</h2>
-                <p>Save it, print it and display it. If someone scans it, that person will be able to request assistance for you in case you can't</p>
+                <p>Save it, print it and display it. If someone scans it, that person will be able to request assistance for you in case you are unable to</p>
                 <div id="renderPersonalEbadge"></div>
+            </div>
+            <div class="col text-center mx-auto">
+              <h2 class="mt-4 mb-2">Universal Ebadge</h2>
+              <p>Save it, print it and display it. If someone scans it and has the ebadge data stored in their browser they will be able to request assistance for themselves</p>
+              <div id="renderUniversalEbadge" class="text-center mx-auto"></div>
             </div>
         </div>
       
