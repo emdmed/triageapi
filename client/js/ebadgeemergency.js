@@ -15,6 +15,7 @@ if(done.id === "undefined" && done.insurance === "undefined"){
         everythingok = true
     } else {
         alert("ERROR, something went wrong. No stored Ebadge credentials and no URL params")
+        window.location = "ebadge.html"
     }
 
 } else {
