@@ -12,7 +12,7 @@ $("body").on("click", "#saveEbadge", function(){
     }
 
     const ebadgeData = {
-        id: $("#uniqueID").val().trim(),
+        id: $("#uniqueID").val().trim().replace(/ /g, ""),
         insurance: insurance
     }
 
