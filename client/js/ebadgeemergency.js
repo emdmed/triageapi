@@ -101,7 +101,8 @@ $("body").on("click", "#send", function(){
                     <h2 class="text-white">Help is on the way</h2>
                     <h5 class="text-white">You will be contacted at</h5>
                     <h5 class="text-white">${payload.phone}</h5>
-                
+                    <h5>Your geolocation</h5>
+                    <h4>lat: ${payload.geolocation.lat} lng: ${payload.geolocation.lng}</h4>
                 </div>
             
             </div>
