@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const crypto = require("crypto");
+
 const api_handler = require("../handlers/api_handler");
 const db_handler = require("../handlers/db_handler");
+
 const api_key = "linkedin";
 const patient_model = require("../patient_model");
 const config = require("../config");
-const crypto = require("crypto");
+
 
 router.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -14,16 +17,15 @@ router.use((req, res, next) => {
 })
 
 router.post("/score", authorizeHeader, function (req, res) {
-    console.log("Authorized, scoring...");
     let scoredPatient;
     let patient = req.body;
     let validatedPatient;
     let uniqueID;
 
     try {
-        validatedPatient = validatePatient(res, patient)
+        validatedPatient = api_handler.validatePatient(patient, crypto)
     } catch (error) {
-        res.send({ message: "Authorization error" }).status(200).end();
+        res.send({ message: "Authorization error" }, validatePatient).status(200).end();
     }
 
     if (validatedPatient === true) {

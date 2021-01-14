@@ -5,7 +5,7 @@ const patientModelNoRuleOut = require("./patientModelNoRuleOut")
 
 test("Check ruleout only", ()=>{
     //score must be always 100
-    let patient = patientModelRuleOut;
+    let patient = JSON.parse(JSON.stringify(patientModelRuleOut));;
     expect(score.ruleOut(patient)).toMatchObject({
         score: 100
     })

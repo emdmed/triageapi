@@ -4,7 +4,7 @@ const patientModelNoRuleOut = require("./patientModelNoRuleOut");
 
 test("Find nearest hospital", () => {
 
-    let patient = patientModelNoRuleOut;
+    let patient = JSON.parse(JSON.stringify(patientModelNoRuleOut));;
     patient.info.geolocation.lat = -34.671969;
     patient.info.geolocation.lng = -58.394289;
     

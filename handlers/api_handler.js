@@ -1,10 +1,13 @@
 const score = require("./api_functions/scorePatient");
 const geolocate = require("./api_functions/findGeolocation");
 const labprocess = require("./api_functions/labprocess");
+const validatedPatient = require("./api_functions/validatePatient")
+
 const crypto = require("crypto");
 
 const api_handler = {
     score,
+    validatedPatient,
     nearestHospital: geolocate.locateNearestHospital,
     labprocess,
     encryptUniquePatientID
