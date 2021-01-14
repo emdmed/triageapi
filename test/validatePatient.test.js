@@ -6,8 +6,14 @@ test("Check no age patient", ()=>{
     let patient = JSON.parse(JSON.stringify(patientModel));
     patient.info.age = false
 
-    expect(validatePatient("res", patient)).toMatchObject(
-        { message: "Missing patient age" }
-    )
+    expect(()=>{validatePatient(patient)}).toThrow(Error("Age error"))
+
+})
+
+test("Check no patient object", ()=>{
+    //score must be always 100
+    let patient
+
+    expect(()=>{validatePatient(patient)}).toThrow(Error("No patient object"))
 
 })

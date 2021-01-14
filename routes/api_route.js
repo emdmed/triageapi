@@ -7,8 +7,6 @@ const api_handler = require("../handlers/api_handler");
 const api_key = "linkedin";
 const patient_model = require("../patient_model");
 
-
-
 router.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
@@ -29,11 +27,11 @@ router.post("/score", authorizeHeader, function (req, res) {
 
     if (validatedPatient === true) {
 
-        api_handler.managePatientId(validatedPatient)
+        let idCheckedPatient = api_handler.managePatientId(patient, crypto)
 
         //Score
         try {
-            scoredPatient = api_handler.score.scorePatient(patient);
+            scoredPatient = api_handler.score.scorePatient(idCheckedPatient.patient);
         } catch (error) {
             res.send({ message: "Scoring error" }).status(200).end();
         }
@@ -41,7 +39,7 @@ router.post("/score", authorizeHeader, function (req, res) {
         //Sanitize
         let sendPatient;
         try {
-            sendPatient = cleanPatientToSend(scoredPatient, uniqueID);
+            sendPatient = api_handler.cleanPatientToSend(scoredPatient, idCheckedPatient.uniqueID);
             console.log("send patient ", sendPatient)
             res.send(sendPatient).status(200).end();
         } catch (error) {
@@ -49,7 +47,7 @@ router.post("/score", authorizeHeader, function (req, res) {
         }
 
     } else {
-        //res.status(400).send({ message: "Not authorized" }).end();
+        res.status(400).send({ message: "Not authorized" }).end();
     }
 
 })
