@@ -1,24 +1,16 @@
 const score = require("./api_functions/scorePatient");
 const geolocate = require("./api_functions/findGeolocation");
 const labprocess = require("./api_functions/labprocess");
-const validatedPatient = require("./api_functions/validatePatient")
-
-const crypto = require("crypto");
+const validatePatient = require("./api_functions/validatePatient")
+const managePatientId = require("./api_functions/managePatientId")
 
 const api_handler = {
     score,
-    validatedPatient,
+    validatePatient,
+    managePatientId,
     nearestHospital: geolocate.locateNearestHospital,
-    labprocess,
-    encryptUniquePatientID
+    labprocess
 }
 
-function encryptUniquePatientID(string, algo){
-    console.log("UNIQUE ID ", "String", string, "Algo", algo)
-
-    let hashed = crypto.createHash(algo).update(string).digest('hex');
-    return hashed;
-    
-}
 
 module.exports = api_handler;

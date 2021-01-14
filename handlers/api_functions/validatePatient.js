@@ -1,14 +1,20 @@
 function validatePatient(patient, crypto) {
 
-    if (!patient.info || patient.info.age === false || patient.info.age.toString().length < 2) {
-        throw error =  { message: "Missing patient age" }
+    if (!patient.info.age || patient.info.age === false || patient.info.age < 18) {
+        console.log("Age error")
+        throw new Error("Age error")
     }
 
-    if (patient === undefined) {
-        return { message: "Undefined problem" }
-    } 
+    if (!patient) {
+        console.log("Undefined error")
+        throw new Error("Undefined problem")
+    }
 
+    return true
 
 }
+
+
+
 
 module.exports = validatePatient

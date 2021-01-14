@@ -3,7 +3,7 @@ const lab = {
     processh,
 }
 //disable console log
-console.log = () => {}
+//console.log = () => {}
 
 var values = require("./labvalues");
 

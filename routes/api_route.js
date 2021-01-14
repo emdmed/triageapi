@@ -3,11 +3,10 @@ const router = express.Router();
 const crypto = require("crypto");
 
 const api_handler = require("../handlers/api_handler");
-const db_handler = require("../handlers/db_handler");
 
 const api_key = "linkedin";
 const patient_model = require("../patient_model");
-const config = require("../config");
+
 
 
 router.use((req, res, next) => {
@@ -25,33 +24,21 @@ router.post("/score", authorizeHeader, function (req, res) {
     try {
         validatedPatient = api_handler.validatePatient(patient, crypto)
     } catch (error) {
-        res.send({ message: "Authorization error" }, validatePatient).status(200).end();
+        res.status(200).send({ message: "Validation error" }).end();
     }
 
     if (validatedPatient === true) {
 
-        //check configs
-        for(key in patient.config){
-            if(key === "uniqueIdEncryption"){
-                console.log("unique encryption config key exists")
-                if(patient.info.hashString === false || patient.info.hashString === ""){
-                    console.log("No hashString key in patient info")
-                } else {
-                    try{
-                        uniqueID = api_handler.encryptUniquePatientID(patient.info.hashString, patient.config.uniqueIdEncryption)
-                    }catch(error){
-                        console.log("Error in trying to hash hashString in patient info")
-                    }
-                }
-            }
-        }
+        api_handler.managePatientId(validatedPatient)
 
+        //Score
         try {
             scoredPatient = api_handler.score.scorePatient(patient);
         } catch (error) {
             res.send({ message: "Scoring error" }).status(200).end();
         }
 
+        //Sanitize
         let sendPatient;
         try {
             sendPatient = cleanPatientToSend(scoredPatient, uniqueID);
@@ -62,7 +49,7 @@ router.post("/score", authorizeHeader, function (req, res) {
         }
 
     } else {
-        res.status(400).send({ message: "Not authorized" }).end();
+        //res.status(400).send({ message: "Not authorized" }).end();
     }
 
 })
@@ -100,14 +87,11 @@ router.post("/labtest", async function (req, res) {
 
 async function authorizeHeader(req, res, next) {
     let auth = req.headers.authorization;
-    console.log(auth)
+
     if (auth === api_key) {
 
-        if (config.environment.production === true) {
-            await db_handler.createAccessRecord();
-        } else { }
-
         next()
+
     } else {
         res.json({ message: "Sin autorización" }).end();
     }
