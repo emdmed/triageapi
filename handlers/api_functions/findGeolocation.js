@@ -1,4 +1,4 @@
-const hospitalList = require("./hospitales.json");
+const hospitalList = require("./resources/hospitales.json");
 
 const geo = {
     locateNearestHospital
