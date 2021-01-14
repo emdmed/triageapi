@@ -9,8 +9,8 @@ var Patient = {
     covidAlert: false,
     geolocation: {
       lat: false,
-      lng: false
-    }
+      lng: false,
+    },
   },
   ruleOut: {
     intensiveCareInLastMonth: false,
@@ -20,14 +20,14 @@ var Patient = {
     dyspnea: false,
     acuteMotorImpairment: false,
     chestPain: false,
-    hematemesis: false
+    hematemesis: false,
   },
   symptoms: {
     fever: {
       isPresent: false,
       measured: false,
       durationInDays: null,
-      abortedWithAntipyretics: false
+      abortedWithAntipyretics: false,
     },
     cough: {
       isPresent: false,
@@ -38,9 +38,9 @@ var Patient = {
           isYellow: false,
           isTransparent: false,
           isWhite: false,
-          isRed: false
-        }
-      }
+          isRed: false,
+        },
+      },
     },
     abdominalPain: {
       isPresent: false,
@@ -54,13 +54,13 @@ var Patient = {
         six: false,
         seven: false,
         eight: false,
-        nine: false
-      }
+        nine: false,
+      },
     },
     throatPain: {
       isPresent: false,
       voiceChange: false,
-      durationInDays: null
+      durationInDays: null,
     },
     runnyNose: {
       isPresent: false,
@@ -70,9 +70,9 @@ var Patient = {
           isYellow: false,
           isTransparent: false,
           isWhite: false,
-          isRed: false
-        }
-      }
+          isRed: false,
+        },
+      },
     },
     urinatingPain: {
       isPresent: false,
@@ -84,19 +84,19 @@ var Patient = {
           isYellow: false,
           isTransparent: false,
           isWhite: false,
-          isRed: false
-        }
-      }
+          isRed: false,
+        },
+      },
     },
     diarrhea: {
       isPresent: false,
       color: {
         isRed: false,
-        isBlack: false
-      }
+        isBlack: false,
+      },
     },
     vomiting: {
-      isPresent: false
+      isPresent: false,
     },
     pain: {
       isPresent: false,
@@ -107,17 +107,26 @@ var Patient = {
         leftArm: false,
         head: false,
         neck: false,
-        lumbar: false
-      }
+        lumbar: false,
+      },
     },
     edema: {
       isPresent: false,
       location: {
         rightLeg: false,
         leftLeg: false,
-        face: false
-      }
-    }
+        face: false,
+      },
+    },
+    headache: {
+      isPresent: false,
+      characteristics: {
+        intensity: false,
+        pulsating: false,
+        wholeHead: false,
+        neckPain: false,
+      },
+    },
   },
   lab: {
     isPresent: false,
@@ -131,7 +140,7 @@ var Patient = {
           lin: false,
           mon: false,
           eos: false,
-          bas: false
+          bas: false,
         },
         plqt: false,
         ferritina: false,
@@ -145,18 +154,18 @@ var Patient = {
         pcr: false,
         acidofolico: false,
         b12: false,
-        LDH: false
+        LDH: false,
       },
       renal: {
         urea: false,
-        creatinina: false
+        creatinina: false,
       },
       ionograma: {
         na: false,
         k: false,
         cl: false,
         p: false,
-        mg: false
+        mg: false,
       },
       eab: {
         ph: false,
@@ -164,7 +173,7 @@ var Patient = {
         pco2: false,
         hco3: false,
         eb: false,
-        sato2: false
+        sato2: false,
       },
       hepatograma: {
         bt: false,
@@ -178,7 +187,7 @@ var Patient = {
         gammagt: false,
         nucleot5: false,
         albumina: false,
-        proteinas: false
+        proteinas: false,
       },
       coagulograma: {
         tp: false,
@@ -186,11 +195,11 @@ var Patient = {
         RIN: false,
         factores: {
           XVIII: false,
-          V: false
-        }
-      }
-    }
-  }
-}
+          V: false,
+        },
+      },
+    },
+  },
+};
 
 module.exports = Patient;

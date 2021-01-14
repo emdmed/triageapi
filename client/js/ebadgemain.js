@@ -1,8 +1,6 @@
-console.log("loaded")
-
-var insurance
-
 $("body").on("click", "#saveEbadge", function(){
+    var insurance
+
     if($("#hcinsurance1").prop("checked") === true){
         insurance = "healthinsurance1"
     } else if($("#hcinsurance2").prop("checked") === true){
