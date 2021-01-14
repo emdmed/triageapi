@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const config = require("./config")
 const fs = require("fs");
 
+//disable console logs
+//console.log = () => {}
+
 //config
 config.environment.set();
 config.connectToDB();

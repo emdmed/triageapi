@@ -2,10 +2,8 @@
 const lab = {
     processh,
 }
-//disable console log
-//console.log = () => {}
 
-var values = require("./labvalues");
+var values = require("./resources/labvalues");
 
 function getValues() {
     return values

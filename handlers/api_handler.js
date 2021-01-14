@@ -14,5 +14,4 @@ const api_handler = {
     labprocess
 }
 
-
 module.exports = api_handler;

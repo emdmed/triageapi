@@ -4,8 +4,6 @@ const geo = {
     locateNearestHospital
 }
 
-//geo.locateNearestHospital({lat: -34.604163, lng: -58.425851});
-
 function calcCrow(coords1, coords2)
 {
   // var R = 6.371; // km
@@ -42,6 +40,5 @@ function locateNearestHospital(patientGeoloc){
 
     return sorted[0]
 }
-
 
 module.exports = geo;

@@ -30,8 +30,4 @@ router.get("/em", async function (req, res){
     res.redirect(`/ebadge/provider?id=${data.id}&insurance=${data.insurance}`)
 })
 
-
-
-
-
 module.exports = router;

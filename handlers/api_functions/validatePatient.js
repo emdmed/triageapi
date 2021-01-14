@@ -1,6 +1,5 @@
 function validatePatient(patient, crypto) {
 
-
     if (!patient) {
         throw new Error("No patient object")
     }
@@ -9,13 +8,8 @@ function validatePatient(patient, crypto) {
         throw new Error("Age error")
     }
 
-   
-
     return true
 
 }
-
-
-
 
 module.exports = validatePatient

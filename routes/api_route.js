@@ -39,7 +39,6 @@ router.post("/score", authorizeHeader, function (req, res) {
         let sendPatient;
         try {
             sendPatient = api_handler.cleanPatientToSend(scoredPatient, idCheckedPatient.uniqueID, crypto);
-            console.log("send patient ", sendPatient)
             res.send(sendPatient).status(200).end();
         } catch (error) {
             console.log(error)
@@ -82,7 +81,6 @@ router.post("/labtest", async function (req, res) {
    
 })
 
-
 async function authorizeHeader(req, res, next) {
     let auth = req.headers.authorization;
 
@@ -93,44 +91,6 @@ async function authorizeHeader(req, res, next) {
     } else {
         res.json({ message: "Sin autorización" }).end();
     }
-}
-
-function validatePatient(res, patient) {
-
-    if (patient.info.age === undefined || patient.info.age === false || patient.info.age.toString().length < 2) {
-        res.json({ message: "Missing patient age" }).end();
-    } else if (patient === undefined) {
-        res.json({ message: "Undefined problem" }).end();
-    } else {
-        return true;
-    }
-}
-
-function cleanPatientToSend(patient, uniqueID) {
-
-    let newPatient = {
-        score: patient.score,
-        age: patient.info.age,
-        covidAlert: patient.info.covidAlert,
-        date: new Date().getTime(),
-        nearestHospital: patient.nearestHospital,
-    }
-
-    if(uniqueID){
-        console.log("Start UNIQUE ID")
-        newPatient.patientID = uniqueID;
-    } else {
-        console.log("NO UNIQUE ID")
-        newPatient.patientID = crypto.randomBytes(10).toString("hex");
-    }
-
-    if(patient.lab === false){
-
-    } else {
-        newPatient.lab = patient.lab
-    }
-
-    return newPatient;
 }
 
 module.exports = router;
