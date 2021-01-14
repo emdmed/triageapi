@@ -1,4 +1,4 @@
-function cleanPatientToSend(patient, uniqueID) {
+function cleanPatientToSend(patient, uniqueID, crypto) {
 
     let newPatient = {
         score: patient.score,

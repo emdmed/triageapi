@@ -17,7 +17,6 @@ router.post("/score", authorizeHeader, function (req, res) {
     let scoredPatient;
     let patient = req.body;
     let validatedPatient;
-    let uniqueID;
 
     try {
         validatedPatient = api_handler.validatePatient(patient, crypto)
@@ -39,10 +38,11 @@ router.post("/score", authorizeHeader, function (req, res) {
         //Sanitize
         let sendPatient;
         try {
-            sendPatient = api_handler.cleanPatientToSend(scoredPatient, idCheckedPatient.uniqueID);
+            sendPatient = api_handler.cleanPatientToSend(scoredPatient, idCheckedPatient.uniqueID, crypto);
             console.log("send patient ", sendPatient)
             res.send(sendPatient).status(200).end();
         } catch (error) {
+            console.log(error)
             res.send({ message: "Patient cleaning error" }).status(200).end();
         }
 
