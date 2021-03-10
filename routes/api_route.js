@@ -3,23 +3,15 @@ const router = express.Router();
 const crypto = require("crypto");
 
 const api_handler = require("../handlers/api_handler");
-
-const api_key = "linkedin";
 const patient_model = require("../patient_model");
 
-router.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, authorization");
-    next();
-})
-
-router.post("/score", authorizeHeader, function (req, res) {
+router.post("/score", function (req, res) {
     let scoredPatient;
     let patient = req.body;
     let validatedPatient;
 
     try {
-        validatedPatient = api_handler.validatePatient(patient, crypto)
+        validatedPatient = api_handler.validatePatient(patient)
     } catch (error) {
         res.status(200).send({ message: "Validation error" }).end();
     }
@@ -52,11 +44,11 @@ router.post("/score", authorizeHeader, function (req, res) {
 })
 
 //not checking if file exists
-router.get("/patientModel", authorizeHeader, async function (req, res) {
+router.get("/patientModel", async function (req, res) {
     res.send(JSON.stringify(patient_model)).status(200).end();
 });
 
-router.post("/nearestHospital", authorizeHeader, async function (req, res) {
+router.post("/nearestHospital", async function (req, res) {
     let data = req.body;
     let nearestHospital;
     try {
@@ -80,17 +72,5 @@ router.post("/labtest", async function (req, res) {
     }
    
 })
-
-async function authorizeHeader(req, res, next) {
-    let auth = req.headers.authorization;
-
-    if (auth === api_key) {
-
-        next()
-
-    } else {
-        res.json({ message: "Sin autorización" }).end();
-    }
-}
 
 module.exports = router;

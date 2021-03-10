@@ -4,6 +4,18 @@ const bodyParser = require("body-parser");
 const config = require("./config")
 const fs = require("fs");
 
+app.use((req,res, next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", 
+    "Origin, X-Requested-With, Content-Type, Accept, Authorizarion")
+
+    if(req.method === "OPTIONS"){
+        res.header("Access-Control-Allow-Methods", "POST, GET")
+        return res.status(200).json({})
+    }
+    next()
+})
+
 //disable console logs
 //console.log = () => {}
 
@@ -32,5 +44,5 @@ app.get("/triagejs", function(req, res){
     res.sendFile(__dirname + "/client/triagejs.js")
 })
 
-server.listen(process.env.PORT || 3000);
-console.log("Running on port " + 3000)
+server.listen(process.env.PORT || 8888);
+console.log("Running on port " + 8888)
